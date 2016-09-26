@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Placa</td>
+            <td>Nombre</td>
+            <td>Marca</td>
+            <td>Modelo</td>
+            <td>Nº Motor</td>
+            <td>Nº Chasis</td>
+            <td>Sector</td>
+            <td>Tipo vehiculo</td>
+            <td>Activo</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if vehiculos %}
+        {% for vehiculo in vehiculos %}
+        <tr>
+            <td>{{ vehiculo.placa }}</td>
+            <td>{{ vehiculo.name }}</td>
+            <td>{{ vehiculo.marca }}</td>
+            <td>{{ vehiculo.modelo }}</td>
+            <td>{{ vehiculo.nro_motor }}</td>
+            <td>{{ vehiculo.nro_chasis }}</td>
+            <td>{{ vehiculo.sector }}</td>
+            <td>{{ vehiculo.tipo_id.name }}</td>
+            <td>{{ vehiculo.id }}</td>
+            <td>
+                <a href="{% url 'servicios:vehiculo_editar' vehiculo.placa %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'servicios:vehiculo_eliminar' vehiculo.placa %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <h1>No existen Registros</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

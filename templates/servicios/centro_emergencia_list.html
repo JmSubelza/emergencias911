@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id.</td>
+            <td>Descripción</td>
+            <td>Dirección</td>
+            <td>Teléfono</td>
+            <td>Latitud</td>
+            <td>Longitud</td>
+            <td>Sector</td>
+            <td>Nivel</td>
+            <td>Tipo</td>
+            <td>Activo</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for centro_emergencia in object_list %}
+        <tr>
+            <td>{{ centro_emergencia.id }}</td>
+            <td>{{ centro_emergencia.name }}</td>
+            <td>{{ centro_emergencia.direccion }}</td>
+            <td>{{ centro_emergencia.telefono }}</td>
+            <td>{{ centro_emergencia.lat }}</td>
+            <td>{{ centro_emergencia.log }}</td>
+            <td>{{ centro_emergencia.sector }}</td>
+            <td>{{ centro_emergencia.nivel }}</td>
+            <td>{{ centro_emergencia.tipo }}</td>
+            <td>{{ centro_emergencia.is_active }}</td>
+            <td>
+                <a href="{% url 'servicios:centro_emergencia_editar' centro_emergencia.id %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'servicios:centro_emergencia_eliminar' centro_emergencia.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <h1>No existen Registros</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

@@ -4,6 +4,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <td>Id.</td>
             <td>Placa</td>
             <td>Nombre</td>
             <td>Marca</td>
@@ -17,9 +18,10 @@
         </tr>
     </thead>
     <tbody>
-        {% if vehiculos %}
-        {% for vehiculo in vehiculos %}
+        {% if object_list %}
+        {% for vehiculo in object_list %}
         <tr>
+            <td>{{ vehiculo.id }}</td>
             <td>{{ vehiculo.placa }}</td>
             <td>{{ vehiculo.name }}</td>
             <td>{{ vehiculo.marca }}</td>
@@ -28,10 +30,10 @@
             <td>{{ vehiculo.nro_chasis }}</td>
             <td>{{ vehiculo.sector }}</td>
             <td>{{ vehiculo.tipo_id.name }}</td>
-            <td>{{ vehiculo.id }}</td>
+            <td>{{ vehiculo.is_active }}</td>
             <td>
-                <a href="{% url 'servicios:vehiculo_editar' vehiculo.placa %}" class="btn btn-primary">Editar</a>
-                <a href="{% url 'servicios:vehiculo_eliminar' vehiculo.placa %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'servicios:vehiculo_editar' vehiculo.id %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'servicios:vehiculo_eliminar' vehiculo.id %}" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
         {% endfor %}

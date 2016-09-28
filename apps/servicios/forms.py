@@ -1,12 +1,10 @@
 from django import forms
-from apps.servicios.models import Vehiculo
+from apps.servicios.models import Vehiculo, TipoVehiculo
 
 
 class VehiculoForm(forms.ModelForm):
-
     class Meta:
         model = Vehiculo
-
         fields = [
             'placa',
             'name',
@@ -40,3 +38,21 @@ class VehiculoForm(forms.ModelForm):
             'tipo_id': forms.Select(attrs={'class': 'form-control'}),
             'is_active': forms.CheckboxInput(),
         }
+
+
+class TipoVehiculoForm(forms.ModelForm):
+    class Meta:
+        model = TipoVehiculo
+        fields = [
+            'name',
+            'is_active',
+        ]
+        labels = {
+            'name': 'Descripción',
+            'is_active': 'Activo',
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'is_active': forms.CheckboxInput(),
+        }
+

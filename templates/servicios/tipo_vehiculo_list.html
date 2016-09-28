@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id.</td>
+            <td>Descripción</td>
+            <td>Activo</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for tipo_vehiculo in object_list %}
+        <tr>
+            <td>{{ tipo_vehiculo.id }}</td>
+            <td>{{ tipo_vehiculo.name }}</td>
+            <td>{{ tipo_vehiculo.is_active }}</td>
+            <td>
+                <a href="{% url 'servicios:tipo_vehiculo_editar' tipo_vehiculo.id %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'servicios:tipo_vehiculo_eliminar' tipo_vehiculo.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <h1>No existen Registros</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

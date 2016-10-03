@@ -115,6 +115,17 @@
       <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
     </table>
+    <table name="servicios_dispositivogps" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="imei" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="nro_sim" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="lat" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
+      <column name="log" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
+      <column name="time" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
+      <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+    </table>
     <table name="servicios_tipovehiculo" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
@@ -131,9 +142,11 @@
       <column name="nro_chasis" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="sector" sqlType="VARCHAR(20)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="gps_id_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="tipo_id_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_servicios_vehiculo_1" columns="tipo_id_id" ref-table="servicios_tipovehiculo" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_servicios_vehiculo_2" columns="gps_id_id" ref-table="servicios_dispositivogps" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="servicios_vehiculo_066b80a3" unique="true" columns="tipo_id_id"/>
     </table>
     <table name="sqlite_sequence" schema="" catalog="" type="TABLE">

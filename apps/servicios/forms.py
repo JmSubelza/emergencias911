@@ -1,5 +1,5 @@
 from django import forms
-from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia
+from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
 
 
 class VehiculoForm(forms.ModelForm):
@@ -97,3 +97,34 @@ class CentroEmergenciaForm(forms.ModelForm):
             'is_active': forms.CheckboxInput(),
         }
 
+
+class DispositivoGpsForm(forms.ModelForm):
+    class Meta:
+        model = DispositivoGPS
+        fields = [
+            'name',
+            'imei',
+            'nro_sim',
+            'lat',
+            'log',
+            'time',
+            'is_active',
+        ]
+        labels = {
+            'name': 'Descripción',
+            'imei': 'IMEI Dispositivo',
+            'nro_sim': 'Numero de Teléfono',
+            'lat': 'Latitud',
+            'log': 'Longitud',
+            'time': 'Fecha y Hora',
+            'is_active': 'Activo',
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'imei': forms.TextInput(attrs={'class': 'form-control'}),
+            'nro_sim': forms.TextInput(attrs={'class': 'form-control'}),
+            'lat': forms.TextInput(attrs={'class': 'form-control'}),
+            'log': forms.TextInput(attrs={'class': 'form-control'}),
+            'time': forms.TextInput(attrs={'class': 'form-control'}),
+            'is_active': forms.CheckboxInput(),
+        }

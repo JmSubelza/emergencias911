@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
-from apps.servicios.forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm
-from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia
+from apps.servicios.forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm, DispositivoGpsForm
+from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
 
@@ -121,5 +121,29 @@ class CentroEmergenciaDelete(DeleteView):
     template_name = 'servicios/centro_emergencia_delete.html'
     success_url = reverse_lazy('servicios:centro_emergencia')
 
+
+class DispositivoGpsList(ListView):
+    model = DispositivoGPS
+    template_name = 'servicios/dispositivi_gps_list.html'
+
+
+class DispositivoGpsCreate(CreateView):
+    model = DispositivoGPS
+    form_class = DispositivoGpsForm
+    template_name = 'servicios/dispositivo_gps_form.html'
+    success_url = reverse_lazy('servicios:dispositivo_gps')
+
+
+class DispositivoGpsUpdate(UpdateView):
+    model = DispositivoGPS
+    form_class = DispositivoGpsForm
+    template_name = 'servicios/dispositivo_gps_form.html'
+    success_url = reverse_lazy('servicios:dispositivo_gps')
+
+
+class DispositivoGpsDelete(DeleteView):
+    model = DispositivoGPS
+    template_name = 'servicios/dispositivo_gps_delete.html'
+    success_url = reverse_lazy('servicios:dispositivo_gps')
 
 

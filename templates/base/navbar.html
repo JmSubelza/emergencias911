@@ -27,10 +27,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Servicios<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Centros de Emergencia</a></li>
-            <li><a href="#">Vehiculos</a></li>
-            <li><a href="#">Tipo vehiculos</a></li>
-            <li><a href="#">Dispositivos GPS</a></li>
+            <li><a href="{% url 'servicios:centro_emergencia' %}">Centros de Emergencia</a></li>
+            <li><a href="{% url 'servicios:vehiculo' %}">Vehiculos</a></li>
+            <li><a href="{% url 'servicios:tipo_vehiculo' %}">Tipo vehiculos</a></li>
+            <li><a href="{% url 'servicios:dispositivo_gps' %}">Dispositivos GPS</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -55,10 +55,10 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
-            <li><a href="#"></span> {{ user.username }}</a></li>
-            <li><a href="#"></span> Salir</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
+            <li><a href="#">Salir</a></li>
         {% else %}
-            <li><a href="#"></span> Ingresar</a></li>
+            <li><a href="#">Ingresar</a></li>
         {% endif %}
       </ul>
     </div>

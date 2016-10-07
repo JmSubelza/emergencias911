@@ -19,11 +19,4 @@ class UserForm(UserCreationForm):
             'last_name' : 'Apellido(s)',
             'email': 'Correo Electronico',
         }
-        widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.TextInput(attrs={'class': 'form-control'}),
-        }
-
 

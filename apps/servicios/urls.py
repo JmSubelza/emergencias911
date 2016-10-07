@@ -6,8 +6,6 @@ from apps.servicios.views import index, vehiculo_view, vehiculo_list, vehiculo_e
     DispositivoGpsList, DispositivoGpsCreate, DispositivoGpsUpdate, DispositivoGpsDelete
 
 urlpatterns = [
-    url(r'^$', index, name='index'),
-
     url(r'^vehiculo$', VehiculoList.as_view(), name='vehiculo'),
     url(r'^vehiculo/nuevo$', VehiculoCreate.as_view(), name='vehiculo_crear'),
     url(r'^vehiculo/editar/(?P<pk>\d+)/$', VehiculoUpdate.as_view(), name='vehiculo_editar'),

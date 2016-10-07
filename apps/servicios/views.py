@@ -7,7 +7,7 @@ from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
 
 def index(request):
-    return render(request, 'servicios/index.html')
+    return render(request, 'servicios/../../templates/administracion/../../templates/index.html')
 
 
 def vehiculo_view(request):

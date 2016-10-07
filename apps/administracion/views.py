@@ -6,8 +6,8 @@ from apps.administracion.forms import UserForm
 
 class UsuarioCreate(CreateView):
     model = User
-    template_name = 'administracion/user_form.html'
+    template_name = 'administracion/usuario_form.html'
     form_class = UserForm
-    success_url = reverse_lazy('administracion:user')
+    success_url = reverse_lazy('administracion:usuario_crear')
 
 

@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id.</td>
+            <td>Usuario</td>
+            <td>Nombre(s)</td>
+            <td>Apellido(s)</td>
+            <td>Email</td>
+            <td>Staff</td>
+            <td>Activo</td>
+            <td>Fecha Registro</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for usuario in object_list %}
+        <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.username }}</td>
+            <td>{{ usuario.first_name }}</td>
+            <td>{{ usuario.last_name }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.is_staff }}</td>
+            <td>{{ usuario.is_active }}</td>
+            <td>{{ usuario.date_join }}</td>
+            <td>
+                <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
+                <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <h1>No existen Registros</h1>
+        {% endif %}
+    </tbody>
+</table>
+    <a href="{% url 'servicios:centro_emergencia_crear' %}" class="btn btn-success">Nuevo</a>
+    <a href="{% url 'servicios:centro_emergencia' %}" class="btn btn-warning">Cancelar</a>
+{% endblock %}

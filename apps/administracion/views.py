@@ -14,7 +14,20 @@ class UsuarioCreate(CreateView):
     model = User
     template_name = 'administracion/usuario_form.html'
     form_class = UserForm
-    success_url = reverse_lazy('administracion:usuario_crear')
+    success_url = reverse_lazy('administracion:usuario')
+
+
+class UsuarioUpdate(UpdateView):
+    model = User
+    template_name = 'administracion/usuario_form.html'
+    form_class = UserForm
+    success_url = reverse_lazy('administracion:usuario')
+
+
+class UsuarioDelete(DeleteView):
+    model = User
+    template_name = 'administracion/usuario_delete.html'
+    success_url = reverse_lazy('administracion:usuario')
 
 
 class GrupoList(ListView):
@@ -26,5 +39,17 @@ class GrupoCreate(CreateView):
     model = Group
     template_name = 'administracion/grupo_form.html'
     form_class = GroupCreate
-    success_url = reverse_lazy('administracion:usuario_crear')
+    success_url = reverse_lazy('administracion:grupo')
 
+
+class GrupoUpdate(UpdateView):
+    model = Group
+    template_name = 'administracion/grupo_form.html'
+    form_class = GroupCreate
+    success_url = reverse_lazy('administracion:grupo')
+
+
+class GrupoDelete(DeleteView):
+    model = Group
+    template_name = 'administracion/grupo_delete.html'
+    success_url = reverse_lazy('administracion:grupo')

@@ -16,8 +16,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Administración<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Personal</a></li>
-            <li><a href="#">Grupos y Privilegios</a></li>
+            <li><a href="{% url 'administracion:usuario' %}">Personal</a></li>
+            <li><a href="{% url 'administracion:grupo' %}">Grupos y Privilegios</a></li>
             <li><a href="#">Rol Personal</a></li>
             <li class="divider"></li>
             <li><a href="#">Generar backup</a></li>
@@ -56,7 +56,7 @@
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
-            <li><a href="#">Salir</a></li>
+            <li><a href="{% url 'logout' %}">Salir</a></li>
         {% else %}
             <li><a href="#">Ingresar</a></li>
         {% endif %}

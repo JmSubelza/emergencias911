@@ -1,0 +1,15 @@
+{% if form.errors %}
+<!-- Error messaging -->
+    <div class="errorlist">
+		<p>Corregir los siguientes errores:</p>
+		{{ form.non_field_errors }}
+		<ul>
+			{% for field in form %}
+				{% if field.errors %}
+                    <li>{{ field.errors|striptags }}</li>
+                {% endif %}
+		    {% endfor %}
+		</ul>
+	</div>
+<!-- /Error messaging -->
+{% endif %}

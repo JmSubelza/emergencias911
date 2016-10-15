@@ -1,17 +1,17 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    {% include "base/_messages.html" %}
+{% include "base/_messages.html" %}
     <form method="post">
         {% csrf_token %}
         <div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label for="id_first_name">Nombre</label>
-				<input class="form-control" id="id_first_name" maxlength="30" name="first_name" type="text" required />
-			</div>
-		</div>
-	</div>
+		    <div class="col-md-8 col-md-offset-2">
+			    <div class="form-group">
+				    <label for="id_first_name">Nombre</label>
+				    <input class="form-control" id="id_first_name" maxlength="30" name="first_name" type="text" required />
+		        </div>
+		    </div>
+	    </div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="form-group">

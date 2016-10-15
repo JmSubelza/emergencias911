@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from apps.servicios.views import index, vehiculo_view, vehiculo_list, vehiculo_edit, vehiculo_delete, \
+from apps.servicios.views import \
     VehiculoList, VehiculoCreate, VehiculoUpdate, VehiculoDelete, \
     TipoVehiculoList, TipoVehiculoCreate, TipoVehiculoUpdate, TipoVehiculoDelete, \
     CentroEmergernciaList, CentroEmergenciaCreate, CentroEmergenciaUpdate, CentroEmergenciaDelete, \

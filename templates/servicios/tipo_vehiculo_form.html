@@ -1,10 +1,9 @@
 {% extends 'base/base.html' %}
-
 {% block content %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-    <button type="submit" class="btn btn-success" >Guardar</button>
-    <a href="{% url 'servicios:tipo_vehiculo' %}" class="btn btn-warning">Cancelar</a>
+        <button type="submit" class="btn btn-success" >Guardar</button>
+        <a href="{% url 'servicios:tipo_vehiculo' %}" class="btn btn-warning">Cancelar</a>
     </form>
 {% endblock %}

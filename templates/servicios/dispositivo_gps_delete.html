@@ -1,10 +1,8 @@
 {% extends 'base/base.html' %}
-
 {% block content %}
     <form method="post">
-        {% csrf_token %}
-        <h3>Desea eliminar el registro de {{ dispositivogps.name }}</h3>
-    <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
-    <a href="{% url 'servicios:tipo_vehiculo' %}" class="btn btn-default">Cancelar</a>
+        {% csrf_token %}<h3>Desea eliminar el registro de {{ dispositivogps.name }}</h3>
+        <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
+        <a href="{% url 'servicios:tipo_vehiculo' %}" class="btn btn-default">Cancelar</a>
     </form>
 {% endblock %}

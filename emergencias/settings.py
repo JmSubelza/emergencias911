@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'crispy_forms',
+
     'apps.servicios',
     'apps.administracion',
     'apps.logistica',
@@ -134,3 +136,5 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = 'joseloms@gmail.com'
 EMAIL_HOST_PASSWORD = '12058812'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

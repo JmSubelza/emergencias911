@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from crispy_forms.helper import FormHelper
 import re
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -15,9 +16,9 @@ class UserForm(UserCreationForm):
             'email',
         ]
         labels = {
-            'username' : 'Usuario',
-            'first_name' : 'Nombre(s)',
-            'last_name' : 'Apellido(s)',
+            'username': 'Usuario',
+            'first_name': 'Nombre(s)',
+            'last_name': 'Apellido(s)',
             'email': 'Correo Electronico',
         }
 
@@ -48,6 +49,16 @@ class UserForm(UserCreationForm):
         if password1 != password2:
             raise forms.ValidationError('Las contraseñas no coinciden.')
         return password2
+
+
+class UserTest(forms.ModelForm):
+
+    helper = FormHelper()
+    helper.form_tag = False
+
+    class Meta:
+        model = User
+        fields = '__all__'
 
 
 class GroupForm(forms.ModelForm):

@@ -4,6 +4,6 @@
         {% csrf_token %}
         {{ form.as_p }}
     <button type="submit" class="btn btn-success" >Guardar</button>
-    <a href="{% url 'servicios:centro_emergencia' %}" class="btn btn-warning">Cancelar</a>
+    <a href="{% url 'logistica:incidente' %}" class="btn btn-warning">Cancelar</a>
     </form>
 {% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="" method="POST">
+    {% crispy form %}
+    <button type="submit" class="btn btn-success" >Guardar</button>
+</form>
+{% endblock %}

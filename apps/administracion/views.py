@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from apps.administracion.forms import UserForm, GroupForm
+from apps.administracion.forms import UserForm, GroupForm, UserTest
 # Create your views here.
 
 
@@ -16,6 +16,12 @@ class UsuarioCreate(CreateView):
     form_class = UserForm
     success_url = reverse_lazy('administracion:usuario')
 
+
+class UserCreateTest(CreateView):
+    model = User
+    template_name = 'administracion/user_test.html'
+    form_class = UserTest
+    success_url = reverse_lazy('administracion:usuario')
 
 class UsuarioUpdate(UpdateView):
     model = User

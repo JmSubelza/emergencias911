@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
-from apps.logistica.models import Incidente
-from apps.logistica.forms import IncidenteForm
+from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
+from apps.logistica.forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 # Create your views here.
 
@@ -32,3 +32,35 @@ class IncidenteDelete(DeleteView):
     model = Incidente
     template_name = 'logistica/incidente_delete.html'
     success_url = reverse_lazy('logistica:incidente')
+
+
+class TipoIncidenteCreate(CreateView):
+    model = TipoIncidente
+    form_class = TipoIncidenteForm
+    template_name = 'logistica/tipo_incidente_form.html'
+    success_url = reverse_lazy('logistica:tipo_incidente')
+
+
+class TipoIncidenteUpdate(UpdateView):
+    model = TipoIncidente
+    form_class = TipoIncidenteForm
+    template_name = 'logistica/tipo_incidente_form.html'
+    success_url = reverse_lazy('logistica:tipo_incidente')
+
+
+class TipoIncidenteList(ListView):
+    model = TipoIncidente
+    template_name = 'logistica/tipo_incidente_list.html'
+
+
+class TipoIncidenteDelete(DeleteView):
+    model = TipoIncidente
+    template_name = 'logistica/tipo_incidente_delete.html'
+    success_url = reverse_lazy('logistica:tipo_incidente')
+
+
+class AsignacionIncidenteCreate(CreateView):
+    model = AsignacionIncidente
+    form_class = AsignacionIncidenteForm
+    template_name = 'logistica/asignacion_incidente_form.html'
+    success_url = reverse_lazy('logistica:tipo_incidente')

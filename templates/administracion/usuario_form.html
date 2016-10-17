@@ -1,65 +1,9 @@
 {% extends 'base/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-{% include "base/_messages.html" %}
-    <form method="post">
-        {% csrf_token %}
-        <div class="row">
-		    <div class="col-md-8 col-md-offset-2">
-			    <div class="form-group">
-				    <label for="id_first_name">Nombre</label>
-				    <input class="form-control" id="id_first_name" maxlength="30" name="first_name" type="text" required />
-		        </div>
-		    </div>
-	    </div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label for="id_last_name">Apellidos</label>
-				<input class="form-control" id="id_last_name" maxlength="30" name="last_name" type="text" required />
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label for="id_username">Nombre de usuario</label>
-				<input class="form-control" id="id_username" maxlength="30" name="username" type="text" required />
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label for="id_email">Correo</label>
-				<input class="form-control" id="id_email" maxlength="254" name="email" type="email" required />
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label for="id_password1">Contraseña</label>
-				<input class="form-control" id="id_password1" maxlength="30" name="password1" type="password" required />
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label for="id_password2">Confirmar contraseña</label>
-				<input class="form-control" id="id_password2" maxlength="30" name="password2" type="password" required />
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<button type="submit" class="btn btn-success" >Guardar</button>
-                <a href="{% url 'administracion:usuario' %}" class="btn btn-warning">Cancelar</a>
-			</div>
-		</div>
-	</div>
-    </form>
+<form action="" method="POST">
+    {% crispy form %}
+    <button type="submit" class="btn btn-success" >Guardar</button>
+    <a href="{% url 'administracion:usuario' %}" class="btn btn-warning">Cancelar</a>
+</form>
 {% endblock %}

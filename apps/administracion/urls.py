@@ -1,8 +1,9 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from apps.administracion.views import \
-    UsuarioCreate, UsuarioList, UsuarioUpdate, UsuarioDelete, \
-    GrupoCreate, GrupoList, GrupoUpdate, GrupoDelete, UserCreateTest
+    UsuarioList, UsuarioCreate, UsuarioUpdate, UsuarioDelete, \
+    GrupoCreate, GrupoList, GrupoUpdate, GrupoDelete
+
 
 
 urlpatterns = [
@@ -12,10 +13,9 @@ urlpatterns = [
     url(r'^usuario/editar/(?P<pk>\d+)/$', login_required(UsuarioUpdate.as_view()), name='usuario_editar'),
     url(r'^usuario/eliminar/(?P<pk>\d+)/$', login_required(UsuarioDelete.as_view()), name='usuario_eliminar'),
 
-    url(r'^usuario/nuevotest/$', login_required(UserCreateTest.as_view()), name='usuario_crear2'),
-
     url(r'^grupo/$', GrupoList.as_view(), name='grupo'),
     url(r'^grupo/nuevo/$', GrupoCreate.as_view(), name='grupo_crear'),
     url(r'^grupo/editar/(?P<pk>\d+)/$', GrupoUpdate.as_view(), name='grupo_editar'),
     url(r'^grupo/eliminar/(?P<pk>\d+)/$', GrupoDelete.as_view(), name='grupo_eliminar'),
+
 ]

@@ -50,13 +50,13 @@ class Vehiculo(models.Model):
         verbose_name_plural = 'Vehiculos'
 
     def __str__(self):
-        return '{}'.format(self.placa)
+        return '{}'.format(self.name)
 
 
 class CentroEmergencia(models.Model):
 
     name = models.CharField(max_length=100, verbose_name='Nombre')
-    direccion = models.CharField(max_length=100, verbose_name='Dirección')
+    direccion = models.CharField(max_length=150, verbose_name='Dirección')
     telefono = models.CharField(max_length=30, verbose_name='Teléfono')
     lat = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Latitud')
     log = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Longitud')
@@ -66,19 +66,19 @@ class CentroEmergencia(models.Model):
     )
     sector = models.CharField(max_length=10, choices=SECTOR, verbose_name='Sector')
     NIVEL = (
-        ('0', 'NINGUNO'),
-        ('1', 'PRIMERO'),
-        ('2', 'SEGUNDO'),
-        ('3', 'TERCERO'),
+        ('NINGUNO', 'NINGUNO'),
+        ('PRIMERO', 'PRIMERO'),
+        ('SEGUNDO', 'SEGUNDO'),
+        ('TERCERO', 'TERCERO'),
     )
     nivel = models.CharField(max_length=10, choices=NIVEL, verbose_name='Nivel')
     TIPO = (
-        ('CS', 'CENTRO SALUD'),
-        ('PO', 'POLICIA'),
-        ('BO', 'BOMBEROS'),
-        ('TR', 'TRANSITO'),
+        ('CENTRO SALUD', 'CENTRO SALUD'),
+        ('POLICIA', 'POLICIA'),
+        ('BOMBEROS', 'BOMBEROS'),
+        ('TRANSITO', 'TRANSITO'),
     )
-    tipo = models.CharField(max_length=10, choices=TIPO, verbose_name='Tipo')
+    tipo = models.CharField(max_length=20, choices=TIPO, verbose_name='Tipo')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 
     class Meta:

@@ -18,7 +18,6 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{% url 'administracion:usuario' %}">Personal</a></li>
             <li><a href="{% url 'administracion:grupo' %}">Grupos y Privilegios</a></li>
-            <li><a href="#">Rol Personal</a></li>
             <li class="divider"></li>
             <li><a href="#">Generar backup</a></li>
             <li><a href="#">Restaurar backup</a></li>
@@ -36,8 +35,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Logistica<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Inicidentes</a></li>
-            <li><a href="#">Tipo Incidentes</a></li>
+            <li><a href="{% url 'logistica:incidente' %}">Inicidentes</a></li>
+            <li><a href="{% url 'logistica:tipo_incidente' %}">Tipo Incidentes</a></li>
             <li><a href="#">Asignacion Incidentes</a></li>
             <li class="divider"></li>
             <li><a href="#">Mapa centros emergencia</a></li>

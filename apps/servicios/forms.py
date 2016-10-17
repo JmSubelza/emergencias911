@@ -1,8 +1,13 @@
 from django import forms
+from crispy_forms.helper import FormHelper
 from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
 
 
 class VehiculoForm(forms.ModelForm):
+
+    helper = FormHelper()
+    helper.form_tag = False
+
     class Meta:
         model = Vehiculo
         fields = [
@@ -29,21 +34,13 @@ class VehiculoForm(forms.ModelForm):
             'gps_id': 'Dispositivo GPS',
             'is_active': 'Activo',
         }
-        widgets = {
-            'placa': forms.TextInput(attrs={'class': 'form-control'}),
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'marca': forms.TextInput(attrs={'class': 'form-control'}),
-            'modelo': forms.TextInput(attrs={'class': 'form-control'}),
-            'nro_motor': forms.TextInput(attrs={'class': 'form-control'}),
-            'nro_chasis': forms.TextInput(attrs={'class': 'form-control'}),
-            'sector': forms.Select(attrs={'class': 'form-control'}),
-            'gps_id': forms.Select(attrs={'class': 'form-control'}),
-            'tipo_id': forms.Select(attrs={'class': 'form-control'}),
-            'is_active': forms.CheckboxInput(),
-        }
 
 
 class TipoVehiculoForm(forms.ModelForm):
+
+    helper = FormHelper()
+    helper.form_tag = False
+
     class Meta:
         model = TipoVehiculo
         fields = [
@@ -54,13 +51,16 @@ class TipoVehiculoForm(forms.ModelForm):
             'name': 'Descripción',
             'is_active': 'Activo',
         }
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'is_active': forms.CheckboxInput(),
-        }
 
 
 class CentroEmergenciaForm(forms.ModelForm):
+
+    lat = forms.DecimalField(max_value=8, decimal_places=6, initial="-17.783308", required=False,)
+    log = forms.DecimalField(max_value=8, decimal_places=6, initial="-63.182118", required=False,)
+
+    helper = FormHelper()
+    helper.form_tag = False
+
     class Meta:
         model = CentroEmergencia
         fields = [
@@ -85,20 +85,13 @@ class CentroEmergenciaForm(forms.ModelForm):
             'tipo': 'Tipo',
             'is_active': 'Activo',
         }
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
-            'telefono': forms.TextInput(attrs={'class': 'form-control'}),
-            'lat': forms.TextInput(attrs={'class': 'form-control'}),
-            'log': forms.TextInput(attrs={'class': 'form-control'}),
-            'sector': forms.Select(attrs={'class': 'form-control'}),
-            'nivel': forms.Select(attrs={'class': 'form-control'}),
-            'tipo': forms.Select(attrs={'class': 'form-control'}),
-            'is_active': forms.CheckboxInput(),
-        }
 
 
 class DispositivoGpsForm(forms.ModelForm):
+
+    helper = FormHelper()
+    helper.form_tag = False
+
     class Meta:
         model = DispositivoGPS
         fields = [
@@ -118,13 +111,4 @@ class DispositivoGpsForm(forms.ModelForm):
             'log': 'Longitud',
             'time': 'Fecha y Hora',
             'is_active': 'Activo',
-        }
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'imei': forms.TextInput(attrs={'class': 'form-control'}),
-            'nro_sim': forms.TextInput(attrs={'class': 'form-control'}),
-            'lat': forms.TextInput(attrs={'class': 'form-control'}),
-            'log': forms.TextInput(attrs={'class': 'form-control'}),
-            'time': forms.TextInput(attrs={'class': 'form-control'}),
-            'is_active': forms.CheckboxInput(),
         }

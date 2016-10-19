@@ -2,7 +2,7 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <h3>Desea eliminar el registro de {{ tipo_vehiculo.name }}</h3>
+        <h3>Desea eliminar el registro de los tipos de vehiculos con descripcion "{{ tipo_vehiculo.name }}"</h3>
         <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
         <a href="{% url 'servicios:tipo_vehiculo' %}" class="btn btn-default">Cancelar</a>
     </form>

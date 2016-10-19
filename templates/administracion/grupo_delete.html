@@ -3,7 +3,7 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <h3>Desea eliminar el registro de {{ group.name }}</h3>
+        <h3>Desea eliminar el registro "{{ group.name }}" perteneciente a la gestion de grupos y privilegios</h3>
     <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
     <a href="{% url 'administracion:grupo' %}" class="btn btn-default">Cancelar</a>
     </form>

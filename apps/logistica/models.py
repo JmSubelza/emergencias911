@@ -52,3 +52,6 @@ class AsignacionIncidente(models.Model):
 
     def __str__(self):
         return '{}'.format(self.id)
+
+    def get_string_vehiculos(self):
+        return ', '.join([vehiculo.placa for vehiculo in self.vehiculos.all()])

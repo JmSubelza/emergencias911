@@ -2,7 +2,7 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <h3>Desea eliminar el registro de {{ logistica.id }} creado en fecha {{ logistica.time }}</h3>
+        <h3>Desea eliminar el incidente N° {{ incidente.id }} creado en fecha {{ incidente.time }}</h3>
     <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
     <a href="{% url 'logistica:incidente' %}" class="btn btn-default">Cancelar</a>
     </form>

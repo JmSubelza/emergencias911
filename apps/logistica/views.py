@@ -63,4 +63,22 @@ class AsignacionIncidenteCreate(CreateView):
     model = AsignacionIncidente
     form_class = AsignacionIncidenteForm
     template_name = 'logistica/asignacion_incidente_form.html'
-    success_url = reverse_lazy('logistica:tipo_incidente')
+    success_url = reverse_lazy('logistica:asignacion_incidente')
+
+
+class AsignacionIncidenteList(ListView):
+    model = AsignacionIncidente
+    template_name = 'logistica/asignacion_incidente_list.html'
+
+
+class AsignacionIncidenteUpdate(UpdateView):
+    model = AsignacionIncidente
+    form_class = AsignacionIncidenteForm
+    template_name = 'logistica/asignacion_incidente_form.html'
+    success_url = reverse_lazy('logistica:asignacion_incidente')
+
+
+class AsignacionIncidenteDelete(DeleteView):
+    model = AsignacionIncidente
+    template_name = 'logistica/asignacion_incidente_delete.html'
+    success_url = reverse_lazy('logistica:asignacion_incidente')

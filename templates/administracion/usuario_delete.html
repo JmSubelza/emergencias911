@@ -3,7 +3,7 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <h3>Desea eliminar el registro de {{ user.username }}</h3>
+        <h3>Desea eliminar el registro perteneciente al usuario {{ user.username }}</h3>
     <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
     <a href="{% url 'administracion:usuario' %}" class="btn btn-default">Cancelar</a>
     </form>

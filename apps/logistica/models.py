@@ -1,6 +1,8 @@
 from django.db import models
 from apps.servicios.models import CentroEmergencia, Vehiculo
 from django.contrib.auth.models import User
+
+
 # Create your models here.
 
 
@@ -13,7 +15,6 @@ class TipoIncidente(models.Model):
 
 
 class Incidente(models.Model):
-
     time = models.DateTimeField(auto_now_add=True, verbose_name='Tiempo', null=True)
     direccion = models.CharField(verbose_name='Dirección', max_length=100)
     descripcion = models.TextField()
@@ -24,8 +25,8 @@ class Incidente(models.Model):
         ('FINALIZADO', 'FINALIZADO'),
     )
     estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO, default='NUEVO')
-    lat = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Latitud')
-    log = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Longitud')
+    lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
+    log = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
     tipo = models.ManyToManyField(TipoIncidente)
     user = models.ForeignKey(User)

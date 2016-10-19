@@ -6,7 +6,6 @@ from crispy_forms.bootstrap import TabHolder, Tab
 
 
 class UserForm(forms.ModelForm):
-
     password = forms.CharField(widget=forms.PasswordInput)
 
     helper = FormHelper()
@@ -57,7 +56,6 @@ class UserForm(forms.ModelForm):
 
 
 class GroupForm(forms.ModelForm):
-
     helper = FormHelper()
     helper.form_tag = False
 

@@ -3,6 +3,8 @@ from django.core.urlresolvers import reverse_lazy
 from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
 from apps.logistica.forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+
+
 # Create your views here.
 
 class IncidenteCreate(CreateView):

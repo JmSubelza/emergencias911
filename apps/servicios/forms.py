@@ -4,7 +4,6 @@ from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, Disp
 
 
 class VehiculoForm(forms.ModelForm):
-
     helper = FormHelper()
     helper.form_tag = False
 
@@ -37,7 +36,6 @@ class VehiculoForm(forms.ModelForm):
 
 
 class TipoVehiculoForm(forms.ModelForm):
-
     helper = FormHelper()
     helper.form_tag = False
 
@@ -54,10 +52,6 @@ class TipoVehiculoForm(forms.ModelForm):
 
 
 class CentroEmergenciaForm(forms.ModelForm):
-
-    lat = forms.DecimalField(max_value=8, decimal_places=6, initial="-17.783308", required=False,)
-    log = forms.DecimalField(max_value=8, decimal_places=6, initial="-63.182118", required=False,)
-
     helper = FormHelper()
     helper.form_tag = False
 
@@ -88,7 +82,6 @@ class CentroEmergenciaForm(forms.ModelForm):
 
 
 class DispositivoGpsForm(forms.ModelForm):
-
     helper = FormHelper()
     helper.form_tag = False
 

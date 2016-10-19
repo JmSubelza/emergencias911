@@ -4,8 +4,6 @@ from apps.administracion.views import \
     UsuarioList, UsuarioCreate, UsuarioUpdate, UsuarioDelete, \
     GrupoCreate, GrupoList, GrupoUpdate, GrupoDelete
 
-
-
 urlpatterns = [
 
     url(r'^usuario/$', login_required(UsuarioList.as_view()), name='usuario'),

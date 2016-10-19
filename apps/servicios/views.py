@@ -145,5 +145,3 @@ class DispositivoGpsDelete(DeleteView):
     model = DispositivoGPS
     template_name = 'servicios/dispositivo_gps_delete.html'
     success_url = reverse_lazy('servicios:dispositivo_gps')
-
-

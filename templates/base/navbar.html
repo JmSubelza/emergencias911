@@ -1,65 +1,70 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Emergencias 911</a>
-    </div>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Emergencias 911</a>
+        </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Inicio <span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Administración<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{% url 'administracion:usuario' %}">Personal</a></li>
-            <li><a href="{% url 'administracion:grupo' %}">Grupos y Privilegios</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Generar backup</a></li>
-            <li><a href="#">Restaurar backup</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Servicios<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{% url 'servicios:centro_emergencia' %}">Centros de Emergencia</a></li>
-            <li><a href="{% url 'servicios:vehiculo' %}">Vehiculos</a></li>
-            <li><a href="{% url 'servicios:tipo_vehiculo' %}">Tipo vehiculos</a></li>
-            <li><a href="{% url 'servicios:dispositivo_gps' %}">Dispositivos GPS</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Logistica<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{% url 'logistica:incidente' %}">Inicidentes</a></li>
-            <li><a href="{% url 'logistica:tipo_incidente' %}">Tipo Incidentes</a></li>
-            <li><a href="{% url 'logistica:asignacion_incidente' %}">Asignacion Incidentes</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Mapa centros emergencia</a></li>
-            <li><a href="#">Mapa Vehiculos</a></li>
-            <li><a href="#">Ruta Optima</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Reportes<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Historial incidentes</a></li>
-            <li><a href="#">Estadisticos</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {% if user.is_authenticated %}
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
-            <li><a href="{% url 'logout' %}">Salir</a></li>
-        {% else %}
-            <li><a href="#">Ingresar</a></li>
-        {% endif %}
-      </ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Inicio <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Administración<span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'administracion:usuario' %}">Personal</a></li>
+                        <li><a href="{% url 'administracion:grupo' %}">Grupos y Privilegios</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Generar backup</a></li>
+                        <li><a href="#">Restaurar backup</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Servicios<span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'servicios:centro_emergencia' %}">Centros de Emergencia</a></li>
+                        <li><a href="{% url 'servicios:vehiculo' %}">Vehiculos</a></li>
+                        <li><a href="{% url 'servicios:tipo_vehiculo' %}">Tipo vehiculos</a></li>
+                        <li><a href="{% url 'servicios:dispositivo_gps' %}">Dispositivos GPS</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Logistica<span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'logistica:incidente' %}">Inicidentes</a></li>
+                        <li><a href="{% url 'logistica:tipo_incidente' %}">Tipo Incidentes</a></li>
+                        <li><a href="{% url 'logistica:asignacion_incidente' %}">Asignacion Incidentes</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Mapa centros emergencia</a></li>
+                        <li><a href="#">Mapa Vehiculos</a></li>
+                        <li><a href="#">Ruta Optima</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Reportes<span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Historial incidentes</a></li>
+                        <li><a href="#">Estadisticos</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}">Salir</a></li>
+                {% else %}
+                    <li><a href="#">Ingresar</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>

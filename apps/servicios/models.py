@@ -2,7 +2,6 @@ from django.db import models
 
 
 class TipoVehiculo(models.Model):
-
     name = models.CharField(max_length=100, verbose_name='Descripción')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 
@@ -15,12 +14,11 @@ class TipoVehiculo(models.Model):
 
 
 class DispositivoGPS(models.Model):
-
     name = models.CharField(max_length=100, unique=True, verbose_name='Nombre')
     imei = models.IntegerField(unique=True, verbose_name='Número de IMEI')
     nro_sim = models.IntegerField(unique=True, verbose_name='Número de SIM')
-    lat = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Latitud')
-    log = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Longitud')
+    lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
+    log = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
     time = models.DateTimeField(verbose_name='Tiempo', null=True)
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 
@@ -29,7 +27,6 @@ class DispositivoGPS(models.Model):
 
 
 class Vehiculo(models.Model):
-
     placa = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=100, verbose_name='Descripción')
     marca = models.CharField(max_length=20, verbose_name='Marca')
@@ -54,12 +51,11 @@ class Vehiculo(models.Model):
 
 
 class CentroEmergencia(models.Model):
-
     name = models.CharField(max_length=100, verbose_name='Nombre')
     direccion = models.CharField(max_length=150, verbose_name='Dirección')
     telefono = models.CharField(max_length=30, verbose_name='Teléfono')
-    lat = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Latitud')
-    log = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='Longitud')
+    lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
+    log = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
     SECTOR = (
         ('PUBLICO', 'PUBLICO'),
         ('PRIVADO', 'PRIVADO'),

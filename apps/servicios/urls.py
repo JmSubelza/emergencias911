@@ -19,7 +19,8 @@ urlpatterns = [
     url(r'^centroemergencia/$', CentroEmergernciaList.as_view(), name='centro_emergencia'),
     url(r'^centroemergencia/nuevo/$', CentroEmergenciaCreate.as_view(), name='centro_emergencia_crear'),
     url(r'^centroemergencia/editar/(?P<pk>\d+)/$', CentroEmergenciaUpdate.as_view(), name='centro_emergencia_editar'),
-    url(r'^centroemergencia/eliminar/(?P<pk>\d+)/$', CentroEmergenciaDelete.as_view(), name='centro_emergencia_eliminar'),
+    url(r'^centroemergencia/eliminar/(?P<pk>\d+)/$', CentroEmergenciaDelete.as_view(),
+        name='centro_emergencia_eliminar'),
 
     url(r'^dispositivogps/$', DispositivoGpsList.as_view(), name='dispositivo_gps'),
     url(r'^dispositivogps/nuevo/$', DispositivoGpsCreate.as_view(), name='dispositivo_gps_crear'),

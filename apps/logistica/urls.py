@@ -18,7 +18,9 @@ urlpatterns = [
 
     url(r'^asignacionincidente/$', AsignacionIncidenteList.as_view(), name='asignacion_incidente'),
     url(r'^asignacionincidente/nuevo/$', AsignacionIncidenteCreate.as_view(), name='asignacion_incidente_crear'),
-    url(r'^asignacionincidente/editar/(?P<pk>\d+)/$', AsignacionIncidenteUpdate.as_view(), name='asignacion_incidente_editar'),
-    url(r'^asignacionincidente/eliminar/(?P<pk>\d+)/$', AsignacionIncidenteDelete.as_view(), name='asignacion_incidente_eliminar'),
+    url(r'^asignacionincidente/editar/(?P<pk>\d+)/$', AsignacionIncidenteUpdate.as_view(),
+        name='asignacion_incidente_editar'),
+    url(r'^asignacionincidente/eliminar/(?P<pk>\d+)/$', AsignacionIncidenteDelete.as_view(),
+        name='asignacion_incidente_eliminar'),
 
-    ]
+]

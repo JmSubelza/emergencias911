@@ -2,6 +2,8 @@ from django.contrib.auth.models import User, Group, GroupManager
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from apps.administracion.forms import UserForm, GroupForm
+
+
 # Create your views here.
 
 
@@ -53,4 +55,3 @@ class GrupoDelete(DeleteView):
     model = Group
     template_name = 'administracion/grupo_delete.html'
     success_url = reverse_lazy('administracion:grupo')
-

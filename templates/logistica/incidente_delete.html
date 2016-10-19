@@ -3,7 +3,7 @@
     <form method="post">
         {% csrf_token %}
         <h3>Desea eliminar el incidente N° {{ incidente.id }} creado en fecha {{ incidente.time }}</h3>
-    <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
-    <a href="{% url 'logistica:incidente' %}" class="btn btn-default">Cancelar</a>
+        <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
+        <a href="{% url 'logistica:incidente' %}" class="btn btn-default">Cancelar</a>
     </form>
 {% endblock %}

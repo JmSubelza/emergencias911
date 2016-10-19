@@ -4,6 +4,14 @@
 
     <div class="row">
         <div class="col-md-6">
+            <script type="text/javascript">
+                window.onload = function () {
+                    var Lat = {{ centroemergencia.lat }};
+                    var Log = {{ centroemergencia.log }};
+                    alert(Lat);
+                    initMapEdit(Lat, Log);
+                }
+            </script>
             <div id="maps" style="max-width:none!important; height:550px; border: 1px solid black"></div>
         </div>
         <div class="col-md-6">
@@ -16,6 +24,6 @@
     </div>
 {% endblock %}
 {% block extrajs %}
-    <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap" async defer></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false" async defer></script>
 {% endblock %}
 

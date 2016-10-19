@@ -112,7 +112,7 @@ class CentroEmergenciaCreate(CreateView):
 class CentroEmergenciaUpdate(UpdateView):
     model = CentroEmergencia
     form_class = CentroEmergenciaForm
-    template_name = 'servicios/centro_emergencia_form.html'
+    template_name = 'servicios/centro_emergencia_update.html'
     success_url = reverse_lazy('servicios:centro_emergencia')
 
 

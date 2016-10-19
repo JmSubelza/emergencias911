@@ -6,10 +6,7 @@
         <div class="col-md-6">
             <script type="text/javascript">
                 window.onload = function () {
-                    var Lat = {{ centroemergencia.lat }};
-                    var Log = {{ centroemergencia.log }};
-                    alert(Lat);
-                    initMapEdit(Lat, Log);
+                    initMapEdit({{ centroemergencia.lat }}, {{ centroemergencia.log }});
                 }
             </script>
             <div id="maps" style="max-width:none!important; height:550px; border: 1px solid black"></div>

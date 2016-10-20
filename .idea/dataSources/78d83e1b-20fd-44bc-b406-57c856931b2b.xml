@@ -25,7 +25,7 @@
     </column>
     <column id="18" parent="2" name="name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(80)(0,-1)|12</data-type>
+      <data-type>VARCHAR(80) (0,-1)|12</data-type>
     </column>
     <key id="19" parent="2">
       <columns>id</columns>
@@ -89,11 +89,11 @@ permission_id</columns>
     </column>
     <column id="31" parent="4" name="codename">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="32" parent="4" name="name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(255)(0,-1)|12</data-type>
+      <data-type>VARCHAR(255) (0,-1)|12</data-type>
     </column>
     <index id="33" parent="4" name="auth_permission_417f1b1c">
       <columns>content_type_id</columns>
@@ -124,7 +124,7 @@ codename</columns>
     </column>
     <column id="38" parent="5" name="password">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(128)(0,-1)|12</data-type>
+      <data-type>VARCHAR(128) (0,-1)|12</data-type>
     </column>
     <column id="39" parent="5" name="last_login">
       <data-type>DATETIME(0,-1)|12</data-type>
@@ -135,15 +135,15 @@ codename</columns>
     </column>
     <column id="41" parent="5" name="first_name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(30)(0,-1)|12</data-type>
+      <data-type>VARCHAR(30) (0,-1)|12</data-type>
     </column>
     <column id="42" parent="5" name="last_name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(30)(0,-1)|12</data-type>
+      <data-type>VARCHAR(30) (0,-1)|12</data-type>
     </column>
     <column id="43" parent="5" name="email">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(254)(0,-1)|12</data-type>
+      <data-type>VARCHAR(254) (0,-1)|12</data-type>
     </column>
     <column id="44" parent="5" name="is_staff">
       <mandatory>1</mandatory>
@@ -159,7 +159,7 @@ codename</columns>
     </column>
     <column id="47" parent="5" name="username">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(150)(0,-1)|12</data-type>
+      <data-type>VARCHAR(150) (0,-1)|12</data-type>
     </column>
     <key id="48" parent="5">
       <columns>id</columns>
@@ -270,7 +270,7 @@ permission_id</columns>
     </column>
     <column id="69" parent="8" name="object_repr">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(200)(0,-1)|12</data-type>
+      <data-type>VARCHAR(200) (0,-1)|12</data-type>
     </column>
     <column id="70" parent="8" name="action_flag">
       <mandatory>1</mandatory>
@@ -327,11 +327,11 @@ permission_id</columns>
     </column>
     <column id="81" parent="9" name="app_label">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="82" parent="9" name="model">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <index id="83" parent="9" name="django_content_type_app_label_76bd3d3b_uniq">
       <columns>app_label
@@ -349,11 +349,11 @@ model</columns>
     </column>
     <column id="86" parent="10" name="app">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(255)(0,-1)|12</data-type>
+      <data-type>VARCHAR(255) (0,-1)|12</data-type>
     </column>
     <column id="87" parent="10" name="name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(255)(0,-1)|12</data-type>
+      <data-type>VARCHAR(255) (0,-1)|12</data-type>
     </column>
     <column id="88" parent="10" name="applied">
       <mandatory>1</mandatory>
@@ -365,7 +365,7 @@ model</columns>
     </key>
     <column id="90" parent="11" name="session_key">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(40)(0,-1)|12</data-type>
+      <data-type>VARCHAR(40) (0,-1)|12</data-type>
     </column>
     <column id="91" parent="11" name="session_data">
       <mandatory>1</mandatory>
@@ -390,15 +390,15 @@ model</columns>
     </column>
     <column id="96" parent="12" name="name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="97" parent="12" name="direccion">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="98" parent="12" name="telefono">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(30)(0,-1)|12</data-type>
+      <data-type>VARCHAR(30) (0,-1)|12</data-type>
     </column>
     <column id="99" parent="12" name="lat">
       <mandatory>1</mandatory>
@@ -410,15 +410,15 @@ model</columns>
     </column>
     <column id="101" parent="12" name="sector">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(10)(0,-1)|12</data-type>
+      <data-type>VARCHAR(10) (0,-1)|12</data-type>
     </column>
     <column id="102" parent="12" name="nivel">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(10)(0,-1)|12</data-type>
+      <data-type>VARCHAR(10) (0,-1)|12</data-type>
     </column>
     <column id="103" parent="12" name="tipo">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(10)(0,-1)|12</data-type>
+      <data-type>VARCHAR(10) (0,-1)|12</data-type>
     </column>
     <column id="104" parent="12" name="is_active">
       <mandatory>1</mandatory>
@@ -434,7 +434,7 @@ model</columns>
     </column>
     <column id="107" parent="13" name="name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="108" parent="13" name="imei">
       <mandatory>1</mandatory>
@@ -469,7 +469,7 @@ model</columns>
     </column>
     <column id="116" parent="14" name="name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="117" parent="14" name="is_active">
       <mandatory>1</mandatory>
@@ -485,31 +485,31 @@ model</columns>
     </column>
     <column id="120" parent="15" name="placa">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(10)(0,-1)|12</data-type>
+      <data-type>VARCHAR(10) (0,-1)|12</data-type>
     </column>
     <column id="121" parent="15" name="name">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="122" parent="15" name="marca">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(20)(0,-1)|12</data-type>
+      <data-type>VARCHAR(20) (0,-1)|12</data-type>
     </column>
     <column id="123" parent="15" name="modelo">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="124" parent="15" name="nro_motor">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="125" parent="15" name="nro_chasis">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(100)(0,-1)|12</data-type>
+      <data-type>VARCHAR(100) (0,-1)|12</data-type>
     </column>
     <column id="126" parent="15" name="sector">
       <mandatory>1</mandatory>
-      <data-type>VARCHAR(20)(0,-1)|12</data-type>
+      <data-type>VARCHAR(20) (0,-1)|12</data-type>
     </column>
     <column id="127" parent="15" name="is_active">
       <mandatory>1</mandatory>

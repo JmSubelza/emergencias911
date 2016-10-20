@@ -26,7 +26,7 @@ class IncidenteList(ListView):
 class IncidenteUpdate(UpdateView):
     model = Incidente
     form_class = IncidenteForm
-    template_name = 'logistica/incidente_form.html'
+    template_name = 'logistica/incidente_update.html'
     success_url = reverse_lazy('logistica:incidente')
 
 

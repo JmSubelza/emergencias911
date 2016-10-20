@@ -133,4 +133,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-USE_L10N = True
+USE_L10N = False

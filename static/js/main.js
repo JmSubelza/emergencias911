@@ -36,8 +36,6 @@ function initMap() {
 };
 
 function initMapEdit(Lat, Log) {
-    alert(Lat);
-    alert(Log);
     var LatLog = new google.maps.LatLng(Lat, Log);
     var MapSettings = {
         zoom: 16,

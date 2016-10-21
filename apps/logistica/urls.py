@@ -2,7 +2,8 @@ from django.conf.urls import url
 from apps.logistica.views import \
     IncidenteCreate, IncidenteList, IncidenteUpdate, IncidenteDelete, \
     TipoIncidenteCreate, TipoIncidenteList, TipoIncidenteUpdate, TipoIncidenteDelete, \
-    AsignacionIncidenteCreate, AsignacionIncidenteList, AsignacionIncidenteUpdate, AsignacionIncidenteDelete
+    AsignacionIncidenteCreate, AsignacionIncidenteList, AsignacionIncidenteUpdate, AsignacionIncidenteDelete, \
+    MapaIncidente, MapaCentroEmergencia
 
 urlpatterns = [
 
@@ -22,5 +23,8 @@ urlpatterns = [
         name='asignacion_incidente_editar'),
     url(r'^asignacionincidente/eliminar/(?P<pk>\d+)/$', AsignacionIncidenteDelete.as_view(),
         name='asignacion_incidente_eliminar'),
+
+    url(r'^mapaincidente/$', MapaIncidente.as_view(), name='mapa_incidente'),
+    url(r'^mapacentroemergencia/$', MapaCentroEmergencia.as_view(), name='mapa_centroemergencia'),
 
 ]

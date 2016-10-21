@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
+from apps.logistica.models import CentroEmergencia
 from apps.logistica.forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
@@ -84,3 +85,13 @@ class AsignacionIncidenteDelete(DeleteView):
     model = AsignacionIncidente
     template_name = 'logistica/asignacion_incidente_delete.html'
     success_url = reverse_lazy('logistica:asignacion_incidente')
+
+
+class MapaIncidente(ListView):
+    model = Incidente
+    template_name = 'logistica/mapa_incidente.html'
+
+
+class MapaCentroEmergencia(ListView):
+    model = CentroEmergencia
+    template_name = 'logistica/test.html'

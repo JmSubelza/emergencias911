@@ -94,4 +94,4 @@ class MapaIncidente(ListView):
 
 class MapaCentroEmergencia(ListView):
     model = CentroEmergencia
-    template_name = 'logistica/test.html'
+    template_name = 'logistica/mapa_centroemergencia.html'

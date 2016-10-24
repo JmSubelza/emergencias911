@@ -1,36 +1,36 @@
 {% extends 'base/base.html' %}
 {% block content %}
     <script type="text/javascript">
+
         function mapaCentroEmergencia() {
             var map = new google.maps.Map(document.getElementById('maps'), {
                 center: {lat: -17.783308, lng: -63.182118},
                 zoom: 12,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker;
+            i = 0;
             {% if object_list %}
-                {% for mapa_centroemergencia in object_list %}
-                    var marker_{{ mapa_centroemergencia.id }} = new google.maps.Marker({
-                        position: {lat:{{mapa_centroemergencia.lat}}, lng:{{ mapa_centroemergencia.log }}},
-                        map: map,
-                        title: '{{ mapa_centroemergencia.name }}'
+                {% for centroemergencia in object_list %}
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng({{ centroemergencia.lat }}, {{ centroemergencia.log }}),
+                        map: map
                     });
 
-                    var contenido = '<b>Descripción: </b>{{ mapa_centroemergencia.name }}<p><b>Dirección: </b>{{ mapa_centroemergencia.direccion }}';
+                    var contenido_{{ centroemergencia.id }} = '<b>{{ centroemergencia.name }}</b><p><b>Dirección: </b>{{ centroemergencia.direccion }}';
 
-                    var infowindow_{{ mapa_centroemergencia.id }} = new google.maps.InfoWindow({
-                        content: contenido
-                    });
-
-                    marker_{{ mapa_centroemergencia.id }}.addListener('click', function () {
-                        infowindow_{{ mapa_centroemergencia.id }}.open(map, marker_{{ mapa_centroemergencia.id }});
-                        map.setZoom(16);
-                        map.setCenter(marker.getPosition());
-                    });
+                    google.maps.event.addListener(marker, 'click', (function (marker) {
+                        return function () {
+                            infowindow.setContent(contenido_{{ centroemergencia.id }});
+                            infowindow.open(map, marker);
+                            map.setZoom(15);
+                            map.setCenter(marker.getPosition());
+                        }
+                    })(marker));
                 {% endfor %}
-            {% else %}
-                alert('No Existen Registros');
             {% endif %}
-
         }
     </script>
     <div id="maps" style="max-width:none!important; height:450px; border: 1px solid black"></div>

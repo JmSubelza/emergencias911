@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.auth.views import login, logout_then_login, \
     password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 
@@ -38,4 +40,4 @@ urlpatterns = [
         ),
     url(r'^reset/done/$', password_reset_complete, {'template_name': 'registro/password_reset_complete.html'},
         name='password_reset_complete'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

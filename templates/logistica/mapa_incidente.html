@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 {% block content %}
     <script type="text/javascript">
 
@@ -6,7 +7,15 @@
             var map = new google.maps.Map(document.getElementById('maps'), {
                 center: {lat: -17.783308, lng: -63.182118},
                 zoom: 12,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false,
+                streetViewControl: false,
+                zoomControl: true,
+                mapTypeControl: true,
+                styles: [
+                    {stylers: [{visibility: 'simplified'}]},
+                    {elementType: 'labels', stylers: [{visibility: 'on'}]}
+                ]
             });
 
             var infowindow = new google.maps.InfoWindow();
@@ -36,6 +45,7 @@
     </script>
     <div id="maps" style="max-width:none!important; height:450px; border: 1px solid black"></div>
 {% endblock %}
+
 {% block extrajs %}
     <script src="http://maps.google.com/maps/api/js?sensor=false&callback=mapaIncidentes" async defer></script>
 {% endblock %}

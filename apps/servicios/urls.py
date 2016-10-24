@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 from apps.servicios.views import \
     VehiculoList, VehiculoCreate, VehiculoUpdate, VehiculoDelete, \
     TipoVehiculoList, TipoVehiculoCreate, TipoVehiculoUpdate, TipoVehiculoDelete, \
@@ -27,4 +29,4 @@ urlpatterns = [
     url(r'^dispositivogps/editar/(?P<pk>\d+)/$', DispositivoGpsUpdate.as_view(), name='dispositivo_gps_editar'),
     url(r'^dispositivogps/eliminar/(?P<pk>\d+)/$', DispositivoGpsDelete.as_view(), name='dispositivo_gps_eliminar'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

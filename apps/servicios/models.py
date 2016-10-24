@@ -18,7 +18,7 @@ class DispositivoGPS(models.Model):
     imei = models.IntegerField(unique=True, verbose_name='Número de IMEI')
     nro_sim = models.IntegerField(unique=True, verbose_name='Número de SIM')
     lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
-    log = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
+    lng = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
     time = models.DateTimeField(verbose_name='Tiempo', null=True)
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 
@@ -55,7 +55,7 @@ class CentroEmergencia(models.Model):
     direccion = models.CharField(max_length=150, verbose_name='Dirección')
     telefono = models.CharField(max_length=30, verbose_name='Teléfono')
     lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
-    log = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
+    lng = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
     SECTOR = (
         ('PUBLICO', 'PUBLICO'),
         ('PRIVADO', 'PRIVADO'),

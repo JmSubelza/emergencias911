@@ -18,4 +18,4 @@ urlpatterns = [
     url(r'^grupo/editar/(?P<pk>\d+)/$', GrupoUpdate.as_view(), name='grupo_editar'),
     url(r'^grupo/eliminar/(?P<pk>\d+)/$', GrupoDelete.as_view(), name='grupo_eliminar'),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

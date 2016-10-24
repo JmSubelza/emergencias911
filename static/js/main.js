@@ -30,7 +30,7 @@ function initMap() {
     function getMarkerCoords() {
         var markerCoords = marker.getPosition();
         $('#id_lat').val(markerCoords.lat().toFixed(6));
-        $('#id_log').val(markerCoords.lng().toFixed(6));
+        $('#id_lng').val(markerCoords.lng().toFixed(6));
 
     }
 };
@@ -64,7 +64,7 @@ function initMapEdit(Lat, Log) {
     function getMarkerCoords() {
         var markerCoords = marker.getPosition();
         $('#id_lat').val(markerCoords.lat().toFixed(6));
-        $('#id_log').val(markerCoords.lng().toFixed(6));
+        $('#id_lng').val(markerCoords.lng().toFixed(6));
 
     }
 };

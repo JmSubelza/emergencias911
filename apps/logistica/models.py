@@ -26,7 +26,7 @@ class Incidente(models.Model):
     )
     estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO, default='NUEVO')
     lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
-    log = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
+    lng = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
     tipo = models.ManyToManyField(TipoIncidente)
     user = models.ForeignKey(User)

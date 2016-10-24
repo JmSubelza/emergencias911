@@ -24,7 +24,7 @@
             {% if object_list %}
                 {% for incidente in object_list %}
                     marker = new google.maps.Marker({
-                        position: new google.maps.LatLng({{ incidente.lat }}, {{ incidente.log }}),
+                        position: new google.maps.LatLng({{ incidente.lat }}, {{ incidente.lng }}),
                         map: map
                     });
 

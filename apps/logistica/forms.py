@@ -16,7 +16,7 @@ class IncidenteForm(forms.ModelForm):
             'descripcion',
             'tipo',
             'lat',
-            'log',
+            'lng',
             'estado',
             'is_active',
         ]
@@ -25,7 +25,7 @@ class IncidenteForm(forms.ModelForm):
             'descripcion': 'Descripcion',
             'estado': 'Estado',
             'lat': 'Latitud',
-            'log': 'Longitud',
+            'lng': 'Longitud',
             'tipo': 'Tipo',
             'is_active': 'Activo',
         }

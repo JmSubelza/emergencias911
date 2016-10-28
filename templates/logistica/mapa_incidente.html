@@ -17,30 +17,32 @@
                     {elementType: 'labels', stylers: [{visibility: 'on'}]}
                 ]
             });
-
-            var infowindow = new google.maps.InfoWindow();
-            var marker;
-            i = 0;
-            {% if object_list %}
+            var marcadores = [
                 {% for incidente in object_list %}
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng({{ incidente.lat }}, {{ incidente.lng }}),
-                        map: map
-                    });
-
-                    var contenido_{{ incidente.id }} = '<b>Incidente: </b>{{ incidente.descripcion }}<p><b>Dirección: </b>{{ incidente.direccion }}';
-
-                    google.maps.event.addListener(marker, 'click', (function (marker) {
-                        return function () {
-                            infowindow.setContent(contenido_{{ incidente.id }});
-                            infowindow.open(map, marker);
-                            map.setZoom(15);
-                            map.setCenter(marker.getPosition());
-                        }
-                    })(marker));
+                    {
+                        title: '<b>Nombre: </b>{{ incidente.descripcion }}<p><b>Dirección: </b>{{ incidente.direccion }}',
+                        pin: 'police.png',
+                        lat:{{ incidente.lat }},
+                        lng:{{ incidente.lng }}
+                    },
                 {% endfor %}
-                alert(contenido_{{ incidente.id }});
-            {% endif %}
+            ];
+            var marker;
+            for (i = 0; i < marcadores.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(marcadores[i].lat, marcadores[i].lng),
+                    map: map,
+                    {# icon: iconBase + marcadores[i].pin #}
+                });
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(marcadores[i].title);
+                        infowindow.open(map, marker);
+                        map.setZoom(16);
+                        map.setCenter(marker.getPosition());
+                    }
+                })(marker, i));
+            }
         }
     </script>
     <div id="maps" style="max-width:none!important; height:450px; border: 1px solid black"></div>

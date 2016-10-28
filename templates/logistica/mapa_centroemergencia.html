@@ -18,24 +18,23 @@
                 ]
             });
             var iconBase = "{{MEDIA_URL}}map-icon/";
-            var marcadores = [];
-            {% if object_list %}
+            var marcadores = [
                 {% for centroemergencia in object_list %}
-                    marcadores.push({
+                    {
                         title: '<b>Nombre: </b>{{ centroemergencia.name }}<p><b>Dirección: </b>{{ centroemergencia.direccion }}',
                         pin: 'police.png',
                         lat:{{ centroemergencia.lat }},
                         lng:{{ centroemergencia.lng }}
-                    });
+                    },
                 {% endfor %}
-            {% endif %}
+            ];
             var infowindow = new google.maps.InfoWindow();
             var marker;
             for (i = 0; i < marcadores.length; i++) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(marcadores[i].lat, marcadores[i].lng),
                     map: map,
-                    icon: iconBase + marcadores[i].pin
+                    {# icon: iconBase + marcadores[i].pin #}
                 });
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {

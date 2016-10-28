@@ -50,6 +50,7 @@ def vehiculo_delete(request, id_vehiculo):
 class VehiculoList(ListView):
     model = Vehiculo
     template_name = 'servicios/vehiculo_list.html'
+    paginate_by = 10
 
 
 class VehiculoCreate(CreateView):
@@ -75,6 +76,7 @@ class VehiculoDelete(DeleteView):
 class TipoVehiculoList(ListView):
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_list.html'
+    paginate_by = 10
 
 
 class TipoVehiculoCreate(CreateView):
@@ -100,6 +102,7 @@ class TipoVehiculoDelete(DeleteView):
 class CentroEmergernciaList(ListView):
     model = CentroEmergencia
     template_name = 'servicios/centro_emergencia_list.html'
+    paginate_by = 10
 
 
 class CentroEmergenciaCreate(CreateView):
@@ -125,6 +128,7 @@ class CentroEmergenciaDelete(DeleteView):
 class DispositivoGpsList(ListView):
     model = DispositivoGPS
     template_name = 'servicios/dispositivi_gps_list.html'
+    paginate_by = 10
 
 
 class DispositivoGpsCreate(CreateView):

@@ -10,6 +10,7 @@ from apps.administracion.forms import UserForm, GroupForm
 class UsuarioList(ListView):
     model = User
     template_name = 'administracion/usuario_list.html'
+    paginate_by = 10
 
 
 class UsuarioCreate(CreateView):
@@ -35,6 +36,7 @@ class UsuarioDelete(DeleteView):
 class GrupoList(ListView):
     model = Group
     template_name = 'administracion/grupo_list.html'
+    paginate_by = 10
 
 
 class GrupoCreate(CreateView):

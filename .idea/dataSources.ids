@@ -102,16 +102,67 @@
       <primary-key columns="session_key"/>
       <index name="django_session_de54fa62" unique="true" columns="expire_date"/>
     </table>
+    <table name="logistica_asignacionincidente" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="time" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
+      <column name="estado" sqlType="VARCHAR(20)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="centro_emergencia_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="incidente_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_logistica_asignacionincidente_1" columns="incidente_id" ref-table="logistica_incidente" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_logistica_asignacionincidente_2" columns="centro_emergencia_id" ref-table="servicios_centroemergencia" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="logistica_asignacionincidente_a2f79d38" unique="true" columns="centro_emergencia_id"/>
+    </table>
+    <table name="logistica_asignacionincidente_vehiculos" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="asignacionincidente_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="vehiculo_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_logistica_asignacionincidente_vehiculos_1" columns="vehiculo_id" ref-table="servicios_vehiculo" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_logistica_asignacionincidente_vehiculos_2" columns="asignacionincidente_id" ref-table="logistica_asignacionincidente" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="logistica_asignacionincidente_vehiculos_31609bf9" unique="true" columns="vehiculo_id"/>
+      <index name="logistica_asignacionincidente_vehiculos_babe4754" unique="true" columns="asignacionincidente_id"/>
+      <index name="logistica_asignacionincidente_vehiculos_asignacionincidente_id_281d7acf_uniq" unique="true" columns="asignacionincidente_id,vehiculo_id"/>
+    </table>
+    <table name="logistica_incidente" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="time" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
+      <column name="direccion" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="descripcion" sqlType="TEXT" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="VARCHAR(20)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="lat" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
+      <column name="lng" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
+      <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_logistica_incidente_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="logistica_incidente_e8701ad4" unique="true" columns="user_id"/>
+    </table>
+    <table name="logistica_incidente_tipo" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="incidente_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="tipoincidente_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_logistica_incidente_tipo_1" columns="tipoincidente_id" ref-table="logistica_tipoincidente" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_logistica_incidente_tipo_2" columns="incidente_id" ref-table="logistica_incidente" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+    </table>
+    <table name="logistica_tipoincidente" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+    </table>
     <table name="servicios_centroemergencia" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="direccion" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="direccion" sqlType="VARCHAR(150)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="telefono" sqlType="VARCHAR(30)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="lat" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
-      <column name="log" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
+      <column name="lng" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
       <column name="sector" sqlType="VARCHAR(10)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="nivel" sqlType="VARCHAR(10)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="tipo" sqlType="VARCHAR(10)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="tipo" sqlType="VARCHAR(20)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
     </table>
@@ -121,7 +172,7 @@
       <column name="imei" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="nro_sim" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="lat" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
-      <column name="log" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
+      <column name="lng" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
       <column name="time" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>

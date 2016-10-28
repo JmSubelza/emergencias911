@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^vehiculo/editar/(?P<pk>\d+)/$', VehiculoUpdate.as_view(), name='vehiculo_editar'),
     url(r'^vehiculo/eliminar/(?P<pk>\d+)/$', VehiculoDelete.as_view(), name='vehiculo_eliminar'),
 
-    url(r'^tipovehiculo/$', TipoVehiculoList.as_view(), name='tipo_vehiculo'),
+    url(r'^tipovehiculo/', TipoVehiculoList.as_view(), name='tipo_vehiculo'),
     url(r'^tipovehiculo/nuevo/$', TipoVehiculoCreate.as_view(), name='tipo_vehiculo_crear'),
     url(r'^tipovehiculo/editar/(?P<pk>\d+)/$', TipoVehiculoUpdate.as_view(), name='tipo_vehiculo_editar'),
     url(r'^tipovehiculo/eliminar/(?P<pk>\d+)/$', TipoVehiculoDelete.as_view(), name='tipo_vehiculo_eliminar'),

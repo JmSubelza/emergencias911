@@ -22,6 +22,7 @@ class IncidenteCreate(CreateView):
 class IncidenteList(ListView):
     model = Incidente
     template_name = 'logistica/incidente_list.html'
+    paginate_by = 10
 
 
 class IncidenteUpdate(UpdateView):
@@ -54,6 +55,7 @@ class TipoIncidenteUpdate(UpdateView):
 class TipoIncidenteList(ListView):
     model = TipoIncidente
     template_name = 'logistica/tipo_incidente_list.html'
+    paginate_by = 10
 
 
 class TipoIncidenteDelete(DeleteView):
@@ -72,6 +74,7 @@ class AsignacionIncidenteCreate(CreateView):
 class AsignacionIncidenteList(ListView):
     model = AsignacionIncidente
     template_name = 'logistica/asignacion_incidente_list.html'
+    paginate_by = 10
 
 
 class AsignacionIncidenteUpdate(UpdateView):
@@ -90,6 +93,7 @@ class AsignacionIncidenteDelete(DeleteView):
 class MapaIncidente(ListView):
     model = Incidente
     template_name = 'logistica/mapa_incidente.html'
+    paginate_by = 10
 
 
 class MapaCentroEmergencia(ListView):

@@ -2,14 +2,20 @@
 {% load staticfiles %}
 {% block extrahead %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/dataTables.bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.bootstrap.min.css' %}"/>
     <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/dataTables.bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dataTables.responsive.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/responsive.bootstrap.min.js' %}"></script>
+
     <script>
         $(document).ready(function () {
             $('#table').DataTable({
+                responsive: true,
                 language: {
                     url: '{% static 'lang/spain.lang' %}'
                 }
+
             });
         });
     </script>

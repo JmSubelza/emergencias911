@@ -76,14 +76,6 @@ class TipoVehiculoList(ListView):
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_list.html'
 
-    def get_queryset(self):
-        queryset = super(TipoVehiculoList, self).get_queryset()
-        if self.request.GET.get("descripcion"):
-            selection = self.request.GET.get("descripcion")
-            return queryset.filter(name__icontains=selection)
-        else:
-            return TipoVehiculo.objects.all()
-
 
 class TipoVehiculoCreate(CreateView):
     model = TipoVehiculo

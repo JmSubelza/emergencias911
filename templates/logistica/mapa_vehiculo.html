@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <script type="text/javascript">
+
+        function mapaVehiculos() {
+            var map = new google.maps.Map(document.getElementById('maps'), {
+                center: {lat: -17.783308, lng: -63.182118},
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false,
+                streetViewControl: false,
+                zoomControl: true,
+                mapTypeControl: true,
+                styles: [
+                    {stylers: [{visibility: 'simplified'}]},
+                    {elementType: 'labels', stylers: [{visibility: 'on'}]}
+                ]
+            });
+            var iconBase = "{{MEDIA_URL}}map-icon/";
+            var marcadores = [
+                {% for vehiculo in object_list %}
+                    {
+                        title: '<b>Nombre: </b>{{ vehiculo.name }}',
+                        pin: 'police.png',
+                        lat:{{ vehiculo.gps_id.lat }},
+                        lng:{{ vehiculo.gps_id.lng }}
+                    },
+                {% endfor %}
+            ];
+            var infowindow = new google.maps.InfoWindow();
+            var marker;
+            for (i = 0; i < marcadores.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(marcadores[i].lat, marcadores[i].lng),
+                    map: map,
+                    {# icon: iconBase + marcadores[i].pin #}
+                });
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(marcadores[i].title);
+                        infowindow.open(map, marker);
+                        map.setZoom(16);
+                        map.setCenter(marker.getPosition());
+                    }
+                })(marker, i));
+            }
+
+        }
+    </script>
+    <div id="maps" style="max-width:none!important; height:450px; border: 1px solid black"></div>
+{% endblock %}
+{% block extrajs %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false&callback=mapaVehiculos" async defer></script>
+{% endblock %}

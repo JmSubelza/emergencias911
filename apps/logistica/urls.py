@@ -6,7 +6,7 @@ from apps.logistica.views import \
     IncidenteCreate, IncidenteList, IncidenteUpdate, IncidenteDelete, \
     TipoIncidenteCreate, TipoIncidenteList, TipoIncidenteUpdate, TipoIncidenteDelete, \
     AsignacionIncidenteCreate, AsignacionIncidenteList, AsignacionIncidenteUpdate, AsignacionIncidenteDelete, \
-    MapaIncidente, MapaCentroEmergencia
+    MapaIncidente, MapaCentroEmergencia, MapaVehiculo
 
 urlpatterns = [
 
@@ -29,6 +29,7 @@ urlpatterns = [
 
     url(r'^mapaincidente/$', MapaIncidente.as_view(), name='mapa_incidente'),
     url(r'^mapacentroemergencia/$', MapaCentroEmergencia.as_view(), name='mapa_centroemergencia'),
+    url(r'^mapavehiculo/$', MapaVehiculo.as_view(), name='mapa_vehiculo'),
 
 ]
 

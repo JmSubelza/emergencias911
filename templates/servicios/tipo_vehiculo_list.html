@@ -1,6 +1,21 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dataTables.bootstrap.min.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dataTables.bootstrap.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                language: {
+                    url: '{% static 'lang/spain.lang' %}'
+                }
+            });
+        });
+    </script>
+{% endblock %}
 {% block content %}
-    <table class="table table-bordered">
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
         <tr>
             <td>Id.</td>
@@ -31,20 +46,6 @@
         {% endif %}
         </tbody>
     </table>
-    <!-- Next/Prev page links  -->
-    <ul class="pager">
-        <li>
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-            {% endif %}
-        </li>
-        <li>
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
-            {% endif %}
-        </li>
-    </ul>
-
     <a href="{% url 'servicios:tipo_vehiculo_crear' %}" class="btn btn-success">Nuevo</a>
     <a href="{% url 'servicios:tipo_vehiculo' %}" class="btn btn-warning">Cancelar</a>
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
-from apps.logistica.models import CentroEmergencia
+from apps.logistica.models import CentroEmergencia, Vehiculo
 from apps.logistica.forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
@@ -22,7 +22,6 @@ class IncidenteCreate(CreateView):
 class IncidenteList(ListView):
     model = Incidente
     template_name = 'logistica/incidente_list.html'
-    paginate_by = 10
 
 
 class IncidenteUpdate(UpdateView):
@@ -55,7 +54,6 @@ class TipoIncidenteUpdate(UpdateView):
 class TipoIncidenteList(ListView):
     model = TipoIncidente
     template_name = 'logistica/tipo_incidente_list.html'
-    paginate_by = 10
 
 
 class TipoIncidenteDelete(DeleteView):
@@ -74,7 +72,6 @@ class AsignacionIncidenteCreate(CreateView):
 class AsignacionIncidenteList(ListView):
     model = AsignacionIncidente
     template_name = 'logistica/asignacion_incidente_list.html'
-    paginate_by = 10
 
 
 class AsignacionIncidenteUpdate(UpdateView):
@@ -93,9 +90,13 @@ class AsignacionIncidenteDelete(DeleteView):
 class MapaIncidente(ListView):
     model = Incidente
     template_name = 'logistica/mapa_incidente.html'
-    paginate_by = 10
 
 
 class MapaCentroEmergencia(ListView):
     model = CentroEmergencia
     template_name = 'logistica/mapa_centroemergencia.html'
+
+
+class MapaVehiculo(ListView):
+    model = Vehiculo
+    template_name = 'logistica/mapa_vehiculo.html'

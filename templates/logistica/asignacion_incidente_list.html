@@ -112,7 +112,7 @@
             {% for asig_incidente in object_list %}
                 <tr>
                     <td>{{ asig_incidente.id }}</td>
-                    <td>{{ asig_incidente.time }}</td>
+                    <td>{{ asig_incidente.time|date:"d/m/Y H:m:s" }}</td>
                     <td>{{ asig_incidente.incidente }}</td>
                     <td>{{ asig_incidente.incidente.direccion }}</td>
                     <td>{{ asig_incidente.centro_emergencia }}</td>

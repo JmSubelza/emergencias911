@@ -12,23 +12,23 @@ class UserForm(forms.ModelForm):
     helper.form_tag = False
 
     helper.layout = Layout(
-        TabHolder(
-            Tab(
-                'Información Básica',
-                'first_name',
-                'last_name',
-                'username',
-                'password',
-            ),
-            Tab(
-                'Grupo y Permisos',
-                'groups',
-                'is_staff',
-                'is_superuser',
-                'is_active',
-                'date_joined'
+            TabHolder(
+                    Tab(
+                            'Información Básica',
+                            'first_name',
+                            'last_name',
+                            'username',
+                            'password',
+                    ),
+                    Tab(
+                            'Grupo y Permisos',
+                            'groups',
+                            'is_staff',
+                            'is_superuser',
+                            'is_active',
+                            'date_joined'
+                    )
             )
-        )
     )
 
     class Meta:
@@ -39,20 +39,6 @@ class UserForm(forms.ModelForm):
             'first_name': 'Nombre(s)',
             'last_name': 'Apellido(s)',
         }
-
-    def clean_username(self):
-        """Comprueba que no exista un username igual en la db"""
-        username = self.cleaned_data['username']
-        if User.objects.filter(username=username):
-            raise forms.ValidationError('Nombre de usuario ya registrado.')
-        return username
-
-    def clean_email(self):
-        """Comprueba que no exista un email igual en la db"""
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email):
-            raise forms.ValidationError('Correo Electronico ya registrado.')
-        return email
 
 
 class GroupForm(forms.ModelForm):

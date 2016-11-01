@@ -84,7 +84,7 @@
                             <span class="glyphicon glyphicon-remove" aria-hidden="true">Inactivo</span>
                         {% endif %}
                     </td>
-                    <td>{{ usuario.date_joined| date:"d/m/Y h:m:s" }}</td>
+                    <td>{{ usuario.date_joined|date:"d/m/Y H:m:s" }}</td>
                     <td>
                         <a href="{% url 'administracion:usuario_editar' usuario.id %}"
                            class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"

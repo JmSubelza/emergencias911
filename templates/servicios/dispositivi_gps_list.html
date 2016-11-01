@@ -81,7 +81,7 @@
                     <td>{{ dispositivo_gps.nro_sim }}</td>
                     <td>{{ dispositivo_gps.lat }}</td>
                     <td>{{ dispositivo_gps.lng }}</td>
-                    <td>{{ dispositivo_gps.time }}</td>
+                    <td>{{ dispositivo_gps.time|date:"d/m/Y H:m:s" }}</td>
                     <td>
                         {% if dispositivo_gps.is_active %}
                             <span class="glyphicon glyphicon-ok" aria-hidden="true">Activo</span>

@@ -114,7 +114,7 @@
             {% for incidente in object_list %}
                 <tr>
                     <td>{{ incidente.id }}</td>
-                    <td>{{ incidente.time }}</td>
+                    <td>{{ incidente.time|date:"d/m/Y H:m:s" }}</td>
                     <td>{{ incidente.direccion }}</td>
                     <td>{{ incidente.descripcion }}</td>
                     <td>{{ incidente.lat }}</td>

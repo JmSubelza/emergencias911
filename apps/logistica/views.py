@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from datetime import datetime
+from django.utils import timezone
 from django.core.urlresolvers import reverse_lazy
 from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
 from apps.logistica.models import CentroEmergencia, Vehiculo
@@ -22,6 +24,32 @@ class IncidenteCreate(CreateView):
 class IncidenteList(ListView):
     model = Incidente
     template_name = 'logistica/incidente_list.html'
+
+    def get_context_data(self, **kwargs):
+        # Retorna a data atual
+        context = super(IncidenteList, self).get_context_data(**kwargs)
+        context['date_now'] = datetime.now()
+        return context
+
+    def get_queryset(self):
+        # Filtra por fecha
+        super(IncidenteList, self).get_queryset()
+        c = Incidente.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+
+        q = self.request.GET.get('min_date')
+        if not q in [None, '']:
+            dmin = self.request.GET.get('min_date')
+            dmax = self.request.GET.get('max_date')
+            min_date = datetime.strptime(dmin, "%d/%m/%Y")
+            max_date = datetime.strptime(dmax, "%d/%m/%Y")
+            c = c.filter(time__gte=min_date, time__lte=max_date)
+            # c = c.filter(time__range=(min_date, max_date))
+        return c
 
 
 class IncidenteUpdate(UpdateView):
@@ -55,6 +83,17 @@ class TipoIncidenteList(ListView):
     model = TipoIncidente
     template_name = 'logistica/tipo_incidente_list.html'
 
+    def get_queryset(self):
+        # Filtra por activo o inactivo
+        super(TipoIncidenteList, self).get_queryset()
+        c = TipoIncidente.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+        return c
+
 
 class TipoIncidenteDelete(DeleteView):
     model = TipoIncidente
@@ -72,6 +111,33 @@ class AsignacionIncidenteCreate(CreateView):
 class AsignacionIncidenteList(ListView):
     model = AsignacionIncidente
     template_name = 'logistica/asignacion_incidente_list.html'
+
+    def get_context_data(self, **kwargs):
+        # Retorna a data atual
+        context = super(AsignacionIncidenteList, self).get_context_data(**kwargs)
+        context['date_now'] = datetime.now()
+        return context
+
+    def get_queryset(self):
+        # Filtra por activo o inactivo
+        super(AsignacionIncidenteList, self).get_queryset()
+        c = AsignacionIncidente.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+        # Filtra por fechas
+        q = self.request.GET.get('min_date')
+        if not q in [None, '']:
+            dmin = self.request.GET.get('min_date')
+            dmax = self.request.GET.get('max_date')
+            min_date = datetime.strptime(dmin, "%d/%m/%Y")
+            max_date = datetime.strptime(dmax, "%d/%m/%Y")
+            c = c.filter(time__gte=min_date, time__lte=max_date)
+            # c = c.filter(time__range=(min_date, max_date))
+
+        return c
 
 
 class AsignacionIncidenteUpdate(UpdateView):

@@ -51,6 +51,16 @@ class VehiculoList(ListView):
     model = Vehiculo
     template_name = 'servicios/vehiculo_list.html'
 
+    def get_queryset(self):
+        # Filtra por activo o inactivo
+        super(VehiculoList, self).get_queryset()
+        c = Vehiculo.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+        return c
 
 class VehiculoCreate(CreateView):
     model = Vehiculo
@@ -76,6 +86,16 @@ class TipoVehiculoList(ListView):
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_list.html'
 
+    def get_queryset(self):
+        # Filtra por activo o inactivo
+        super(TipoVehiculoList, self).get_queryset()
+        c = TipoVehiculo.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+        return c
 
 class TipoVehiculoCreate(CreateView):
     model = TipoVehiculo
@@ -101,6 +121,16 @@ class CentroEmergernciaList(ListView):
     model = CentroEmergencia
     template_name = 'servicios/centro_emergencia_list.html'
 
+    def get_queryset(self):
+        # Filtra por activo o inactivo
+        super(CentroEmergernciaList, self).get_queryset()
+        c = CentroEmergencia.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+        return c
 
 class CentroEmergenciaCreate(CreateView):
     model = CentroEmergencia
@@ -125,6 +155,17 @@ class CentroEmergenciaDelete(DeleteView):
 class DispositivoGpsList(ListView):
     model = DispositivoGPS
     template_name = 'servicios/dispositivi_gps_list.html'
+
+    def get_queryset(self):
+        # Filtra por activo o inactivo
+        super(DispositivoGpsList, self).get_queryset()
+        c = DispositivoGPS.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+        return c
 
 
 class DispositivoGpsCreate(CreateView):

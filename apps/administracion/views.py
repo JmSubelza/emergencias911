@@ -11,6 +11,16 @@ class UsuarioList(ListView):
     model = User
     template_name = 'administracion/usuario_list.html'
 
+    def get_queryset(self):
+        # Filtra por activo o inactivo
+        super(UsuarioList, self).get_queryset()
+        c = User.objects.all()
+
+        if self.request.GET.get('is_active') == '1':
+            c = c.filter(is_active=True)
+        elif self.request.GET.get('is_active') == '0':
+            c = c.filter(is_active=False)
+        return c
 
 class UsuarioCreate(CreateView):
     model = User

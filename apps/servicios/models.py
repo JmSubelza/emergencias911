@@ -69,8 +69,8 @@ class CentroEmergencia(models.Model):
     )
     nivel = models.CharField(max_length=10, choices=NIVEL, verbose_name='Nivel')
     TIPO = (
-        ('CENTRO SALUD', 'CENTRO SALUD'),
-        ('POLICIA', 'POLICIA'),
+        ('SALUD', 'SALUD'),
+        ('SEGURIDAD', 'SEGURIDAD'),
         ('BOMBEROS', 'BOMBEROS'),
         ('TRANSITO', 'TRANSITO'),
     )

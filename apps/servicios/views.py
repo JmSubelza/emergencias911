@@ -60,7 +60,12 @@ class VehiculoList(ListView):
             c = c.filter(is_active=True)
         elif self.request.GET.get('is_active') == '0':
             c = c.filter(is_active=False)
+        elif self.request.GET.get('sector')=='publico':
+            c = c.filter(sector__contains='PUBLICO')
+        elif self.request.GET.get('sector')=='privado':
+            c = c.filter(sector__contains='PRIVADO')
         return c
+
 
 class VehiculoCreate(CreateView):
     model = Vehiculo
@@ -97,6 +102,7 @@ class TipoVehiculoList(ListView):
             c = c.filter(is_active=False)
         return c
 
+
 class TipoVehiculoCreate(CreateView):
     model = TipoVehiculo
     form_class = TipoVehiculoForm
@@ -130,7 +136,20 @@ class CentroEmergernciaList(ListView):
             c = c.filter(is_active=True)
         elif self.request.GET.get('is_active') == '0':
             c = c.filter(is_active=False)
+        elif self.request.GET.get('sector_tipo')=='salud':
+            c = c.filter(tipo__contains='SALUD')
+        elif self.request.GET.get('sector_tipo')=='seguridad':
+            c = c.filter(tipo__contains='SEGURIDAD')
+        elif self.request.GET.get('sector_tipo')=='bomberos':
+            c = c.filter(tipo__contains='BOMBEROS')
+        elif self.request.GET.get('sector_tipo')=='transito':
+            c = c.filter(tipo__contains='TRANSITO')
+        elif self.request.GET.get('sector_tipo')=='publico':
+            c = c.filter(sector__contains='PUBLICO')
+        elif self.request.GET.get('sector_tipo')=='privado':
+            c = c.filter(sector__contains='PRIVADO')
         return c
+
 
 class CentroEmergenciaCreate(CreateView):
     model = CentroEmergencia
@@ -165,6 +184,7 @@ class DispositivoGpsList(ListView):
             c = c.filter(is_active=True)
         elif self.request.GET.get('is_active') == '0':
             c = c.filter(is_active=False)
+
         return c
 
 

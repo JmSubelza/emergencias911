@@ -43,18 +43,38 @@
     <div class="panel panel-default">
         <div class="panel-heading">Listado centros de emergencia</div>
         <div class="panel-body">
-            <!-- status search form -->
-            <ul class="list-inline text-right">
-                <li><a href="{% url 'servicios:centro_emergencia' %}" name="all"><span
-                        class="glyphicon glyphicon-star"></span>
-                    Todos</a></li>
-                <li><a href="?is_active=1" name="no_canceled"><span
-                        class="glyphicon glyphicon-ok"></span>
-                    Activos</a></li>
-                <li><a href="?is_active=0" name="is_canceled"><span
-                        class="glyphicon glyphicon-remove"></span>
-                    Inactivos</a></li>
-            </ul>
+            <form class="navbar-form navbar-right" action="." method="get">
+                <div class="form-group">
+                    <select name="sector_tipo" id="." class="select form-control">
+                        <optgroup label="SECTOR">
+                            <option value="publico">PUBLICO</option>
+                            <option value="privado">PRIVADO</option>
+                        </optgroup>
+                        <optgroup label="TIPO">
+                            <option value="salud">SALUD</option>
+                            <option value="seguridad">SEGURIDAD</option>
+                            <option value="bomberos">BOMBEROS</option>
+                            <option value="transito">TRANSITO</option>
+                        </optgroup>
+                    </select>
+                    <button type="submit" class="btn btn-success form-control"><span
+                            class="glyphicon glyphicon-search"></span>
+                    </button>
+                    <p></p>
+                    <!-- status search form -->
+                    <ul class="list-inline text-right">
+                        <li><a href="{% url 'servicios:centro_emergencia' %}" name="all"><span
+                                class="glyphicon glyphicon-star"></span>
+                            Todos</a></li>
+                        <li><a href="?is_active=1" name="no_canceled"><span
+                                class="glyphicon glyphicon-ok"></span>
+                            Activos</a></li>
+                        <li><a href="?is_active=0" name="is_canceled"><span
+                                class="glyphicon glyphicon-remove"></span>
+                            Inactivos</a></li>
+                    </ul>
+                </div>
+            </form>
         </div>
     </div>
     <div>
@@ -68,8 +88,8 @@
                 <td>Latitud</td>
                 <td>Longitud</td>
                 <td>Sector</td>
-                <td>Nivel</td>
                 <td>Tipo</td>
+                <td>Nivel</td>
                 <td>Activo</td>
                 <td>Acciones</td>
             </tr>
@@ -84,8 +104,8 @@
                     <td>{{ centro_emergencia.lat }}</td>
                     <td>{{ centro_emergencia.lng }}</td>
                     <td>{{ centro_emergencia.sector }}</td>
-                    <td>{{ centro_emergencia.nivel }}</td>
                     <td>{{ centro_emergencia.tipo }}</td>
+                    <td>{{ centro_emergencia.nivel }}</td>
                     <td>
                         {% if centro_emergencia.is_active %}
                             <span class="glyphicon glyphicon-ok" aria-hidden="true">Activo</span>

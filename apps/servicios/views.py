@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
 from apps.servicios.forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm, DispositivoGpsForm
 from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 
 
 def index(request):
@@ -109,6 +109,10 @@ class TipoVehiculoCreate(CreateView):
     template_name = 'servicios/tipo_vehiculo_form.html'
     success_url = reverse_lazy('servicios:tipo_vehiculo')
 
+
+class TipoVehiculoDetail(DetailView):
+    model = TipoVehiculo
+    template_name = 'servicios/tipo_vehiculo_detail.html'
 
 class TipoVehiculoUpdate(UpdateView):
     model = TipoVehiculo

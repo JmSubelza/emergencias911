@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
-from django.shortcuts import redirect
 from apps.servicios.forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm, DispositivoGpsForm
 from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
@@ -8,43 +7,6 @@ from django.views.generic import ListView, CreateView, DeleteView, UpdateView, D
 
 def index(request):
     return render(request, 'index.html')
-
-
-def vehiculo_view(request):
-    if request.method == 'POST':
-        form = VehiculoForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('servicios:vehiculo')
-    else:
-        form = VehiculoForm()
-    return render(request, 'servicios/vehiculo_form.html', {'form': form})
-
-
-def vehiculo_list(request):
-    vehiculo = Vehiculo.objects.all().order_by('placa')
-    contexto = {'vehiculos': vehiculo}
-    return render(request, 'servicios/vehiculo_list.html', contexto)
-
-
-def vehiculo_edit(request, id_vehiculo):
-    vehiculo = Vehiculo.objects.get(placa=id_vehiculo)
-    if request.method == 'GET':
-        form = VehiculoForm(instance=vehiculo)
-    else:
-        form = VehiculoForm(request.POST, instance=vehiculo)
-        if form.is_valid():
-            form.save()
-        return redirect('servicios:vehiculo')
-    return render(request, 'servicios/vehiculo_form.html', {'form': form})
-
-
-def vehiculo_delete(request, id_vehiculo):
-    vehiculo = Vehiculo.objects.get(placa=id_vehiculo)
-    if request.method == 'POST':
-        vehiculo.delete()
-        return redirect('servicios:vehiculo')
-    return render(request, 'servicios/vehiculo_delete.html', {'vehiculo': vehiculo})
 
 
 class VehiculoList(ListView):
@@ -60,11 +22,16 @@ class VehiculoList(ListView):
             c = c.filter(is_active=True)
         elif self.request.GET.get('is_active') == '0':
             c = c.filter(is_active=False)
-        elif self.request.GET.get('sector')=='publico':
+        elif self.request.GET.get('sector') == 'publico':
             c = c.filter(sector__contains='PUBLICO')
-        elif self.request.GET.get('sector')=='privado':
+        elif self.request.GET.get('sector') == 'privado':
             c = c.filter(sector__contains='PRIVADO')
         return c
+
+
+class VehiculoDetail(DetailView):
+    model = Vehiculo
+    template_name = 'servicios/vehiculo_detail.html'
 
 
 class VehiculoCreate(CreateView):
@@ -114,6 +81,7 @@ class TipoVehiculoDetail(DetailView):
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_detail.html'
 
+
 class TipoVehiculoUpdate(UpdateView):
     model = TipoVehiculo
     form_class = TipoVehiculoForm
@@ -140,17 +108,17 @@ class CentroEmergernciaList(ListView):
             c = c.filter(is_active=True)
         elif self.request.GET.get('is_active') == '0':
             c = c.filter(is_active=False)
-        elif self.request.GET.get('sector_tipo')=='salud':
+        elif self.request.GET.get('sector_tipo') == 'salud':
             c = c.filter(tipo__contains='SALUD')
-        elif self.request.GET.get('sector_tipo')=='seguridad':
+        elif self.request.GET.get('sector_tipo') == 'seguridad':
             c = c.filter(tipo__contains='SEGURIDAD')
-        elif self.request.GET.get('sector_tipo')=='bomberos':
+        elif self.request.GET.get('sector_tipo') == 'bomberos':
             c = c.filter(tipo__contains='BOMBEROS')
-        elif self.request.GET.get('sector_tipo')=='transito':
+        elif self.request.GET.get('sector_tipo') == 'transito':
             c = c.filter(tipo__contains='TRANSITO')
-        elif self.request.GET.get('sector_tipo')=='publico':
+        elif self.request.GET.get('sector_tipo') == 'publico':
             c = c.filter(sector__contains='PUBLICO')
-        elif self.request.GET.get('sector_tipo')=='privado':
+        elif self.request.GET.get('sector_tipo') == 'privado':
             c = c.filter(sector__contains='PRIVADO')
         return c
 

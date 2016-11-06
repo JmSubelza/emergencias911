@@ -1,0 +1,139 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <script type="text/javascript">
+
+        function mapaVehiculos() {
+            var map = new google.maps.Map(document.getElementById('maps'), {
+                center: {lat: {{ object.gps_id.lat }}, lng: {{ object.gps_id.lng }}},
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false,
+                streetViewControl: false,
+                zoomControl: true,
+                mapTypeControl: false,
+                styles: [
+                    {stylers: [{visibility: 'simplified'}]},
+                    {elementType: 'labels', stylers: [{visibility: 'on'}]}
+                ]
+            });
+            var infowindow = new google.maps.InfoWindow();
+            var marker;
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng({{ object.gps_id.lat }}, {{ object.gps_id.lng }}),
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent('<b>Descripción: </b>{{ object.name }}');
+                        infowindow.open(map, marker);
+                        map.setZoom(15);
+                        map.setCenter(marker.getPosition());
+                    }
+            );
+        }
+    </script>
+    <div class="panel panel-default">
+        <div class="panel-heading">Detalle vehiculo</div>
+        <div class="panel-body">
+            <div class="col-md-4">
+                <object data="{% static 'icons/car.svg' %}" width="128" height="128" type="image/svg+xml">
+                    SVG no soportado.
+                </object>
+                <br>
+                <div id="maps" style="max-width:none!important; height:250px; border: 1px solid black"></div>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Información</strong><br>
+                <div class="table-responsive">
+                    <table class="table table-user-information">
+                        <tbody>
+                        {% if object.id %}
+                            <tr>
+                                <th class="col-md-3 text-right">Id</th>
+                                <td>{{ object.id }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.placa %}
+                            <tr>
+                                <th class="col-md-3 text-right">Placa</th>
+                                <td>{{ object.placa }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.name %}
+                            <tr>
+                                <th class="col-md-3 text-right">Descripción</th>
+                                <td>{{ object.name }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.marca %}
+                            <tr>
+                                <th class="col-md-3 text-right">Marca</th>
+                                <td>{{ object.marca }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.modelo %}
+                            <tr>
+                                <th class="col-md-3 text-right">Modelo</th>
+                                <td>{{ object.modelo }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.nro_motor %}
+                            <tr>
+                                <th class="col-md-3 text-right">Nº Motor</th>
+                                <td>{{ object.nro_motor }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.nro_chasis %}
+                            <tr>
+                                <th class="col-md-3 text-right">Nº Chasis</th>
+                                <td>{{ object.nro_chasis }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.sector %}
+                            <tr>
+                                <th class="col-md-3 text-right">Sector</th>
+                                <td>{{ object.sector }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.tipo_id.name %}
+                            <tr>
+                                <th class="col-md-3 text-right">Tipo vehiculo</th>
+                                <td>{{ object.tipo_id.name }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.gps_id %}
+                            <tr>
+                                <th class="col-md-3 text-right">GPS</th>
+                                <td>{{ object.gps_id.name }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.gps_id %}
+                            <tr>
+                                <th class="col-md-3 text-right">Ubicación</th>
+                                <td>Lat: {{ object.gps_id.lat }}, Lng: {{ object.gps_id.lng }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if object.is_active %}
+                            <tr>
+                                <th class="col-md-3 text-right">Activo</th>
+                                <td><span class="glyphicon glyphicon-ok" aria-hidden="true">Activo</span></td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <th class="col-md-3 text-right">Activo</th>
+                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true">Inactivo</span></td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:history.back()" class="btn btn-warning">Cancelar</a>
+{% endblock content %}
+{% block extrajs %}
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&callback=mapaVehiculos" async defer></script>
+{% endblock %}

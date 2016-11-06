@@ -1,8 +1,6 @@
 from django.conf.urls import url
-from django.conf import settings
-from django.conf.urls.static import static
 from apps.servicios.views import \
-    VehiculoList, VehiculoCreate, VehiculoUpdate, VehiculoDelete, \
+    VehiculoList, VehiculoCreate, VehiculoUpdate, VehiculoDelete, VehiculoDetail, \
     TipoVehiculoList, TipoVehiculoCreate, TipoVehiculoUpdate, TipoVehiculoDelete, TipoVehiculoDetail, \
     CentroEmergernciaList, CentroEmergenciaCreate, CentroEmergenciaUpdate, CentroEmergenciaDelete, \
     DispositivoGpsList, DispositivoGpsCreate, DispositivoGpsUpdate, DispositivoGpsDelete
@@ -12,6 +10,7 @@ urlpatterns = [
     url(r'^vehiculo/nuevo/$', VehiculoCreate.as_view(), name='vehiculo_crear'),
     url(r'^vehiculo/editar/(?P<pk>\d+)/$', VehiculoUpdate.as_view(), name='vehiculo_editar'),
     url(r'^vehiculo/eliminar/(?P<pk>\d+)/$', VehiculoDelete.as_view(), name='vehiculo_eliminar'),
+    url(r'^vehiculo/detalle/(?P<pk>\d+)/$', VehiculoDetail.as_view(), name='vehiculo_detalle'),
 
     url(r'^tipovehiculo/$', TipoVehiculoList.as_view(), name='tipo_vehiculo'),
     url(r'^tipovehiculo/nuevo/$', TipoVehiculoCreate.as_view(), name='tipo_vehiculo_crear'),

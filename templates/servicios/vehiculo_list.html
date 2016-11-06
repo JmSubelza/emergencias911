@@ -77,13 +77,14 @@
             <tr>
                 <td>Id.</td>
                 <td>Placa</td>
-                <td>Nombre</td>
+                <td>Descripción</td>
                 <td>Marca</td>
                 <td>Modelo</td>
                 <td>Nº Motor</td>
                 <td>Nº Chasis</td>
                 <td>Sector</td>
                 <td>Tipo vehiculo</td>
+                <td>GPS</td>
                 <td>Activo</td>
                 <td>Acciones</td>
             </tr>
@@ -100,6 +101,7 @@
                     <td>{{ vehiculo.nro_chasis }}</td>
                     <td>{{ vehiculo.sector }}</td>
                     <td>{{ vehiculo.tipo_id.name }}</td>
+                    <td>{{ vehiculo.gps_id.name }}</td>
                     <td>
                         {% if vehiculo.is_active %}
                             <span class="glyphicon glyphicon-ok" aria-hidden="true">Activo</span>
@@ -108,6 +110,9 @@
                         {% endif %}
                     </td>
                     <td>
+                        <a href="{% url 'servicios:vehiculo_detalle' vehiculo.id %}"
+                           class="btn btn-info btn-xs"><span class="glyphicon glyphicon glyphicon-info-sign"
+                                                                aria-hidden="true"></span> Detalle</a>
                         <a href="{% url 'servicios:vehiculo_editar' vehiculo.id %}"
                            class="btn btn-primary btn-xs"><span
                                 class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>

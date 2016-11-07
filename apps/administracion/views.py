@@ -65,6 +65,11 @@ class GrupoList(ListView):
     template_name = 'administracion/grupo_list.html'
 
 
+class GrupoDetail(DetailView):
+    model = Group
+    template_name = 'administracion/grupo_detail.html'
+
+
 class GrupoCreate(CreateView):
     model = Group
     template_name = 'administracion/grupo_form.html'

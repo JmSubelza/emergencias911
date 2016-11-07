@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 from apps.administracion.views import \
     UsuarioList, UsuarioCreate, UsuarioUpdate, UsuarioDelete, UsuarioDetail, \
-    GrupoCreate, GrupoList, GrupoUpdate, GrupoDelete
+    GrupoCreate, GrupoList, GrupoUpdate, GrupoDelete, GrupoDetail
 
 urlpatterns = [
 
@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^grupo/nuevo/$', GrupoCreate.as_view(), name='grupo_crear'),
     url(r'^grupo/editar/(?P<pk>\d+)/$', GrupoUpdate.as_view(), name='grupo_editar'),
     url(r'^grupo/eliminar/(?P<pk>\d+)/$', GrupoDelete.as_view(), name='grupo_eliminar'),
+    url(r'^grupo/detalle/(?P<pk>\d+)/$', GrupoDetail.as_view(), name='grupo_detalle'),
 
 ]

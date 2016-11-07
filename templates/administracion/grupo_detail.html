@@ -5,7 +5,7 @@
         <div class="panel-heading">Detalle usuario</div>
         <div class="panel-body">
             <div class="col-md-4">
-                <object data="{{ MEDIA_URL }}icons/id-card.svg" width="100%" height="150" type="image/svg+xml">
+                <object data="{{ MEDIA_URL }}icons/structure.svg" width="100%" height="150" type="image/svg+xml">
                     SVG no soportado.
                 </object>
             </div>
@@ -20,49 +20,22 @@
                                 <td>{{ object.id }}</td>
                             </tr>
                         {% endif %}
-                        {% if object.username %}
+                        {% if object.name %}
                             <tr>
                                 <th class="col-md-3 text-right">Usuario</th>
-                                <td>{{ object.username }}</td>
+                                <td>{{ object.name }}</td>
                             </tr>
                         {% endif %}
-                        {% if object.first_name %}
+                        {% if object.permissions %}
                             <tr>
-                                <th class="col-md-3 text-right">Nobres(s)</th>
-                                <td>{{ object.first_name }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.last_name %}
-                            <tr>
-                                <th class="col-md-3 text-right">Apellido(s)</th>
-                                <td>{{ object.last_name }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.last_name %}
-                            <tr>
-                                <th class="col-md-3 text-right">Grupo(s)</th>
+                                <th class="col-md-3 text-right">Permisos</th>
                                 <td>
-                                    {% for group in object.groups.all %}
-                                        {{ group.name }},
-                                    {% endfor %}
+                                    <ul>
+                                        {% for permisos in object.permissions.all %}
+                                            <li> {{ permisos.codename }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 </td>
-                            </tr>
-                        {% endif %}
-                        {% if object.is_active %}
-                            <tr>
-                                <th class="col-md-3 text-right">Activo</th>
-                                <td><span class="glyphicon glyphicon-ok" aria-hidden="true">Activo</span></td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <th class="col-md-3 text-right">Activo</th>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true">Inactivo</span></td>
-                            </tr>
-                        {% endif %}
-                        {% if object.date_joined %}
-                            <tr>
-                                <th class="col-md-3 text-right">Usuario</th>
-                                <td>{{ object.date_joined|date:"d/m/Y H:m:s" }}</td>
                             </tr>
                         {% endif %}
                         </tbody>

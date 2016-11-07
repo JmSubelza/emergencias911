@@ -16,7 +16,6 @@ class TipoIncidente(models.Model):
 
 class Incidente(models.Model):
     time = models.DateTimeField(auto_now_add=True, verbose_name='Tiempo', null=True)
-    direccion = models.CharField(verbose_name='Dirección', max_length=100)
     descripcion = models.TextField()
     ESTADO = (
         ('NUEVO', 'NUEVO'),

@@ -1,9 +1,9 @@
 from django.conf.urls import url
 from apps.servicios.views import \
-    VehiculoList, VehiculoCreate, VehiculoUpdate, VehiculoDelete, VehiculoDetail, \
-    TipoVehiculoList, TipoVehiculoCreate, TipoVehiculoUpdate, TipoVehiculoDelete, TipoVehiculoDetail, \
-    CentroEmergernciaList, CentroEmergenciaCreate, CentroEmergenciaUpdate, CentroEmergenciaDelete, \
-    DispositivoGpsList, DispositivoGpsCreate, DispositivoGpsUpdate, DispositivoGpsDelete
+    VehiculoList, VehiculoCreate, VehiculoUpdate, VehiculoDelete, VehiculoDetail, TipoVehiculoList, TipoVehiculoCreate, \
+    TipoVehiculoUpdate, TipoVehiculoDelete, TipoVehiculoDetail, CentroEmergernciaList, CentroEmergenciaCreate, \
+    CentroEmergenciaUpdate, CentroEmergenciaDelete, CentroEmergenciaDetail, DispositivoGpsList, DispositivoGpsCreate, \
+    DispositivoGpsUpdate, DispositivoGpsDelete, DispositivoGpsDetail
 
 urlpatterns = [
     url(r'^vehiculo/$', VehiculoList.as_view(), name='vehiculo'),
@@ -23,10 +23,13 @@ urlpatterns = [
     url(r'^centroemergencia/editar/(?P<pk>\d+)/$', CentroEmergenciaUpdate.as_view(), name='centro_emergencia_editar'),
     url(r'^centroemergencia/eliminar/(?P<pk>\d+)/$', CentroEmergenciaDelete.as_view(),
         name='centro_emergencia_eliminar'),
+    url(r'^centroemergencia/detalle/(?P<pk>\d+)/$', CentroEmergenciaDetail.as_view(),
+        name='centro_emergencia_detalle'),
 
     url(r'^dispositivogps/$', DispositivoGpsList.as_view(), name='dispositivo_gps'),
     url(r'^dispositivogps/nuevo/$', DispositivoGpsCreate.as_view(), name='dispositivo_gps_crear'),
     url(r'^dispositivogps/editar/(?P<pk>\d+)/$', DispositivoGpsUpdate.as_view(), name='dispositivo_gps_editar'),
     url(r'^dispositivogps/eliminar/(?P<pk>\d+)/$', DispositivoGpsDelete.as_view(), name='dispositivo_gps_eliminar'),
+    url(r'^dispositivogps/detalle/(?P<pk>\d+)/$', DispositivoGpsDetail.as_view(), name='dispositivo_gps_detalle'),
 
 ]

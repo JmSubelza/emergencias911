@@ -64,7 +64,7 @@
 {% endblock %}
 {% block content %}
     <div class="panel panel-default">
-        <div class="panel-heading">Listado de vehiculos</div>
+        <div class="panel-heading">Listado dispositivos GPS</div>
         <div class="panel-body">
             <!-- status search form -->
             <ul class="list-inline text-right">
@@ -113,6 +113,9 @@
                         {% endif %}
                     </td>
                     <td>
+                        <a href="{% url 'servicios:dispositivo_gps_detalle' dispositivo_gps.id %}"
+                           class="btn btn-info btn-xs"><span class="glyphicon glyphicon glyphicon-info-sign"
+                                                             aria-hidden="true"></span> Detalle</a>
                         <a href="{% url 'servicios:dispositivo_gps_editar' dispositivo_gps.id %}"
                            class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"
                                                                 aria-hidden="true"></span> Editar</a>

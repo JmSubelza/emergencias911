@@ -12,7 +12,6 @@ class IncidenteForm(forms.ModelForm):
     class Meta:
         model = Incidente
         fields = [
-            'direccion',
             'descripcion',
             'tipo',
             'lat',

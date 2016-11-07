@@ -123,6 +123,11 @@ class CentroEmergernciaList(ListView):
         return c
 
 
+class CentroEmergenciaDetail(DetailView):
+    model = CentroEmergencia
+    template_name = 'servicios/centro_emergencia_detail.html'
+
+
 class CentroEmergenciaCreate(CreateView):
     model = CentroEmergencia
     form_class = CentroEmergenciaForm
@@ -158,6 +163,11 @@ class DispositivoGpsList(ListView):
             c = c.filter(is_active=False)
 
         return c
+
+
+class DispositivoGpsDetail(DetailView):
+    model = DispositivoGPS
+    template_name = 'servicios/dispositivo_gps_detail.html'
 
 
 class DispositivoGpsCreate(CreateView):

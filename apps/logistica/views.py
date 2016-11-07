@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse_lazy
 from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
 from apps.logistica.models import CentroEmergencia, Vehiculo
 from apps.logistica.forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 
 
 # Create your views here.
@@ -52,6 +52,11 @@ class IncidenteList(ListView):
         return c
 
 
+class IncidenteDetail(DetailView):
+    model = Incidente
+    template_name = 'logistica/incidente_detail.html'
+
+
 class IncidenteUpdate(UpdateView):
     model = Incidente
     form_class = IncidenteForm
@@ -95,6 +100,11 @@ class TipoIncidenteList(ListView):
         return c
 
 
+class TipoIncidenteDetail(DetailView):
+    model = TipoIncidente
+    template_name = 'logistica/tipo_incidente_detail.html'
+
+
 class TipoIncidenteDelete(DeleteView):
     model = TipoIncidente
     template_name = 'logistica/tipo_incidente_delete.html'
@@ -106,6 +116,11 @@ class AsignacionIncidenteCreate(CreateView):
     form_class = AsignacionIncidenteForm
     template_name = 'logistica/asignacion_incidente_form.html'
     success_url = reverse_lazy('logistica:asignacion_incidente')
+
+
+class AsignacionIncidenteDetail(DetailView):
+    model = AsignacionIncidente
+    template_name = 'logistica/asignacion_incidente_detail.html'
 
 
 class AsignacionIncidenteList(ListView):

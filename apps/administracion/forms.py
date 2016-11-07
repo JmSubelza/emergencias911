@@ -12,23 +12,23 @@ class UserForm(forms.ModelForm):
     helper.form_tag = False
 
     helper.layout = Layout(
-            TabHolder(
-                    Tab(
-                            'Información Básica',
-                            'first_name',
-                            'last_name',
-                            'username',
-                            'password',
-                    ),
-                    Tab(
-                            'Grupo y Permisos',
-                            'groups',
-                            'is_staff',
-                            'is_superuser',
-                            'is_active',
-                            'date_joined'
-                    )
+        TabHolder(
+            Tab(
+                'Información Básica',
+                'first_name',
+                'last_name',
+                'username',
+                'password',
+            ),
+            Tab(
+                'Grupo y Permisos',
+                'groups',
+                'is_staff',
+                'is_superuser',
+                'is_active',
+                'date_joined'
             )
+        )
     )
 
     class Meta:

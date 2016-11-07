@@ -17,18 +17,36 @@
     <script type="text/javascript" src="{% static 'js/vfs_fonts.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jszip.min.js' %}"></script>
 
-    <script>
+        <script>
         $(document).ready(function () {
             $('#table').DataTable({
                 stateSave: true,
                 dom: 'lfBrtip',
                 buttons: [
-                    'excelHtml5',
-                    'csvHtml5',
-                    'pdfHtml5',
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
                     {
                         extend: 'print',
-                        text: 'Imprimir'
+                        text: 'Imprimir',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
                     }
                 ],
                 responsive: true,

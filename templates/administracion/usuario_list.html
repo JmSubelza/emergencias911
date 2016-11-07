@@ -23,12 +23,30 @@
                 stateSave: true,
                 dom: 'lfBrtip',
                 buttons: [
-                    'excelHtml5',
-                    'csvHtml5',
-                    'pdfHtml5',
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
                     {
                         extend: 'print',
-                        text: 'Imprimir'
+                        text: 'Imprimir',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
                     }
                 ],
                 responsive: true,

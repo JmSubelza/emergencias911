@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 from django.core.urlresolvers import reverse_lazy
 from apps.administracion.forms import UserForm, GroupForm
 
@@ -22,6 +22,12 @@ class UsuarioList(ListView):
             c = c.filter(is_active=False)
         return c
 
+
+class UsuarioDetail(DetailView):
+    model = User
+    template_name = 'administracion/user_detail.html'
+
+
 class UsuarioCreate(CreateView):
     model = User
     template_name = 'administracion/usuario_form.html'
@@ -33,6 +39,7 @@ class UsuarioCreate(CreateView):
         obj.set_password(form.cleaned_data['password'])
         obj.save()
         return super(UsuarioCreate, self).form_valid(form)
+
 
 class UsuarioUpdate(UpdateView):
     model = User

@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6ba083c-da78-424a-b2df-d8bd71ecd3b7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/icons/ambulance.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/administracion/grupo_list.html" afterPath="$PROJECT_DIR$/templates/administracion/grupo_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/administracion/usuario_list.html" afterPath="$PROJECT_DIR$/templates/administracion/usuario_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base/base.html" afterPath="$PROJECT_DIR$/templates/base/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base/navbar.html" afterPath="$PROJECT_DIR$/templates/base/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/logistica/asignacion_incidente_detail.html" afterPath="$PROJECT_DIR$/templates/logistica/asignacion_incidente_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/logistica/asignacion_incidente_list.html" afterPath="$PROJECT_DIR$/templates/logistica/asignacion_incidente_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/logistica/incidente_list.html" afterPath="$PROJECT_DIR$/templates/logistica/incidente_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/logistica/tipo_incidente_list.html" afterPath="$PROJECT_DIR$/templates/logistica/tipo_incidente_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/servicios/centro_emergencia_list.html" afterPath="$PROJECT_DIR$/templates/servicios/centro_emergencia_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/servicios/dispositivi_gps_list.html" afterPath="$PROJECT_DIR$/templates/servicios/dispositivi_gps_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/servicios/tipo_vehiculo_detail.html" afterPath="$PROJECT_DIR$/templates/servicios/tipo_vehiculo_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/servicios/tipo_vehiculo_list.html" afterPath="$PROJECT_DIR$/templates/servicios/tipo_vehiculo_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/servicios/vehiculo_list.html" afterPath="$PROJECT_DIR$/templates/servicios/vehiculo_list.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -718,7 +703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478558119586</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Correcion imagenes.">
+      <created>1478636942466</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1478636942466</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -787,7 +779,8 @@
     <MESSAGE value="Detail User" />
     <MESSAGE value="Enumeracion correcta de tablas" />
     <MESSAGE value="Detail All" />
-    <option name="LAST_COMMIT_MESSAGE" value="Detail All" />
+    <MESSAGE value="Correcion imagenes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcion imagenes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

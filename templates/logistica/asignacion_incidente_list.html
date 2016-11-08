@@ -83,6 +83,9 @@
     <div class="panel panel-default">
         <div class="panel-heading">Listado asignacion de incidentes</div>
         <div class="panel-body">
+            <object data="{{ MEDIA_URL }}icons/ambulance.svg" width="100" height="100" type="image/svg+xml">
+                SVG no soportado.
+            </object>
             <form class="navbar-form navbar-right" action="." method="get">
                 <div class="form-group">
                     <div class='input-group date form_datetime' id='min_datepicker'>
@@ -168,5 +171,5 @@
         </table>
     </div>
     <a href="{% url 'logistica:asignacion_incidente_crear' %}" class="btn btn-success">Nuevo</a>
-    <a href="{% url 'logistica:asignacion_incidente' %}" class="btn btn-warning">Cancelar</a>
+    <a href="javascript:history.back()" class="btn btn-warning">Cancelar</a>
 {% endblock %}

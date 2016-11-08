@@ -82,6 +82,9 @@
     <div class="panel panel-default">
         <div class="panel-heading">Listado incidentes</div>
         <div class="panel-body">
+            <object data="/media/icons/medical-kit.svg" width="100" height="100" type="image/svg+xml">
+                SVG no soportado.
+            </object>
             <form class="navbar-form navbar-right" action="." method="get">
                 <div class="form-group">
                     <div class='input-group date form_datetime' id='min_datepicker'>
@@ -164,6 +167,8 @@
             </tbody>
         </table>
     </div>
+    <div class="form-group">
     <a href="{% url 'logistica:incidente_crear' %}" class="btn btn-success">Nuevo</a>
-    <a href="{% url 'logistica:incidente' %}" class="btn btn-warning">Cancelar</a>
+    <a href="javascript:history.back()" class="btn btn-warning">Cancelar</a>
+    </div>
 {% endblock %}

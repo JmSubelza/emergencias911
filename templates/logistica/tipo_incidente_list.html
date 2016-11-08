@@ -66,6 +66,9 @@
     <div class="panel panel-default">
         <div class="panel-heading">Listado tipo de incidentes</div>
         <div class="panel-body">
+            <object data="/media/icons/warning.svg" width="100%" height="100" type="image/svg+xml">
+                SVG no soportado.
+            </object>
             <!-- status search form -->
             <ul class="list-inline text-right">
                 <li><a href="{% url 'logistica:tipo_incidente' %}" name="all"><span
@@ -119,5 +122,5 @@
         </table>
     </div>
     <a href="{% url 'logistica:tipo_incidente_crear' %}" class="btn btn-success">Nuevo</a>
-    <a href="{% url 'logistica:tipo_incidente' %}" class="btn btn-warning">Cancelar</a>
+    <a href="javascript:history.back()" class="btn btn-warning">Cancelar</a>
 {% endblock %}

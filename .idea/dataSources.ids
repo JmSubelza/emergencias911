@@ -128,7 +128,6 @@
     <table name="logistica_incidente" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="time" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="direccion" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="descripcion" sqlType="TEXT" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="estado" sqlType="VARCHAR(20)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="lat" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
@@ -162,8 +161,8 @@
       <column name="lng" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
       <column name="sector" sqlType="VARCHAR(10)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="nivel" sqlType="VARCHAR(10)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="tipo" sqlType="VARCHAR(20)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="is_active" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="tipo" sqlType="VARCHAR(20)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
     </table>
     <table name="servicios_dispositivogps" schema="" catalog="" type="TABLE">

@@ -5,10 +5,6 @@ from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, Disp
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 
 
-def index(request):
-    return render(request, 'index.html')
-
-
 class VehiculoList(ListView):
     model = Vehiculo
     template_name = 'servicios/vehiculo_list.html'

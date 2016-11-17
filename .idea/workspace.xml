@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6ba083c-da78-424a-b2df-d8bd71ecd3b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/administracion/serializers.py" afterPath="$PROJECT_DIR$/apps/administracion/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/logistica/models.py" afterPath="$PROJECT_DIR$/apps/logistica/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/servicios/models.py" afterPath="$PROJECT_DIR$/apps/servicios/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencias/urls.py" afterPath="$PROJECT_DIR$/emergencias/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -775,7 +770,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479408182998</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Serializers">
+      <created>1479416409909</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1479416409909</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -847,7 +849,8 @@
     <MESSAGE value="Correcion imagenes." />
     <MESSAGE value="se agregaron datos en base de datos" />
     <MESSAGE value="requirements" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirements" />
+    <MESSAGE value="Serializers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Serializers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

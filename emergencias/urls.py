@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
+admin.autodiscover()
 
 from rest_framework import routers
 from apps.administracion.viewsets import UserViewSet, GroupViewSet
@@ -30,7 +31,7 @@ from django.contrib.auth.views import login, logout_then_login, \
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'usuarios', UserViewSet)
-router.register(r'groupos', GroupViewSet)
+router.register(r'grupos', GroupViewSet)
 router.register(r'tipo-incidente', TipoIncidenteViewSet)
 
 urlpatterns = [

@@ -2,8 +2,20 @@ from django.db import models
 from apps.servicios.models import CentroEmergencia, Vehiculo
 from django.contrib.auth.models import User
 
-
 # Create your models here.
+
+ESTADO_INCIDENTE = (
+    ('NUEVO', 'NUEVO'),
+    ('EN CURSO', 'EN CURSO (ASIGNADO)'),
+    ('RESULTO', 'RESUELTO'),
+    ('FINALIZADO', 'FINALIZADO'),
+)
+
+ESTADO_ASIGNACION = (
+    ('EN CURSO', 'EN CURSO (ASIGNADO)'),
+    ('RESULTO', 'RESUELTO'),
+    ('FINALIZADO', 'FINALIZADO'),
+)
 
 
 class TipoIncidente(models.Model):
@@ -17,13 +29,7 @@ class TipoIncidente(models.Model):
 class Incidente(models.Model):
     time = models.DateTimeField(auto_now_add=True, verbose_name='Tiempo', null=True)
     descripcion = models.TextField()
-    ESTADO = (
-        ('NUEVO', 'NUEVO'),
-        ('EN CURSO', 'EN CURSO (ASIGNADO)'),
-        ('RESULTO', 'RESUELTO'),
-        ('FINALIZADO', 'FINALIZADO'),
-    )
-    estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO, default='NUEVO')
+    estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO_INCIDENTE, default='NUEVO')
     lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
     lng = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
@@ -39,12 +45,7 @@ class Incidente(models.Model):
 
 class AsignacionIncidente(models.Model):
     time = models.DateTimeField(auto_now_add=True, verbose_name='Tiempo', null=True)
-    ESTADO = (
-        ('EN CURSO', 'EN CURSO (ASIGNADO)'),
-        ('RESULTO', 'RESUELTO'),
-        ('FINALIZADO', 'FINALIZADO'),
-    )
-    estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO, default='EN CURSO')
+    estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO_ASIGNACION, default='EN CURSO')
     incidente = models.OneToOneField(Incidente)
     centro_emergencia = models.ForeignKey(CentroEmergencia, blank=True)
     vehiculos = models.ManyToManyField(Vehiculo)

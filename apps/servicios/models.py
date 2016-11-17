@@ -1,5 +1,24 @@
 from django.db import models
 
+SECTOR = (
+    ('PUBLICO', 'PUBLICO'),
+    ('PRIVADO', 'PRIVADO'),
+)
+
+NIVEL = (
+    ('NINGUNO', 'NINGUNO'),
+    ('PRIMERO', 'PRIMERO'),
+    ('SEGUNDO', 'SEGUNDO'),
+    ('TERCERO', 'TERCERO'),
+)
+
+TIPO = (
+    ('SALUD', 'SALUD'),
+    ('SEGURIDAD', 'SEGURIDAD'),
+    ('BOMBEROS', 'BOMBEROS'),
+    ('TRANSITO', 'TRANSITO'),
+)
+
 
 class TipoVehiculo(models.Model):
     name = models.CharField(max_length=100, verbose_name='Descripción')
@@ -33,10 +52,6 @@ class Vehiculo(models.Model):
     modelo = models.CharField(max_length=100, verbose_name='Modelo')
     nro_motor = models.CharField(max_length=100, verbose_name='N° Motor')
     nro_chasis = models.CharField(max_length=100, verbose_name='N° Chasis')
-    SECTOR = (
-        ('PUBLICO', 'PUBLICO'),
-        ('PRIVADO', 'PRIVADO'),
-    )
     sector = models.CharField(max_length=20, choices=SECTOR, verbose_name='Sector')
     tipo_id = models.ForeignKey(TipoVehiculo, on_delete=models.CASCADE, verbose_name='Tipo Vehiculo', null=False)
     gps_id = models.OneToOneField(DispositivoGPS, on_delete=models.CASCADE, verbose_name='GPS', null=True)
@@ -56,24 +71,8 @@ class CentroEmergencia(models.Model):
     telefono = models.CharField(max_length=30, verbose_name='Teléfono')
     lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
     lng = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Longitud')
-    SECTOR = (
-        ('PUBLICO', 'PUBLICO'),
-        ('PRIVADO', 'PRIVADO'),
-    )
     sector = models.CharField(max_length=10, choices=SECTOR, verbose_name='Sector')
-    NIVEL = (
-        ('NINGUNO', 'NINGUNO'),
-        ('PRIMERO', 'PRIMERO'),
-        ('SEGUNDO', 'SEGUNDO'),
-        ('TERCERO', 'TERCERO'),
-    )
     nivel = models.CharField(max_length=10, choices=NIVEL, verbose_name='Nivel')
-    TIPO = (
-        ('SALUD', 'SALUD'),
-        ('SEGURIDAD', 'SEGURIDAD'),
-        ('BOMBEROS', 'BOMBEROS'),
-        ('TRANSITO', 'TRANSITO'),
-    )
     tipo = models.CharField(max_length=20, choices=TIPO, verbose_name='Tipo')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 

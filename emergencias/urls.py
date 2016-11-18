@@ -13,17 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
 from django.conf import settings
+from django.conf.urls import url, include
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
+
 admin.autodiscover()
 
 from rest_framework import routers
-from apps.administracion.viewsets import UserViewSet, GroupViewSet
-from apps.logistica.viewsets import TipoIncidenteViewSet
+from apps.api.viewsets import UserViewSet, GroupViewSet, TipoIncidenteViewSet
 
 from django.contrib.auth.views import login, logout_then_login, \
     password_reset, password_reset_done, password_reset_confirm, password_reset_complete
@@ -35,7 +35,7 @@ router.register(r'grupos', GroupViewSet)
 router.register(r'tipo-incidente', TipoIncidenteViewSet)
 
 urlpatterns = [
-                  url(r'^api/', include(router.urls)),
+                  url(r'^api/', include(router.urls, namespace='api')),
                   url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
                   url(r'^$', RedirectView.as_view(url=reverse_lazy('logistica:incidente')), name='index'),

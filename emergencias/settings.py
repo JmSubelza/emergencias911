@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.administracion',
     'apps.logistica',
     'apps.reportes',
+    'apps.api',
 ]
 
 MIDDLEWARE = [

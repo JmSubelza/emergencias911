@@ -23,16 +23,26 @@ from django.views.generic import RedirectView
 admin.autodiscover()
 
 from rest_framework import routers
-from apps.api.viewsets import UserViewSet, GroupViewSet, TipoIncidenteViewSet
+from apps.api.viewsets import UserViewSet, GroupViewSet, TipoIncidenteViewSet, IncidenteViewSet, \
+    AsignacionIncidenteViewSet, CentroEmergenciaViewSet, TipoVehiculoViewSet, VehiculoViewSet, DispositivoGPSViewSet
 
 from django.contrib.auth.views import login, logout_then_login, \
     password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
+
 router.register(r'usuarios', UserViewSet)
 router.register(r'grupos', GroupViewSet)
-router.register(r'tipo-incidente', TipoIncidenteViewSet)
+
+router.register(r'centro-emergencias', CentroEmergenciaViewSet)
+router.register(r'vehiculos', VehiculoViewSet)
+router.register(r'tipo-vehiculos', TipoVehiculoViewSet)
+router.register(r'dispositivos-gps', DispositivoGPSViewSet)
+
+router.register(r'incidentes', IncidenteViewSet)
+router.register(r'tipo-incidentes', TipoIncidenteViewSet)
+router.register(r'asignacion-incidentes', AsignacionIncidenteViewSet)
 
 urlpatterns = [
                   url(r'^api/', include(router.urls, namespace='api')),

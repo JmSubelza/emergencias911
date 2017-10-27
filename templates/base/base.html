@@ -18,6 +18,10 @@
         {% include 'base/navbar.html' %}
     {% endblock %}
 
+    {% block message %}
+        {% include "base/_messages.html" %}
+    {% endblock %}
+
     {% block content %}
         <h2>Contenido base</h2>
     {% endblock %}

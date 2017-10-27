@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User, Group
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 from django.core.urlresolvers import reverse_lazy
 from apps.administracion.forms import UserForm, GroupForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -28,11 +30,12 @@ class UsuarioDetail(DetailView):
     template_name = 'administracion/user_detail.html'
 
 
-class UsuarioCreate(CreateView):
+class UsuarioCreate(SuccessMessageMixin, CreateView):
     model = User
     template_name = 'administracion/usuario_form.html'
     form_class = UserForm
     success_url = reverse_lazy('administracion:usuario')
+    success_message = "El usuario '%(username)s' fue creado con éxito"
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -40,12 +43,19 @@ class UsuarioCreate(CreateView):
         obj.save()
         return super(UsuarioCreate, self).form_valid(form)
 
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            username=self.object.username,
+        )
 
-class UsuarioUpdate(UpdateView):
+
+class UsuarioUpdate(SuccessMessageMixin, UpdateView):
     model = User
     template_name = 'administracion/usuario_form.html'
     form_class = UserForm
     success_url = reverse_lazy('administracion:usuario')
+    success_message = "El usuario '%(username)s' fue modificado con éxito"
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -54,11 +64,17 @@ class UsuarioUpdate(UpdateView):
         return super(UsuarioUpdate, self).form_valid(form)
 
 
-class UsuarioDelete(DeleteView):
+class UsuarioDelete(SuccessMessageMixin, DeleteView):
     model = User
     template_name = 'administracion/usuario_delete.html'
     success_url = reverse_lazy('administracion:usuario')
+    success_message = "El usuario '%(username)s' fue eliminado con éxito"
 
+    def delete(self, request, *args, **kwargs):
+        messages.success(
+            request, 'El usuario fue eliminado')
+        return super(UsuarioDelete, self).delete(
+            request, *args, **kwargs)
 
 class GrupoList(ListView):
     model = Group
@@ -70,21 +86,30 @@ class GrupoDetail(DetailView):
     template_name = 'administracion/grupo_detail.html'
 
 
-class GrupoCreate(CreateView):
+class GrupoCreate(SuccessMessageMixin, CreateView):
     model = Group
     template_name = 'administracion/grupo_form.html'
     form_class = GroupForm
     success_url = reverse_lazy('administracion:grupo')
+    success_message = "El grupo '%(name)s' fue creado con éxito"
 
 
-class GrupoUpdate(UpdateView):
+class GrupoUpdate(SuccessMessageMixin, UpdateView):
     model = Group
     template_name = 'administracion/grupo_form.html'
     form_class = GroupForm
     success_url = reverse_lazy('administracion:grupo')
+    success_message = "El grupo '%(name)s' fue modificado con éxito"
 
 
-class GrupoDelete(DeleteView):
+class GrupoDelete(SuccessMessageMixin, DeleteView):
     model = Group
     template_name = 'administracion/grupo_delete.html'
     success_url = reverse_lazy('administracion:grupo')
+    success_message = "El grupo '%(name)s' fue eliminado con éxito"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(
+            request, 'El grupo fue eliminado con éxito"')
+        return super(GrupoDelete, self).delete(
+            request, *args, **kwargs)

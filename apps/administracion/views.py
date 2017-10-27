@@ -110,6 +110,6 @@ class GrupoDelete(SuccessMessageMixin, DeleteView):
 
     def delete(self, request, *args, **kwargs):
         messages.success(
-            request, 'El grupo fue eliminado con éxito"')
+            request, 'El grupo fue eliminado con éxito')
         return super(GrupoDelete, self).delete(
             request, *args, **kwargs)

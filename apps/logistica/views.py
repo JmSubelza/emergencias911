@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from datetime import datetime
-from django.utils import timezone
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
 from apps.logistica.models import CentroEmergencia, Vehiculo
@@ -10,11 +10,12 @@ from django.views.generic import ListView, CreateView, DeleteView, UpdateView, D
 
 # Create your views here.
 
-class IncidenteCreate(CreateView):
+class IncidenteCreate(SuccessMessageMixin, CreateView):
     model = Incidente
     form_class = IncidenteForm
     template_name = 'logistica/incidente_form.html'
     success_url = reverse_lazy('logistica:incidente')
+    success_message = "El incidente Nº '%(id)s' fue creado con éxito"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -57,11 +58,12 @@ class IncidenteDetail(DetailView):
     template_name = 'logistica/incidente_detail.html'
 
 
-class IncidenteUpdate(UpdateView):
+class IncidenteUpdate(SuccessMessageMixin, UpdateView):
     model = Incidente
     form_class = IncidenteForm
     template_name = 'logistica/incidente_update.html'
     success_url = reverse_lazy('logistica:incidente')
+    success_message = "El incidente Nº '%(id)s' fue modificado con éxito"
 
 
 class IncidenteDelete(DeleteView):
@@ -69,19 +71,27 @@ class IncidenteDelete(DeleteView):
     template_name = 'logistica/incidente_delete.html'
     success_url = reverse_lazy('logistica:incidente')
 
+    def delete(self, request, *args, **kwargs):
+        messages.success(
+            request, 'El incidente fue eliminado')
+        return super(IncidenteDelete, self).delete(
+            request, *args, **kwargs)
 
-class TipoIncidenteCreate(CreateView):
+
+class TipoIncidenteCreate(SuccessMessageMixin, CreateView):
     model = TipoIncidente
     form_class = TipoIncidenteForm
     template_name = 'logistica/tipo_incidente_form.html'
     success_url = reverse_lazy('logistica:tipo_incidente')
+    success_message = "El tipo de incidente '%(name)s' fue creado con éxito"
 
 
-class TipoIncidenteUpdate(UpdateView):
+class TipoIncidenteUpdate(SuccessMessageMixin, UpdateView):
     model = TipoIncidente
     form_class = TipoIncidenteForm
     template_name = 'logistica/tipo_incidente_form.html'
     success_url = reverse_lazy('logistica:tipo_incidente')
+    success_message = "El tipo de incidente '%(name)s' fue modificado con éxito"
 
 
 class TipoIncidenteList(ListView):
@@ -110,12 +120,19 @@ class TipoIncidenteDelete(DeleteView):
     template_name = 'logistica/tipo_incidente_delete.html'
     success_url = reverse_lazy('logistica:tipo_incidente')
 
+    def delete(self, request, *args, **kwargs):
+        messages.success(
+            request, 'El tipo de incidente fue eliminado')
+        return super(TipoIncidenteDelete, self).delete(
+            request, *args, **kwargs)
 
-class AsignacionIncidenteCreate(CreateView):
+
+class AsignacionIncidenteCreate(SuccessMessageMixin, CreateView):
     model = AsignacionIncidente
     form_class = AsignacionIncidenteForm
     template_name = 'logistica/asignacion_incidente_form.html'
     success_url = reverse_lazy('logistica:asignacion_incidente')
+    success_message = "La asignación Nº '%(name)s' fue creada con éxito"
 
 
 class AsignacionIncidenteDetail(DetailView):
@@ -155,17 +172,24 @@ class AsignacionIncidenteList(ListView):
         return c
 
 
-class AsignacionIncidenteUpdate(UpdateView):
+class AsignacionIncidenteUpdate(SuccessMessageMixin, UpdateView):
     model = AsignacionIncidente
     form_class = AsignacionIncidenteForm
     template_name = 'logistica/asignacion_incidente_form.html'
     success_url = reverse_lazy('logistica:asignacion_incidente')
+    success_message = "La asignación Nº '%(name)s' fue modificada con éxito"
 
 
 class AsignacionIncidenteDelete(DeleteView):
     model = AsignacionIncidente
     template_name = 'logistica/asignacion_incidente_delete.html'
     success_url = reverse_lazy('logistica:asignacion_incidente')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(
+            request, 'La asignacion del incidente fue eliminado')
+        return super(AsignacionIncidenteDelete, self).delete(
+            request, *args, **kwargs)
 
 
 class MapaIncidente(ListView):

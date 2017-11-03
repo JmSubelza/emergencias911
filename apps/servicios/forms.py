@@ -38,7 +38,7 @@ class VehiculoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(VehiculoForm, self).__init__(*args, **kwargs)
-        if kwargs.has_key('instance'):
+        if not kwargs['instance'] is None:
             _queryset = DispositivoGPS.objects.exclude(id__in=[x.gps_id.id for x in Vehiculo.objects.all() if x.id!= kwargs['instance'].id])
         else:
             _queryset = DispositivoGPS.objects.exclude(id__in=[x.gps_id.id for x in Vehiculo.objects.all()])

@@ -1,6 +1,7 @@
+#encoding:utf-8
 from django import forms
 from crispy_forms.helper import FormHelper
-from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
+from .models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
 from django.utils import timezone
 
 

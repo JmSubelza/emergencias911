@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User, Group
 
-from apps.api.serializers import UserSerializer, GroupSerializer, TipoIncidenteSerializer, IncidenteSerializer, \
+from .serializers import UserSerializer, GroupSerializer, TipoIncidenteSerializer, IncidenteSerializer, \
     AsignacionIncidenteSerializer, CentroEmergenciaSerializer, TipoVehiculoSerializer, VehiculoSerializer, \
     DispositivoGPSSerializer
-from apps.logistica.models import TipoIncidente, Incidente, AsignacionIncidente
+from ..logistica.models import TipoIncidente, Incidente, AsignacionIncidente
 from rest_framework.viewsets import ModelViewSet
 
-from apps.servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, DispositivoGPS
+from ..servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, DispositivoGPS
 
 
 class UserViewSet(ModelViewSet):

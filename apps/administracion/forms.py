@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.contrib.auth.models import User, Group
 from django import forms
 from crispy_forms.helper import FormHelper

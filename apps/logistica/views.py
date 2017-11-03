@@ -1,10 +1,11 @@
+#encoding:utf-8
 from datetime import datetime
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
-from apps.logistica.models import CentroEmergencia, Vehiculo
-from apps.logistica.forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm
+from .models import Incidente, TipoIncidente, AsignacionIncidente
+from .models import CentroEmergencia, Vehiculo
+from .forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 
 

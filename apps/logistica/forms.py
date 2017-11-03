@@ -1,5 +1,6 @@
+#encoding:utf-8
 from django import forms
-from apps.logistica.models import Incidente, TipoIncidente, AsignacionIncidente
+from .models import Incidente, TipoIncidente, AsignacionIncidente
 from crispy_forms.helper import FormHelper, Layout
 from django.utils import timezone
 

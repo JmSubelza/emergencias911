@@ -1,6 +1,7 @@
+#encoding:utf-8
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
-from apps.logistica.views import \
+from .views import \
     IncidenteCreate, IncidenteList, IncidenteUpdate, IncidenteDelete, IncidenteDetail, \
     TipoIncidenteCreate, TipoIncidenteList, TipoIncidenteUpdate, TipoIncidenteDelete, TipoIncidenteDetail, \
     AsignacionIncidenteCreate, AsignacionIncidenteList, AsignacionIncidenteUpdate, AsignacionIncidenteDelete, \

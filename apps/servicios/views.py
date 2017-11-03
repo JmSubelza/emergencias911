@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
-from apps.servicios.forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm, DispositivoGpsForm
-from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
+from .forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm, DispositivoGpsForm
+from .models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 
 

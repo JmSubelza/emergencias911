@@ -1,5 +1,6 @@
+#encoding:utf-8
 from django.db import models
-from apps.servicios.models import CentroEmergencia, Vehiculo
+from ..servicios.models import CentroEmergencia, Vehiculo
 from django.contrib.auth.models import User
 
 # Create your models here.

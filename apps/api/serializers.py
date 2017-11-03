@@ -2,9 +2,9 @@ from django.contrib.auth.models import User, Group
 
 from rest_framework.serializers import ModelSerializer
 
-from apps.logistica.models import TipoIncidente, Incidente, AsignacionIncidente
+from ..logistica.models import TipoIncidente, Incidente, AsignacionIncidente
 
-from apps.servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, DispositivoGPS
+from ..servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, DispositivoGPS
 
 
 class GroupSerializer(ModelSerializer):

@@ -1,8 +1,9 @@
+#encoding:utf-8
 from django.contrib.auth.models import User, Group
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 from django.core.urlresolvers import reverse_lazy
-from apps.administracion.forms import UserForm, GroupForm
+from .forms import UserForm, GroupForm
 from django.contrib import messages
 
 

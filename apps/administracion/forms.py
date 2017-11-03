@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout
+from crispy_forms.layout import Layout, Field
 from crispy_forms.bootstrap import TabHolder, Tab
 
 
@@ -30,6 +30,10 @@ class UserForm(forms.ModelForm):
             )
         )
     )
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['date_joined'].widget.attrs['readonly'] = True
 
     class Meta:
         model = User

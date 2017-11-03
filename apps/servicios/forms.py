@@ -1,6 +1,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from apps.servicios.models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
+from django.utils import timezone
 
 
 class VehiculoForm(forms.ModelForm):
@@ -80,10 +81,17 @@ class CentroEmergenciaForm(forms.ModelForm):
             'is_active': 'Activo',
         }
 
+    def __init__(self, *args, **kwargs):
+        super(CentroEmergenciaForm, self).__init__(*args, **kwargs)
+        self.fields['lat'].widget.attrs['readonly'] = True
+        self.fields['lng'].widget.attrs['readonly'] = True
+        self.fields['lat'].initial = '-17.783308'
+        self.fields['lng'].initial = '-63.182118'
+
 
 class DispositivoGpsForm(forms.ModelForm):
     helper = FormHelper()
-    helper.form_tag = False
+    helper.form_tag = True
 
     class Meta:
         model = DispositivoGPS
@@ -105,3 +113,12 @@ class DispositivoGpsForm(forms.ModelForm):
             'time': 'Fecha y Hora',
             'is_active': 'Activo',
         }
+
+    def __init__(self, *args, **kwargs):
+        super(DispositivoGpsForm, self).__init__(*args, **kwargs)
+        self.fields['lat'].widget.attrs['readonly'] = True
+        self.fields['lng'].widget.attrs['readonly'] = True
+        self.fields['time'].widget.attrs['readonly'] = True
+        self.fields['lat'].initial = '-17.783308'
+        self.fields['lng'].initial = '-63.182118'
+        self.fields['time'].initial = timezone.now()

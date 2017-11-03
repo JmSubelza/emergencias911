@@ -21,7 +21,7 @@ TIPO = (
 
 
 class TipoVehiculo(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Descripción')
+    name = models.CharField(max_length=100, verbose_name='Descripción', unique=True)
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 
     class Meta:

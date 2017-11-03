@@ -19,7 +19,7 @@ ESTADO_ASIGNACION = (
 
 
 class TipoIncidente(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Descripción')
+    name = models.CharField(unique=True, max_length=100, verbose_name='Descripción')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 
     def __str__(self):
@@ -27,7 +27,7 @@ class TipoIncidente(models.Model):
 
 
 class Incidente(models.Model):
-    time = models.DateTimeField(auto_now_add=True, verbose_name='Tiempo', null=True)
+    time = models.DateTimeField(verbose_name='Tiempo', null=True)
     descripcion = models.TextField()
     estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO_INCIDENTE, default='NUEVO')
     lat = models.DecimalField(max_digits=100, decimal_places=6, verbose_name='Latitud')
@@ -44,7 +44,7 @@ class Incidente(models.Model):
 
 
 class AsignacionIncidente(models.Model):
-    time = models.DateTimeField(auto_now_add=True, verbose_name='Tiempo', null=True)
+    time = models.DateTimeField(verbose_name='Tiempo', null=True)
     estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO_ASIGNACION, default='EN CURSO')
     incidente = models.OneToOneField(Incidente)
     centro_emergencia = models.ForeignKey(CentroEmergencia, blank=True)

@@ -15,7 +15,7 @@ class IncidenteCreate(SuccessMessageMixin, CreateView):
     form_class = IncidenteForm
     template_name = 'logistica/incidente_form.html'
     success_url = reverse_lazy('logistica:incidente')
-    success_message = "El incidente Nº '%(id)s' fue creado con éxito"
+    success_message = "El incidente fue creado con éxito"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -63,7 +63,7 @@ class IncidenteUpdate(SuccessMessageMixin, UpdateView):
     form_class = IncidenteForm
     template_name = 'logistica/incidente_update.html'
     success_url = reverse_lazy('logistica:incidente')
-    success_message = "El incidente Nº '%(id)s' fue modificado con éxito"
+    success_message = "El incidente fue modificado con éxito"
 
 
 class IncidenteDelete(DeleteView):
@@ -83,7 +83,7 @@ class TipoIncidenteCreate(SuccessMessageMixin, CreateView):
     form_class = TipoIncidenteForm
     template_name = 'logistica/tipo_incidente_form.html'
     success_url = reverse_lazy('logistica:tipo_incidente')
-    success_message = "El tipo de incidente '%(name)s' fue creado con éxito"
+    success_message = "El tipo de incidente fue creado con éxito"
 
 
 class TipoIncidenteUpdate(SuccessMessageMixin, UpdateView):
@@ -91,7 +91,7 @@ class TipoIncidenteUpdate(SuccessMessageMixin, UpdateView):
     form_class = TipoIncidenteForm
     template_name = 'logistica/tipo_incidente_form.html'
     success_url = reverse_lazy('logistica:tipo_incidente')
-    success_message = "El tipo de incidente '%(name)s' fue modificado con éxito"
+    success_message = "El tipo de incidente fue modificado con éxito"
 
 
 class TipoIncidenteList(ListView):
@@ -132,7 +132,7 @@ class AsignacionIncidenteCreate(SuccessMessageMixin, CreateView):
     form_class = AsignacionIncidenteForm
     template_name = 'logistica/asignacion_incidente_form.html'
     success_url = reverse_lazy('logistica:asignacion_incidente')
-    success_message = "La asignación Nº '%(name)s' fue creada con éxito"
+    success_message = "La asignación fue creada con éxito"
 
 
 class AsignacionIncidenteDetail(DetailView):
@@ -177,7 +177,7 @@ class AsignacionIncidenteUpdate(SuccessMessageMixin, UpdateView):
     form_class = AsignacionIncidenteForm
     template_name = 'logistica/asignacion_incidente_form.html'
     success_url = reverse_lazy('logistica:asignacion_incidente')
-    success_message = "La asignación Nº '%(name)s' fue modificada con éxito"
+    success_message = "La asignación fue modificada con éxito"
 
 
 class AsignacionIncidenteDelete(DeleteView):

@@ -7,7 +7,7 @@ from django.utils import timezone
 class VehiculoForm(forms.ModelForm):
     helper = FormHelper()
     helper.form_tag = False
-
+    gps_id = forms.ModelChoiceField(queryset=DispositivoGPS.objects.exclude(id__in=[x.gps_id.id for x in Vehiculo.objects.all()]))
     class Meta:
         model = Vehiculo
         fields = [
@@ -91,7 +91,7 @@ class CentroEmergenciaForm(forms.ModelForm):
 
 class DispositivoGpsForm(forms.ModelForm):
     helper = FormHelper()
-    helper.form_tag = True
+    helper.form_tag = False
 
     class Meta:
         model = DispositivoGPS

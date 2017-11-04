@@ -1,6 +1,6 @@
-#encoding:utf-8
+# encoding:utf-8
 from django import forms
-from .models import Incidente, TipoIncidente, AsignacionIncidente
+from .models import Incidente, TipoIncidente, AsignacionIncidente, Vehiculo
 from crispy_forms.helper import FormHelper, Layout
 from django.utils import timezone
 
@@ -69,3 +69,11 @@ class AsignacionIncidenteForm(forms.ModelForm):
         super(AsignacionIncidenteForm, self).__init__(*args, **kwargs)
         self.fields['time'].widget.attrs['readonly'] = True
         self.fields['time'].initial = timezone.now()
+
+        if not kwargs['instance'] is None:
+            _queryset = Incidente.objects.exclude(
+                id__in=[x.incidente.id for x in AsignacionIncidente.objects.all() if x.id != kwargs['instance'].id])
+        else:
+            _queryset = Incidente.objects.exclude(id__in=[x.incidente.id for x in AsignacionIncidente.objects.all()])
+        self.fields["incidente"].queryset = _queryset
+

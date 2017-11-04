@@ -1,14 +1,13 @@
 # encoding:utf-8
 from django import forms
 from .models import Incidente, TipoIncidente, AsignacionIncidente, Vehiculo
-from crispy_forms.helper import FormHelper, Layout
+from crispy_forms.helper import FormHelper
 from django.utils import timezone
 
 
 class IncidenteForm(forms.ModelForm):
     helper = FormHelper()
     helper.form_tag = False
-
     descripcion = forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'cols': 15}))
 
     class Meta:
@@ -76,4 +75,3 @@ class AsignacionIncidenteForm(forms.ModelForm):
         else:
             _queryset = Incidente.objects.exclude(id__in=[x.incidente.id for x in AsignacionIncidente.objects.all()])
         self.fields["incidente"].queryset = _queryset
-

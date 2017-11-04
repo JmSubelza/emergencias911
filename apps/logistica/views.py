@@ -1,4 +1,4 @@
-#encoding:utf-8
+# encoding:utf-8
 from datetime import datetime
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -20,7 +20,7 @@ class IncidenteCreate(SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super().form_valid(form)
+        return super(IncidenteCreate, self).form_valid(form)
 
 
 class IncidenteList(ListView):

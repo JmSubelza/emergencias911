@@ -45,7 +45,7 @@ class Incidente(models.Model):
 
 
 class AsignacionIncidente(models.Model):
-    time = models.DateTimeField(verbose_name='Tiempo', null=True)
+    time = models.DateTimeField(verbose_name='Fecha y hora', null=True)
     estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO_ASIGNACION, default='EN CURSO')
     incidente = models.OneToOneField(Incidente)
     centro_emergencia = models.ForeignKey(CentroEmergencia, blank=True)

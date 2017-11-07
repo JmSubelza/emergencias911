@@ -76,9 +76,11 @@ class AsignacionIncidenteForm(forms.ModelForm):
             _queryset = Incidente.objects.exclude(id__in=[x.incidente.id for x in AsignacionIncidente.objects.all()])
         self.fields["incidente"].queryset = _queryset
 
+        # vehiculo.placa for vehiculo in self.vehiculos.all()
+
         # if not kwargs['instance'] is None:
         #     _queryset = Vehiculo.objects.exclude(
-        #         id__in=[x.vehiculos.id for x in AsignacionIncidente.objects.all() if x.id != kwargs['instance'].id])
+        #         id__in=[x.vehiculos.placa for x in AsignacionIncidente.objects.all() if x.placa != kwargs['instance'].placa])
         # else:
-        #     _queryset = Vehiculo.objects.exclude(id__in=[x.vehiculos.id for x in AsignacionIncidente.objects.all()])
+        #     _queryset = Vehiculo.objects.exclude(placa__in=[x.vehiculos.placa for x in AsignacionIncidente.objects.all()])
         # self.fields["vehiculos"].queryset = _queryset

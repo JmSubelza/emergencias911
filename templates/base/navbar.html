@@ -21,8 +21,7 @@
                         <li><a href="{% url 'administracion:usuario' %}">Personal</a></li>
                         <li><a href="{% url 'administracion:grupo' %}">Grupos y Privilegios</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Generar backup</a></li>
-                        <li><a href="#">Restaurar backup</a></li>
+                        <li><a href="{% url 'backups:backups_view' %}">Generar backup</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

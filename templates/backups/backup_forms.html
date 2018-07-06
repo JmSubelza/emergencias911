@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block content %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Respaldo de Base de datos y medios</div>
+        <div class="panel-body">
+            <div class="col-md-4">
+                <object data="{{ MEDIA_URL }}icons/database.svg" width="100%" height="150" type="image/svg+xml">
+                    SVG no soportado.
+                </object>
+            </div>
+            <div class="col-md-6">
+                <div class="table-responsive">
+
+                    <h2>Respaldo de Base de datos</h2>
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        {{ database_backup_form.as_p }}
+                        <div class="submit-row">
+                            <input type="submit" class="btn btn-warning" name="savebackup" value="Descargar base datos">
+                        </div>
+                    </form>
+                    <br/>
+                    <hr/>
+
+                    <h2>Respaldo de medios </h2>
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        {{ media_backup_form.as_p }}
+                        <div class="submit-row">
+                            <input type="submit" class="btn btn-warning" name="mediabackup" value="Descargar medios">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

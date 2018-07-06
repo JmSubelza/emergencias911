@@ -4,3 +4,4 @@ djangorestframework
 django-filter
 markdown
 django-crispy-forms
+django-dbbackup

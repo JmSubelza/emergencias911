@@ -45,6 +45,7 @@ router.register(r'tipo-incidentes', TipoIncidenteViewSet)
 router.register(r'asignacion-incidentes', AsignacionIncidenteViewSet)
 
 urlpatterns = [
+
                   url(r'^api/', include(router.urls, namespace='api')),
                   url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
@@ -53,6 +54,7 @@ urlpatterns = [
                   url(r'^servicios/', include('apps.servicios.urls', namespace="servicios")),
                   url(r'^administracion/', include('apps.administracion.urls', namespace="administracion")),
                   url(r'^logistica/', include('apps.logistica.urls', namespace="logistica")),
+                  url(r'^backups/', include('apps.backups.urls', namespace="backups")),
 
                   url(r'^accounts/login/$', login, {'template_name': 'base/login.html'}, name='login'),
                   url(r'^logout/$', logout_then_login, name='logout'),

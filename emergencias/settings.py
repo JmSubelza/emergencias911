@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'apps.logistica',
     'apps.reportes',
     'apps.api',
+    'apps.backups',
+    'dbbackup',  # django-dbbackup
+
 ]
 
 MIDDLEWARE = [
@@ -89,6 +92,12 @@ DATABASES = {
     }
 }
 
+DBBACKUP_CONNECTORS = {
+    'default': {
+        'ENGINE': 'dbbackup.db.sqlite.SqliteConnector',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -140,6 +149,10 @@ EMAIL_HOST_PASSWORD = '12058812'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# Ubicacion de respaldo.
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': '/backup-db'}
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

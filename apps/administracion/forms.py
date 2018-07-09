@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User, Group
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Field
+from crispy_forms.layout import Layout
 from crispy_forms.bootstrap import TabHolder, Tab
 
 
@@ -18,6 +18,7 @@ class UserForm(forms.ModelForm):
                 'Información Básica',
                 'first_name',
                 'last_name',
+                'email',
                 'username',
                 'password',
             ),

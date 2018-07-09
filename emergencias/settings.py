@@ -149,8 +149,8 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'joseloms@gmail.com'
-EMAIL_HOST_PASSWORD = '12058812'
+EMAIL_HOST_USER = 'proyecto.emergencias.911@gmail.com'
+EMAIL_HOST_PASSWORD = 'Emergencias911'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

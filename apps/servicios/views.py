@@ -1,13 +1,18 @@
-from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from .forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm, DispositivoGpsForm
 from .models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
+from django.shortcuts import redirect
 
 
-class VehiculoList(ListView):
+class VehiculoList(LoginRequiredMixin, ListView):
     model = Vehiculo
     template_name = 'servicios/vehiculo_list.html'
+
+    # permission_required = 'servicios.view_vehiculo'
 
     def get_queryset(self):
         # Filtra por activo o inactivo
@@ -25,34 +30,59 @@ class VehiculoList(ListView):
         return c
 
 
-class VehiculoDetail(DetailView):
+class VehiculoDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Vehiculo
     template_name = 'servicios/vehiculo_detail.html'
+    permission_required = 'servicios.view_vehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:vehiculo')
 
 
-class VehiculoCreate(CreateView):
+class VehiculoCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Vehiculo
     form_class = VehiculoForm
     template_name = 'servicios/vehiculo_form.html'
     success_url = reverse_lazy('servicios:vehiculo')
+    success_message = "El vehiculo con placa (%(placa)s) fue creado con éxito"
+    permission_required = 'servicios.add_vehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:vehiculo')
 
 
-class VehiculoUpdate(UpdateView):
+class VehiculoUpdate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Vehiculo
     form_class = VehiculoForm
     template_name = 'servicios/vehiculo_form.html'
     success_url = reverse_lazy('servicios:vehiculo')
+    success_message = "El vehiculo con placa (%(placa)s) fue modificado con éxito"
+    permission_required = 'servicios.change_vehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:vehiculo')
 
 
-class VehiculoDelete(DeleteView):
+class VehiculoDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Vehiculo
     template_name = 'servicios/vehiculo_delete.html'
     success_url = reverse_lazy('servicios:vehiculo')
+    success_message = "El vehiculo con placa fue eliminado con éxito"
+    permission_required = 'servicios.delete_vehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:vehiculo')
 
 
-class TipoVehiculoList(ListView):
+class TipoVehiculoList(LoginRequiredMixin, ListView):
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_list.html'
+
+    # permission_required = 'servicios.view_tipovehiculo'
 
     def get_queryset(self):
         # Filtra por activo o inactivo
@@ -66,34 +96,59 @@ class TipoVehiculoList(ListView):
         return c
 
 
-class TipoVehiculoCreate(CreateView):
+class TipoVehiculoCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = TipoVehiculo
     form_class = TipoVehiculoForm
     template_name = 'servicios/tipo_vehiculo_form.html'
     success_url = reverse_lazy('servicios:tipo_vehiculo')
+    success_message = "El tipo de vehiculo (%(name)s) fue creado con éxito"
+    permission_required = 'servicios.add_tipovehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:tipo_vehiculo')
 
 
-class TipoVehiculoDetail(DetailView):
+class TipoVehiculoDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_detail.html'
+    permission_required = 'servicios.view_tipovehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:tipo_vehiculo')
 
 
-class TipoVehiculoUpdate(UpdateView):
+class TipoVehiculoUpdate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = TipoVehiculo
     form_class = TipoVehiculoForm
     template_name = 'servicios/tipo_vehiculo_form.html'
     success_url = reverse_lazy('servicios:tipo_vehiculo')
+    success_message = "El tipo de vehiculo (%(name)s) fue modificado con éxito"
+    permission_required = 'servicios.change_tipovehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:tipo_vehiculo')
 
 
-class TipoVehiculoDelete(DeleteView):
+class TipoVehiculoDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, DeleteView):
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_delete.html'
     success_url = reverse_lazy('servicios:tipo_vehiculo')
+    success_message = "El tipo de vehiculo fue eliminado con éxito"
+    permission_required = 'servicios.delete_tipovehiculo'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:tipo_vehiculo')
 
 
-class CentroEmergernciaList(ListView):
+class CentroEmergernciaList(LoginRequiredMixin, ListView):
     model = CentroEmergencia
     template_name = 'servicios/centro_emergencia_list.html'
+
+    # permission_required = 'servicios.view_centroemergencia'
 
     def get_queryset(self):
         # Filtra por activo o inactivo
@@ -119,34 +174,59 @@ class CentroEmergernciaList(ListView):
         return c
 
 
-class CentroEmergenciaDetail(DetailView):
+class CentroEmergenciaDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = CentroEmergencia
     template_name = 'servicios/centro_emergencia_detail.html'
+    permission_required = 'servicios.view_centroemergencia'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:centro_emergencia')
 
 
-class CentroEmergenciaCreate(CreateView):
+class CentroEmergenciaCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = CentroEmergencia
     form_class = CentroEmergenciaForm
     template_name = 'servicios/centro_emergencia_form.html'
     success_url = reverse_lazy('servicios:centro_emergencia')
+    success_message = "El centro de emergencia (%(name)s) fue creado con éxito"
+    permission_required = 'servicios.add_centroemergencia'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:centro_emergencia')
 
 
-class CentroEmergenciaUpdate(UpdateView):
+class CentroEmergenciaUpdate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = CentroEmergencia
     form_class = CentroEmergenciaForm
     template_name = 'servicios/centro_emergencia_update.html'
     success_url = reverse_lazy('servicios:centro_emergencia')
+    success_message = "El centro de emergencia (%(name)s) fue modificado con éxito"
+    permission_required = 'servicios.change_centroemergencia'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:centro_emergencia')
 
 
-class CentroEmergenciaDelete(DeleteView):
+class CentroEmergenciaDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, DeleteView):
     model = CentroEmergencia
     template_name = 'servicios/centro_emergencia_delete.html'
     success_url = reverse_lazy('servicios:centro_emergencia')
+    success_message = "El centro de emergencia fue eliminado con éxito"
+    permission_required = 'servicios.delete_centroemergencia'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:centro_emergencia')
 
 
-class DispositivoGpsList(ListView):
+class DispositivoGpsList(LoginRequiredMixin, ListView):
     model = DispositivoGPS
-    template_name = 'servicios/dispositivi_gps_list.html'
+    template_name = 'servicios/dispositivo_gps_list.html'
+
+    # permission_required = 'servicios.view_dispositivogps'
 
     def get_queryset(self):
         # Filtra por activo o inactivo
@@ -161,26 +241,49 @@ class DispositivoGpsList(ListView):
         return c
 
 
-class DispositivoGpsDetail(DetailView):
+class DispositivoGpsDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = DispositivoGPS
     template_name = 'servicios/dispositivo_gps_detail.html'
+    permission_required = 'servicios.view_dispositivogps'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:dispositivo_gps')
 
 
-class DispositivoGpsCreate(CreateView):
+class DispositivoGpsCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = DispositivoGPS
     form_class = DispositivoGpsForm
     template_name = 'servicios/dispositivo_gps_form.html'
     success_url = reverse_lazy('servicios:dispositivo_gps')
+    success_message = "El GPS con imei (%(imei)s) fue creado con éxito"
+    permission_required = 'servicios.add_dispositivogps'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:dispositivo_gps')
 
 
-class DispositivoGpsUpdate(UpdateView):
+class DispositivoGpsUpdate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = DispositivoGPS
     form_class = DispositivoGpsForm
     template_name = 'servicios/dispositivo_gps_form.html'
     success_url = reverse_lazy('servicios:dispositivo_gps')
+    success_message = "El GPS con imei (%(imei)s) fue modificado con éxito"
+    permission_required = 'servicios.change_dispositivogps'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:dispositivo_gps')
 
 
-class DispositivoGpsDelete(DeleteView):
+class DispositivoGpsDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, DeleteView):
     model = DispositivoGPS
     template_name = 'servicios/dispositivo_gps_delete.html'
     success_url = reverse_lazy('servicios:dispositivo_gps')
+    success_message = "El GPS con imei fue eliminado con éxito"
+    permission_required = 'servicios.delete_dispositivogps'
+
+    def handle_no_permission(self):
+        messages.error(self.request, 'No tienes permiso para hacer esto')
+        return redirect('servicios:dispositivo_gps')

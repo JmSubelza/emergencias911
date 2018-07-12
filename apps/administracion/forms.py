@@ -1,4 +1,4 @@
-#encoding:utf-8
+# encoding:UTF-8
 from django.contrib.auth.models import User, Group
 from django import forms
 from crispy_forms.helper import FormHelper
@@ -21,9 +21,6 @@ class UserForm(forms.ModelForm):
                 'email',
                 'username',
                 'password',
-            ),
-            Tab(
-                'Grupo y Permisos',
                 'groups',
                 'is_staff',
                 'is_superuser',

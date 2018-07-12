@@ -36,6 +36,7 @@ router.register(r'usuarios', UserViewSet)
 router.register(r'grupos', GroupViewSet)
 
 router.register(r'centro-emergencias', CentroEmergenciaViewSet)
+router.register(r'tipo-centro-emergencias', CentroEmergenciaViewSet)
 router.register(r'vehiculos', VehiculoViewSet)
 router.register(r'tipo-vehiculos', TipoVehiculoViewSet)
 router.register(r'dispositivos-gps', DispositivoGPSViewSet)

@@ -4,6 +4,6 @@
         {% csrf_token %}
         <h3>Desea eliminar el centro de emergencias "{{ centroemergencia.name }}"</h3>
         <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
-        <a href="{% url 'servicios:tipo_vehiculo' %}" class="btn btn-default">Cancelar</a>
+        <a href="{% url 'servicios:centro_emergencia' %}" class="btn btn-default">Cancelar</a>
     </form>
 {% endblock %}

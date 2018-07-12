@@ -3,7 +3,8 @@ from .views import \
     VehiculoList, VehiculoCreate, VehiculoUpdate, VehiculoDelete, VehiculoDetail, TipoVehiculoList, TipoVehiculoCreate, \
     TipoVehiculoUpdate, TipoVehiculoDelete, TipoVehiculoDetail, CentroEmergernciaList, CentroEmergenciaCreate, \
     CentroEmergenciaUpdate, CentroEmergenciaDelete, CentroEmergenciaDetail, DispositivoGpsList, DispositivoGpsCreate, \
-    DispositivoGpsUpdate, DispositivoGpsDelete, DispositivoGpsDetail
+    DispositivoGpsUpdate, DispositivoGpsDelete, DispositivoGpsDetail, TipoCentroEmergenciaList, \
+    TipoCentroEmergenciaCreate, TipoCentroEmergenciaUpdate, TipoCentroEmergenciaDelete, TipoCentroEmergenciaDetail
 
 urlpatterns = [
     url(r'^vehiculo/$', VehiculoList.as_view(), name='vehiculo'),
@@ -30,6 +31,15 @@ urlpatterns = [
         name='centro_emergencia_eliminar'),
     url(r'^centroemergencia/detalle/(?P<pk>\d+)/$', CentroEmergenciaDetail.as_view(),
         name='centro_emergencia_detalle'),
+
+    url(r'^tipocentroemergencia/$', TipoCentroEmergenciaList.as_view(), name='tipo_centro_emergencia'),
+    url(r'^tipocentroemergencia/nuevo/$', TipoCentroEmergenciaCreate.as_view(), name='tipo_centro_emergencia_crear'),
+    url(r'^tipocentroemergencia/editar/(?P<pk>\d+)/$', TipoCentroEmergenciaUpdate.as_view(),
+        name='tipo_centro_emergencia_editar'),
+    url(r'^tipocentroemergencia/eliminar/(?P<pk>\d+)/$', TipoCentroEmergenciaDelete.as_view(),
+        name='tipo_centro_emergencia_eliminar'),
+    url(r'^tipocentroemergencia/detalle/(?P<pk>\d+)/$', TipoCentroEmergenciaDetail.as_view(),
+        name='tipo_centro_emergencia_detalle'),
 
     url(r'^dispositivogps/$', DispositivoGpsList.as_view(), name='dispositivo_gps'),
     url(r'^dispositivogps/nuevo/$', DispositivoGpsCreate.as_view(), name='dispositivo_gps_crear'),

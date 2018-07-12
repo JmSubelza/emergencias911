@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <form method="post">
+        {% crispy form %}
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'servicios:tipo_centro_emergencia' %}" class="btn btn-warning">Cancelar</a>
+    </form>
+{% endblock %}

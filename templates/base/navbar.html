@@ -29,6 +29,8 @@
                             class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'servicios:centro_emergencia' %}">Centros de Emergencia</a></li>
+                        <li><a href="{% url 'servicios:tipo_centro_emergencia' %}">Tipo de Centros de Emergencia</a>
+                        </li>
                         <li><a href="{% url 'servicios:vehiculo' %}">Vehiculos</a></li>
                         <li><a href="{% url 'servicios:tipo_vehiculo' %}">Tipo vehiculos</a></li>
                         <li><a href="{% url 'servicios:dispositivo_gps' %}">Dispositivos GPS</a></li>
@@ -60,7 +62,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.get_full_name }}</a></li>
-                    <li><a href="{% url 'logout' %}">Salir</a></li>
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
                 {% else %}
                     <li><a href="#">Ingresar</a></li>
                 {% endif %}

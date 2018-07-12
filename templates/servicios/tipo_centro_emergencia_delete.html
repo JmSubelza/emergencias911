@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h3>Desea eliminar el registro del centro de emergencia con descripcion "{{ tipo_centroemergencia.name }}"</h3>
+        <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
+        <a href="{% url 'servicios:tipo_centro_emergencia' %}" class="btn btn-default">Cancelar</a>
+    </form>
+{% endblock %}

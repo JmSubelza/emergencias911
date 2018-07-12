@@ -1,7 +1,7 @@
-#encoding:utf-8
+# encoding:utf-8
 from django import forms
 from crispy_forms.helper import FormHelper
-from .models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS
+from .models import Vehiculo, TipoVehiculo, CentroEmergencia, DispositivoGPS, TipoCentroEmergencia
 from django.utils import timezone
 
 
@@ -13,7 +13,6 @@ class VehiculoForm(forms.ModelForm):
         model = Vehiculo
         fields = [
             'placa',
-            'name',
             'marca',
             'modelo',
             'nro_motor',
@@ -25,7 +24,6 @@ class VehiculoForm(forms.ModelForm):
         ]
         labels = {
             'placa': 'Placa',
-            'name': 'Nombre',
             'marca': 'Marca',
             'modelo': 'Modelo',
             'nro_motor': 'Número Motor',
@@ -39,10 +37,12 @@ class VehiculoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(VehiculoForm, self).__init__(*args, **kwargs)
         if not kwargs['instance'] is None:
-            _queryset = DispositivoGPS.objects.exclude(id__in=[x.gps_id.id for x in Vehiculo.objects.all() if x.id!= kwargs['instance'].id])
+            _queryset = DispositivoGPS.objects.exclude(
+                id__in=[x.gps_id.id for x in Vehiculo.objects.all() if x.id != kwargs['instance'].id])
         else:
             _queryset = DispositivoGPS.objects.exclude(id__in=[x.gps_id.id for x in Vehiculo.objects.all()])
         self.fields["gps_id"].queryset = _queryset
+
 
 class TipoVehiculoForm(forms.ModelForm):
     helper = FormHelper()
@@ -50,6 +50,22 @@ class TipoVehiculoForm(forms.ModelForm):
 
     class Meta:
         model = TipoVehiculo
+        fields = [
+            'name',
+            'is_active',
+        ]
+        labels = {
+            'name': 'Descripción',
+            'is_active': 'Activo',
+        }
+
+
+class TipoCentroEmergenciaForm(forms.ModelForm):
+    helper = FormHelper()
+    helper.form_tag = False
+
+    class Meta:
+        model = TipoCentroEmergencia
         fields = [
             'name',
             'is_active',
@@ -73,19 +89,17 @@ class CentroEmergenciaForm(forms.ModelForm):
             'lat',
             'lng',
             'sector',
-            'nivel',
-            'tipo',
+            'tipo_id',
             'is_active',
         ]
         labels = {
-            'name': 'Descripción',
+            'name': 'Nombre',
             'direccion': 'Dirección',
             'telefono': 'Teléfono',
             'lat': 'Latitud',
             'lng': 'Longitud',
             'sector': 'Sector',
-            'nivel': 'Nivel',
-            'tipo': 'Tipo',
+            'tipo_id': 'Tipo',
             'is_active': 'Activo',
         }
 

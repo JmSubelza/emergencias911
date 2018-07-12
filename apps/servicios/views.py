@@ -348,7 +348,7 @@ class TipoCentroEmergenciaDelete(LoginRequiredMixin, PermissionRequiredMixin, Su
     template_name = 'servicios/tipo_centro_emergencia_delete.html'
     success_url = reverse_lazy('servicios:tipo_centro_emergencia')
     success_message = "El tipo de vehiculo fue eliminado con éxito"
-    permission_required = 'servicios.delete_tipovehiculo'
+    permission_required = 'servicios.delete_tipocentroemergencia'
 
     def handle_no_permission(self):
         messages.error(self.request, 'No tienes permiso para hacer esto')

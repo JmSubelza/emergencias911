@@ -20,14 +20,14 @@ from django.contrib import admin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
 
-admin.autodiscover()
-
 from rest_framework import routers
 from apps.api.viewsets import UserViewSet, GroupViewSet, TipoIncidenteViewSet, IncidenteViewSet, \
     AsignacionIncidenteViewSet, CentroEmergenciaViewSet, TipoVehiculoViewSet, VehiculoViewSet, DispositivoGPSViewSet
 
 from django.contrib.auth.views import login, logout_then_login, \
     password_reset, password_reset_done, password_reset_confirm, password_reset_complete
+
+admin.autodiscover()
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()

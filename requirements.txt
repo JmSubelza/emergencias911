@@ -10,7 +10,7 @@ djangorestframework==3.8.2
 gunicorn==19.9.0
 idna==2.7
 Markdown==2.6.11
-psycopg2==2.6.2
+psycopg2
 pytz==2018.5
 requests==2.19.1
 six==1.11.0

@@ -76,12 +76,6 @@
                             <option value="publico">PUBLICO</option>
                             <option value="privado">PRIVADO</option>
                         </optgroup>
-                        <optgroup label="TIPO">
-                            <option value="salud">SALUD</option>
-                            <option value="seguridad">SEGURIDAD</option>
-                            <option value="bomberos">BOMBEROS</option>
-                            <option value="transito">TRANSITO</option>
-                        </optgroup>
                     </select>
                     <button type="submit" class="btn btn-success form-control"><span
                             class="glyphicon glyphicon-search"></span>
@@ -141,19 +135,19 @@
                 </td>
                 <td>
                     {% if perms.servicios.view_centroemergencia %}
-                        <a href="{% url 'servicios:centro_emergencia_detalle' centro_emergencia.id %}"
-                           class="btn btn-info btn-xs"><span class="glyphicon glyphicon glyphicon-info-sign"
-                                                             aria-hidden="true"></span> Detalle</a>
+                        <a onclick="return openModal('{% url 'servicios:centro_emergencia_detalle' centro_emergencia.id %}')"
+                           class="btn">
+                            <span class="glyphicon glyphicon-eye-open"></span></a>
                     {% endif %}
                     {% if perms.servicios.change_centroemergencia %}
-                        <a href="{% url 'servicios:centro_emergencia_editar' centro_emergencia.id %}"
-                           class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"
-                                                                aria-hidden="true"></span> Editar</a>
+                        <a href="{% url 'servicios:centro_emergencia_editar' centro_emergencia.id %}" class="btn">
+                            <span class="glyphicon glyphicon-pencil"></span></a>
                     {% endif %}
                     {% if perms.servicios.delete_centroemergencia %}
-                        <a href="{% url 'servicios:centro_emergencia_eliminar' centro_emergencia.id %}"
-                           class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"
-                                                               aria-hidden="true"></span> Eliminar</a>
+                        <a onclick="return openModal('{% url 'servicios:centro_emergencia_eliminar' centro_emergencia.id %}')"
+                           class="btn">
+                            <span class="glyphicon glyphicon-trash"></span></a>
+
                     {% endif %}
                 </td>
             </tr>
@@ -164,4 +158,9 @@
         <a href="{% url 'servicios:centro_emergencia_crear' %}" class="btn btn-success">Nuevo</a>
     {% endif %}
     <a href="javascript:history.back()" class="btn btn-warning">Cancelar</a>
+
+    <div id="popup" class="modal fade" role="dialog">
+
+    </div>
+
 {% endblock %}

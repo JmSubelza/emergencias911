@@ -1,120 +1,128 @@
-{% extends "base/base.html" %}
 {% load staticfiles %}
-{% block content %}
-    <script type="text/javascript">
+<script type="text/javascript">
+    function mapaAsigIncidente() {
+        var map = new google.maps.Map(document.getElementById('maps'), {
+            center: {lat: {{ object.incidente.lat }}, lng: {{ object.incidente.lng }}},
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: false,
+            streetViewControl: false,
+            zoomControl: true,
+            mapTypeControl: false,
+            styles: [
+                {stylers: [{visibility: 'simplified'}]},
+                {elementType: 'labels', stylers: [{visibility: 'on'}]}
+            ]
+        });
+        var infowindow = new google.maps.InfoWindow();
+        var marker;
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng({{ object.incidente.lat }}, {{ object.incidente.lng }}),
+            map: map
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent('<b>Descripción: </b>{{ object.incidente.descripcion }}');
+                infowindow.open(map, marker);
+                map.setZoom(15);
+                map.setCenter(marker.getPosition());
+            }
+        );
+    }
+</script>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4>Detalle asignacion de incidentes "{{ object.id }}"</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row center-block">
 
-        function mapaAsigIncidente() {
-            var map = new google.maps.Map(document.getElementById('maps'), {
-                center: {lat: {{ object.incidente.lat }}, lng: {{ object.incidente.lng }}},
-                zoom: 14,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                scrollwheel: false,
-                streetViewControl: false,
-                zoomControl: true,
-                mapTypeControl: false,
-                styles: [
-                    {stylers: [{visibility: 'simplified'}]},
-                    {elementType: 'labels', stylers: [{visibility: 'on'}]}
-                ]
-            });
-            var infowindow = new google.maps.InfoWindow();
-            var marker;
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng({{ object.incidente.lat }}, {{ object.incidente.lng }}),
-                map: map
-            });
-            google.maps.event.addListener(marker, 'click', function () {
-                        infowindow.setContent('<b>Descripción: </b>{{ object.incidente.descripcion }}');
-                        infowindow.open(map, marker);
-                        map.setZoom(15);
-                        map.setCenter(marker.getPosition());
-                    }
-            );
-        }
-    </script>
-    <div class="panel panel-default">
-        <div class="panel-heading">Detalle asignación incidentes</div>
-        <div class="panel-body">
-            <div class="col-md-4">
-                <object data="{{ MEDIA_URL }}icons/ambulance.svg" width="100%" height="150" type="image/svg+xml">
-                    SVG no soportado.
-                </object>
-                <br>
-                <div id="maps" style="max-width:none!important; height:250px; border: 1px solid black"></div>
-            </div>
-
-            <div class="col-md-6">
-                <strong>Información</strong><br>
-                <div class="table-responsive">
-                    <table class="table table-user-information">
-                        <tbody>
-                        {% if object.id %}
-                            <tr>
-                                <th class="col-md-3 text-right">Id</th>
-                                <td>{{ object.id }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.time %}
-                            <tr>
-                                <th class="col-md-3 text-right">Hora y Fecha</th>
-                                <td>{{ object.time|date:"d/m/Y H:m:s" }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.incidente.id %}
-                            <tr>
-                                <th class="col-md-3 text-right">Nº de Incidente</th>
-                                <td>{{ object.incidente.id }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.incidente.descripcion %}
-                            <tr>
-                                <th class="col-md-3 text-right">Descripción</th>
-                                <td>{{ object.incidente.descripcion }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.estado %}
-                            <tr>
-                                <th class="col-md-3 text-right">Centro de Emergencia</th>
-                                <td>{{ object.centro_emergencia }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.vehiculos %}
-                            <tr>
-                                <th class="col-md-3 text-right">Vehiculos</th>
-                                <td>{{ object.get_string_vehiculos }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.estado %}
-                            <tr>
-                                <th class="col-md-3 text-right">Estado</th>
-                                <td>{{ object.estado }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.incidente.lat %}
-                            <tr>
-                                <th class="col-md-3 text-right">Ubicación</th>
-                                <td>Lat: {{ object.incidente.lat }}, Lng: {{ object.incidente.lng }}</td>
-                            </tr>
-                        {% endif %}
-                        {% if object.is_active %}
-                            <tr>
-                                <th class="col-md-3 text-right">Activo</th>
-                                <td><span class="glyphicon glyphicon-ok" aria-hidden="true">Activo</span></td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <th class="col-md-3 text-right">Activo</th>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true">Inactivo</span></td>
-                            </tr>
-                        {% endif %}
-                        </tbody>
-                    </table>
+                <div class="col-md-4">
+                    <object data="{{ MEDIA_URL }}icons/ambulance.svg" width="100%" height="150" type="image/svg+xml">
+                        SVG no soportado.
+                    </object>
+                    <br>
+                    <div id="maps" style="max-width:none!important; height:250px; border: 1px solid black"></div>
                 </div>
+                <div class="col-md-6">
+                    <strong>Información</strong><br>
+                    <div class="table-responsive">
+                        <table class="table table-user-information">
+                            <tbody>
+                            {% if object.id %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Id</th>
+                                    <td>{{ object.id }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.time %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Hora y Fecha</th>
+                                    <td>{{ object.time|date:"d/m/Y H:m:s" }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.incidente.id %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Nº de Incidente</th>
+                                    <td>{{ object.incidente.id }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.incidente.descripcion %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Descripción</th>
+                                    <td>{{ object.incidente.descripcion }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.estado %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Centro de Emergencia</th>
+                                    <td>{{ object.centro_emergencia }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.vehiculos %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Vehiculos</th>
+                                    <td>{{ object.get_string_vehiculos }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.estado %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Estado</th>
+                                    <td>{{ object.estado }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.incidente.lat %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Ubicación</th>
+                                    <td>Lat: {{ object.incidente.lat }}, Lng: {{ object.incidente.lng }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if object.is_active %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Activo</th>
+                                    <td><span class="glyphicon glyphicon-ok" aria-hidden="true">Activo</span></td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <th class="col-md-3 text-right">Activo</th>
+                                    <td><span class="glyphicon glyphicon-remove" aria-hidden="true">Inactivo</span></td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-lg-12 text-right">
+                <button type="button" class="btn btn-warning" onclick="return closeModal()">Cerrar</button>
             </div>
         </div>
     </div>
-    <a href="javascript:history.back()" class="btn btn-warning">Cancelar</a>
-{% endblock content %}
+</div>
 {% block extrajs %}
     <script src="{% static 'js/main.js' %}"></script>
     <script src="http://maps.google.com/maps/api/js?sensor=false&callback=mapaAsigIncidente" async defer></script>

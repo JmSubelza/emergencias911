@@ -96,10 +96,9 @@ class IncidenteDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessag
         return redirect('logistica:incidente')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(
-            request, 'El incidente fue eliminado')
-        return super(IncidenteDelete, self).delete(
-            request, *args, **kwargs)
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(IncidenteDelete, self).delete(request, *args, **kwargs)
 
 
 class TipoIncidenteCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
@@ -160,7 +159,7 @@ class TipoIncidenteDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMe
     model = TipoIncidente
     template_name = 'logistica/tipo_incidente_delete.html'
     success_url = reverse_lazy('logistica:tipo_incidente')
-    success_message = "El tipo de incidente fue eliminado con éxito"
+    success_message = "El tipo de incidente (%(name)s) fue eliminado con éxito"
     permission_required = 'logistica.delete_tipoincidente'
 
     def handle_no_permission(self):
@@ -168,10 +167,9 @@ class TipoIncidenteDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMe
         return redirect('logistica:tipo_incidente')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(
-            request, 'El tipo de incidente fue eliminado')
-        return super(TipoIncidenteDelete, self).delete(
-            request, *args, **kwargs)
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(TipoIncidenteDelete, self).delete(request, *args, **kwargs)
 
 
 class AsignacionIncidenteCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
@@ -256,10 +254,9 @@ class AsignacionIncidenteDelete(LoginRequiredMixin, PermissionRequiredMixin, Suc
         return redirect('logistica:asignacion_incidente')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(
-            request, 'La asignacion del incidente fue eliminado')
-        return super(AsignacionIncidenteDelete, self).delete(
-            request, *args, **kwargs)
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(AsignacionIncidenteDelete, self).delete(request, *args, **kwargs)
 
 
 class MapaIncidente(LoginRequiredMixin, ListView):

@@ -68,3 +68,22 @@ function initMapEdit(Lat, Log) {
 
     }
 };
+
+/**
+ * Open Modal CSS View, Delete
+ */
+
+function openModal(url)
+{
+	$('#popup').load(url, function()
+	{
+		$(this).modal('show');
+	});
+	return false;
+}
+
+function closeModal()
+{
+	$('#popup').modal('hide');
+	return false;
+}

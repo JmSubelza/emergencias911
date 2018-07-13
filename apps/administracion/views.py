@@ -93,10 +93,9 @@ class UsuarioDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageM
         return redirect('administracion:usuario')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(
-            request, 'El usuario fue eliminado')
-        return super(UsuarioDelete, self).delete(
-            request, *args, **kwargs)
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(UsuarioDelete, self).delete(request, *args, **kwargs)
 
 
 class GrupoList(LoginRequiredMixin, ListView):
@@ -155,7 +154,6 @@ class GrupoDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMix
         return redirect('administracion:grupo')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(
-            request, 'El grupo fue eliminado con éxito')
-        return super(GrupoDelete, self).delete(
-            request, *args, **kwargs)
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(GrupoDelete, self).delete(request, *args, **kwargs)

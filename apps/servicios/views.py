@@ -70,12 +70,17 @@ class VehiculoDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessage
     model = Vehiculo
     template_name = 'servicios/vehiculo_delete.html'
     success_url = reverse_lazy('servicios:vehiculo')
-    success_message = "El vehiculo con placa fue eliminado con éxito"
+    success_message = "El vehiculo con placa (%(placa)s)fue eliminado con éxito"
     permission_required = 'servicios.delete_vehiculo'
 
     def handle_no_permission(self):
         messages.error(self.request, 'No tienes permiso para hacer esto')
         return redirect('servicios:vehiculo')
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(VehiculoDelete, self).delete(request, *args, **kwargs)
 
 
 class TipoVehiculoList(LoginRequiredMixin, ListView):
@@ -136,12 +141,17 @@ class TipoVehiculoDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessMes
     model = TipoVehiculo
     template_name = 'servicios/tipo_vehiculo_delete.html'
     success_url = reverse_lazy('servicios:tipo_vehiculo')
-    success_message = "El tipo de vehiculo fue eliminado con éxito"
+    success_message = "El tipo de vehiculo (%(name)s) fue eliminado con éxito"
     permission_required = 'servicios.delete_tipovehiculo'
 
     def handle_no_permission(self):
         messages.error(self.request, 'No tienes permiso para hacer esto')
         return redirect('servicios:tipo_vehiculo')
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(TipoVehiculoDelete, self).delete(request, *args, **kwargs)
 
 
 class CentroEmergernciaList(LoginRequiredMixin, ListView):
@@ -214,12 +224,17 @@ class CentroEmergenciaDelete(LoginRequiredMixin, PermissionRequiredMixin, Succes
     model = CentroEmergencia
     template_name = 'servicios/centro_emergencia_delete.html'
     success_url = reverse_lazy('servicios:centro_emergencia')
-    success_message = "El centro de emergencia fue eliminado con éxito"
+    success_message = "El centro de emergencia (%(name)s) fue eliminado con éxito"
     permission_required = 'servicios.delete_centroemergencia'
 
     def handle_no_permission(self):
         messages.error(self.request, 'No tienes permiso para hacer esto')
         return redirect('servicios:centro_emergencia')
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(CentroEmergenciaDelete, self).delete(request, *args, **kwargs)
 
 
 class DispositivoGpsList(LoginRequiredMixin, ListView):
@@ -281,12 +296,17 @@ class DispositivoGpsDelete(LoginRequiredMixin, PermissionRequiredMixin, SuccessM
     model = DispositivoGPS
     template_name = 'servicios/dispositivo_gps_delete.html'
     success_url = reverse_lazy('servicios:dispositivo_gps')
-    success_message = "El GPS con imei fue eliminado con éxito"
+    success_message = "El GPS con imei (%(imei)s) fue eliminado con éxito"
     permission_required = 'servicios.delete_dispositivogps'
 
     def handle_no_permission(self):
         messages.error(self.request, 'No tienes permiso para hacer esto')
         return redirect('servicios:dispositivo_gps')
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(DispositivoGpsDelete, self).delete(request, *args, **kwargs)
 
 
 class TipoCentroEmergenciaList(LoginRequiredMixin, ListView):
@@ -347,9 +367,14 @@ class TipoCentroEmergenciaDelete(LoginRequiredMixin, PermissionRequiredMixin, Su
     model = TipoCentroEmergencia
     template_name = 'servicios/tipo_centro_emergencia_delete.html'
     success_url = reverse_lazy('servicios:tipo_centro_emergencia')
-    success_message = "El tipo de vehiculo fue eliminado con éxito"
+    success_message = "El tipo de vehiculo (%(name)s) fue eliminado con éxito"
     permission_required = 'servicios.delete_tipocentroemergencia'
 
     def handle_no_permission(self):
         messages.error(self.request, 'No tienes permiso para hacer esto')
         return redirect('servicios:tipo_centro_emergencia')
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(TipoCentroEmergenciaDelete, self).delete(request, *args, **kwargs)

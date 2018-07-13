@@ -1,9 +1,22 @@
-{% extends 'base/base.html' %}
-{% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <h3>Desea eliminar el incidente N° {{ incidente.id }} creado en fecha {{ incidente.time }}</h3>
-        <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
-        <a href="{% url 'logistica:incidente' %}" class="btn btn-default">Cancelar</a>
-    </form>
-{% endblock %}
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <form action="{% url 'logistica:incidente_eliminar' object.id %}" method="post">
+            {% csrf_token %}
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Eliminar incidente</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row center-block">
+                    Desea eliminar el incidente N° {{ object.id }} creado en fecha {{ object.time }}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-lg-12 text-right">
+                    <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
+                    <button type="button" class="btn btn-warning" onclick="return closeModal()">Cerrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

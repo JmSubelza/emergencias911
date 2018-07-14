@@ -1,1 +1,1 @@
-web: gunicorn emergencias911.wsgi --log-file -
+web: gunicorn emergencias.wsgi --log-file -

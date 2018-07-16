@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -8,7 +9,7 @@
             <div class="row center-block">
 
                 <div class="col-md-4">
-                    <object data="{{ MEDIA_URL }}icons/structure.svg" width="100%" height="150" type="image/svg+xml">
+                    <object data="{% static 'icons/structure.svg' %}" width="100%" height="150" type="image/svg+xml">
                         SVG no soportado.
                     </object>
                 </div>

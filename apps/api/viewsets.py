@@ -6,7 +6,7 @@ from .serializers import UserSerializer, GroupSerializer, TipoIncidenteSerialize
 from ..logistica.models import TipoIncidente, Incidente, AsignacionIncidente
 from rest_framework.viewsets import ModelViewSet
 
-from ..servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, DispositivoGPS
+from ..servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, Device
 
 
 class UserViewSet(ModelViewSet):
@@ -25,7 +25,7 @@ class CentroEmergenciaViewSet(ModelViewSet):
 
 
 class DispositivoGPSViewSet(ModelViewSet):
-    queryset = DispositivoGPS.objects.all().order_by('pk')
+    queryset = Device.objects.all().order_by('pk')
     serializer_class = DispositivoGPSSerializer
 
 

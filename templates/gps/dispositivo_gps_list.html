@@ -71,7 +71,7 @@
             </object>
             <!-- status search form -->
             <ul class="list-inline text-right">
-                <li><a href="{% url 'servicios:dispositivo_gps' %}" name="all"><span
+                <li><a href="{% url 'gps:dispositivo_gps' %}" name="all"><span
                         class="glyphicon glyphicon-star"></span>
                     Todos</a></li>
                 <li><a href="?is_active=1" name="no_canceled"><span
@@ -115,17 +115,17 @@
                     {% endif %}
                 </td>
                 <td>
-                    {% if perms.servicios.view_dispositivogps %}
-                        <a onclick="return openModal('{% url 'servicios:dispositivo_gps_detalle' dispositivo_gps.id %}')"
+                    {% if perms.gps.view_device %}
+                        <a onclick="return openModal('{% url 'gps:dispositivo_gps_detalle' dispositivo_gps.id %}')"
                            class="btn">
                             <span class="glyphicon glyphicon-eye-open"></span></a>
                     {% endif %}
-                    {% if perms.servicios.change_dispositivogps %}
-                        <a href="{% url 'servicios:dispositivo_gps_editar' dispositivo_gps.id %}" class="btn">
+                    {% if perms.gps.change_device %}
+                        <a href="{% url 'gps:dispositivo_gps_editar' dispositivo_gps.id %}" class="btn">
                             <span class="glyphicon glyphicon-pencil"></span></a>
                     {% endif %}
-                    {% if perms.servicios.delete_dispositivogps %}
-                        <a onclick="return openModal('{% url 'servicios:dispositivo_gps_eliminar' dispositivo_gps.id %}')"
+                    {% if perms.gps.delete_device %}
+                        <a onclick="return openModal('{% url 'gps:dispositivo_gps_eliminar' dispositivo_gps.id %}')"
                            class="btn">
                             <span class="glyphicon glyphicon-trash"></span></a>
                     {% endif %}
@@ -134,8 +134,8 @@
         {% endfor %}
         </tbody>
     </table>
-    {% if perms.servicios.add_dispositivogps %}
-        <a href="{% url 'servicios:dispositivo_gps_crear' %}" class="btn btn-success">Nuevo</a>
+    {% if perms.gps.add_device %}
+        <a href="{% url 'gps:dispositivo_gps_crear' %}" class="btn btn-success">Nuevo</a>
     {% endif %}
     <a href="javascript:history.back()" class="btn btn-warning">Cancelar</a>
 

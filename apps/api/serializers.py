@@ -4,7 +4,7 @@ from rest_framework.serializers import ModelSerializer
 
 from ..logistica.models import TipoIncidente, Incidente, AsignacionIncidente
 
-from ..servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, DispositivoGPS
+from ..servicios.models import CentroEmergencia, TipoVehiculo, Vehiculo, Device
 
 
 class GroupSerializer(ModelSerializer):
@@ -29,7 +29,7 @@ class CentroEmergenciaSerializer(ModelSerializer):
 
 class DispositivoGPSSerializer(ModelSerializer):
     class Meta:
-        model = DispositivoGPS
+        model = Device
         fields = ('__all__')
 
 

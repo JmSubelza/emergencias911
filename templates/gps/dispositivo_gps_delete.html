@@ -1,6 +1,6 @@
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <form action="{% url 'servicios:dispositivo_gps_eliminar' object.id %}" method="post">
+        <form action="{% url 'gps:dispositivo_gps_eliminar' object.id %}" method="post">
             {% csrf_token %}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>

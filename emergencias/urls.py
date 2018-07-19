@@ -55,6 +55,7 @@ urlpatterns = [
                   url(r'^servicios/', include('apps.servicios.urls', namespace="servicios")),
                   url(r'^administracion/', include('apps.administracion.urls', namespace="administracion")),
                   url(r'^logistica/', include('apps.logistica.urls', namespace="logistica")),
+                  url(r'^gps/', include('apps.gps.urls', namespace="gps")),
                   url(r'^backups/', include('apps.backups.urls', namespace="backups")),
 
                   url(r'^accounts/login/$', login, {'template_name': 'base/login.html'}, name='login'),

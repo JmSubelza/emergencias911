@@ -25,8 +25,7 @@ SECRET_KEY = 'lyd+=o+*5_e!5vnu+t9sh%9km_zd1$^lt22_acu6qzdyjcz^p%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'apps.administracion',
     'apps.logistica',
     'apps.reportes',
+    'apps.gps',
     'apps.api',
     'apps.backups',
     'dbbackup',  # django-dbbackup
@@ -87,7 +87,8 @@ WSGI_APPLICATION = 'emergencias.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-#Cambiar Datos de base de datos
+# Cambiar Datos de base de datos
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -98,7 +99,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 """
 DATABASES = {
     'default': {
@@ -107,7 +107,6 @@ DATABASES = {
     }
 }
 """
-
 DBBACKUP_CONNECTORS = {
     'default': {
         'ENGINE': 'dbbackup.db.sqlite.SqliteConnector',

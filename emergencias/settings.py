@@ -92,10 +92,10 @@ WSGI_APPLICATION = 'emergencias.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'DB_NAME',
-        'USER': 'DB_USER',
-        'PASSWORD': 'DB_PASSWORD',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'NAME': 'emergencia',
+        'USER': 'emergencia',
+        'PASSWORD': 'raspberry',
+        'HOST': '192.168.88.47',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }

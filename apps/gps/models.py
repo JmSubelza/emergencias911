@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class Device(models.Model):
     color = models.CharField(null=True, max_length=255)
-    imei = models.IntegerField(unique=True, null=True, verbose_name='Número de IMEI')
+    imei = models.CharField(max_length=255, unique=True, null=True, verbose_name='Número de IMEI')
     mail_drop_alarm = models.CharField(max_length=255, null=True)
     modification_date = models.DateTimeField(null=True, verbose_name='Tiempo')
     name = models.CharField(max_length=100, unique=True, null=True, verbose_name='Nombre Dispositivo')
@@ -66,7 +66,7 @@ class Alarm(models.Model):
     date_received = models.DateTimeField(null=True)
     date_sent = models.DateTimeField(null=True)
     device_id = models.BigIntegerField(null=True)
-    is_sent = models.BinaryField(null=True)
+    is_sent = models.BooleanField(default=True)
     latitude = models.FloatField(null=True, verbose_name='Latitud')
     longitude = models.FloatField(null=True, verbose_name='Longitud')
     speed = models.FloatField(null=True, verbose_name='Velocidad')

@@ -34,7 +34,7 @@ class Positions_Buffer(models.Model):
     speed = models.FloatField(null=True, verbose_name='Velocidad')
     time = models.DateTimeField(null=True)
     valid = models.BooleanField(default=True)
-    device_id = models.ForeignKey(Device, on_delete=models.CASCADE)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
     accuracy = models.FloatField(null=True)
 
 
@@ -50,7 +50,7 @@ class Positions(models.Model):
     speed = models.FloatField(null=True, verbose_name='Velocidad')
     time = models.DateTimeField(null=True)
     valid = models.BooleanField(default=True)
-    device_id = models.ForeignKey(Device, on_delete=models.CASCADE)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
     accuracy = models.FloatField(null=True)
 
 
@@ -58,17 +58,17 @@ class Plots(models.Model):
     port = models.IntegerField(null=True)
     command = models.CharField(max_length=500, null=True)
     sent_date = models.DateTimeField(null=True)
-    device_id = models.ForeignKey(Device, on_delete=models.CASCADE)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
 
 class Alarm(models.Model):
     battery = models.IntegerField(null=True)
     date_received = models.DateTimeField(null=True)
     date_sent = models.DateTimeField(null=True)
-    device_id = models.BigIntegerField(null=True)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
     is_sent = models.BooleanField(default=True)
     latitude = models.FloatField(null=True, verbose_name='Latitud')
     longitude = models.FloatField(null=True, verbose_name='Longitud')
     speed = models.FloatField(null=True, verbose_name='Velocidad')
     type = models.CharField(max_length=255, null=True)
-    device_id = models.ForeignKey(Device, on_delete=models.CASCADE)
+

@@ -7,4 +7,4 @@ django-filter==1.1.0
 djangorestframework==3.8.2
 Markdown==2.6.11
 requests==2.19.1
-mysqlclient
+MySQL-python

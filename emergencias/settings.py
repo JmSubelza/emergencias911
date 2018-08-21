@@ -25,7 +25,7 @@ SECRET_KEY = 'lyd+=o+*5_e!5vnu+t9sh%9km_zd1$^lt22_acu6qzdyjcz^p%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.7.2']
 
 # Application definition
 
@@ -95,22 +95,19 @@ DATABASES = {
         'NAME': 'emergencia',
         'USER': 'emergencia',
         'PASSWORD': 'raspberry',
-        'HOST': '192.168.88.47',   # Or an IP Address that your DB is hosted on
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-"""
+
 DBBACKUP_CONNECTORS = {
     'default': {
-        'ENGINE': 'dbbackup.db.sqlite.SqliteConnector',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'dbbackup.db.mysql.MysqlDumpConnector',
+        'NAME': 'emergencia',
+        'USER': 'emergencia',
+        'PASSWORD': 'raspberry',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 # Password validation
@@ -147,16 +144,13 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = reverse_lazy('servicios:vehiculo')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')

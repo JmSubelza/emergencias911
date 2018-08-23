@@ -1,11 +1,13 @@
+# This Python file uses the following encoding: utf-8
 import os, sys
 
 #path a donde esta el manage.py de nuestro proyecto Django
-sys.path.append('/var/www/emergencias911/')
+sys.path.append("/var/www/emergencias911/")
 
 #referencia (en python) desde el path anterior al fichero settings.py
 #Importante hacerlo así, si hay varias instancias coriendo (en lugar de setdefault)
 #os.environ[‘DJANGO_SETTINGS_MODULE’] = "emergencias.settings"
+sys.path.append('/var/www/env/lib/python3.5/site-packages')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "emergencias.settings")
 
 #prevenimos UnicodeEncodeError

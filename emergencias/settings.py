@@ -25,7 +25,7 @@ SECRET_KEY = 'lyd+=o+*5_e!5vnu+t9sh%9km_zd1$^lt22_acu6qzdyjcz^p%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['18.228.143.223','localhost','127.0.0.1']
 
 # Application definition
 
@@ -92,9 +92,9 @@ WSGI_APPLICATION = 'emergencias.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'emergencia',
-        'USER': 'emergencia',
-        'PASSWORD': 'raspberry',
+        'NAME': 'emergencias',
+        'USER': 'emergencias',
+        'PASSWORD': 'emergencias911',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
@@ -103,9 +103,9 @@ DATABASES = {
 DBBACKUP_CONNECTORS = {
     'default': {
         'ENGINE': 'dbbackup.db.mysql.MysqlDumpConnector',
-        'NAME': 'emergencia',
-        'USER': 'emergencia',
-        'PASSWORD': 'raspberry',
+        'NAME': 'emergencias',
+        'USER': 'emergencias',
+        'PASSWORD': 'emergencias911',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }

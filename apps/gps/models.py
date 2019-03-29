@@ -58,7 +58,7 @@ class Plots(models.Model):
     port = models.IntegerField(null=True)
     command = models.CharField(max_length=500, null=True)
     sent_date = models.DateTimeField(null=True)
-    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    #device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
 
 class Alarm(models.Model):

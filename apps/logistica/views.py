@@ -2,7 +2,7 @@
 from datetime import datetime
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from .models import Incidente, TipoIncidente, AsignacionIncidente
 from .models import CentroEmergencia, Vehiculo
 from .forms import IncidenteForm, TipoIncidenteForm, AsignacionIncidenteForm

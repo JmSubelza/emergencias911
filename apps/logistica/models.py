@@ -35,7 +35,7 @@ class Incidente(models.Model):
     lng = models.FloatField(verbose_name='Longitud')
     is_active = models.BooleanField(verbose_name='Activo', default=True)
     tipo = models.ManyToManyField(TipoIncidente)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return '{}'.format(self.id)
@@ -47,8 +47,8 @@ class Incidente(models.Model):
 class AsignacionIncidente(models.Model):
     time = models.DateTimeField(verbose_name='Fecha y hora', null=True)
     estado = models.CharField(verbose_name='Estado', max_length=20, choices=ESTADO_ASIGNACION, default='EN CURSO')
-    incidente = models.OneToOneField(Incidente)
-    centro_emergencia = models.ForeignKey(CentroEmergencia, blank=True)
+    incidente = models.OneToOneField(Incidente, on_delete=models.CASCADE)
+    centro_emergencia = models.ForeignKey(CentroEmergencia, blank=True, on_delete=models.CASCADE)
     vehiculos = models.ManyToManyField(Vehiculo)
     is_active = models.BooleanField(verbose_name='Activo', default=True)
 

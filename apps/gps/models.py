@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class Device(models.Model):
     color = models.CharField(null=True, max_length=255)
-    imei = models.CharField(max_length=255, unique=True, null=True, verbose_name='Número de IMEI')
+    imei = models.CharField(max_length=15, unique=True, null=True, verbose_name='Número de IMEI')
     mail_drop_alarm = models.CharField(max_length=255, null=True)
     modification_date = models.DateTimeField(null=True, verbose_name='Tiempo')
     name = models.CharField(max_length=100, unique=True, null=True, verbose_name='Nombre Dispositivo')

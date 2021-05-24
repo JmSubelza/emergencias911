@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from .forms import DispositivoGpsForm
 from .models import Device
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView

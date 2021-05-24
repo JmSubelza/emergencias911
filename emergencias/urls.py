@@ -14,61 +14,59 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy, path, include
 from django.views.generic import RedirectView
+from django.contrib.auth import views
 
 from rest_framework import routers
 from apps.api.viewsets import UserViewSet, GroupViewSet, TipoIncidenteViewSet, IncidenteViewSet, \
     AsignacionIncidenteViewSet, CentroEmergenciaViewSet, TipoVehiculoViewSet, VehiculoViewSet, DispositivoGPSViewSet
-
-from django.contrib.auth.views import login, logout_then_login, \
-    password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 
 admin.autodiscover()
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 
-router.register(r'usuarios', UserViewSet)
-router.register(r'grupos', GroupViewSet)
+router.register('usuarios', UserViewSet)
+router.register('grupos', GroupViewSet)
 
-router.register(r'centro-emergencias', CentroEmergenciaViewSet)
-router.register(r'tipo-centro-emergencias', CentroEmergenciaViewSet)
-router.register(r'vehiculos', VehiculoViewSet)
-router.register(r'tipo-vehiculos', TipoVehiculoViewSet)
-router.register(r'dispositivos-gps', DispositivoGPSViewSet)
+router.register('centro-emergencias', CentroEmergenciaViewSet)
+router.register('tipo-centro-emergencias', CentroEmergenciaViewSet)
+router.register('vehiculos', VehiculoViewSet)
+router.register('tipo-vehiculos', TipoVehiculoViewSet)
+router.register('dispositivos-gps', DispositivoGPSViewSet)
 
-router.register(r'incidentes', IncidenteViewSet)
-router.register(r'tipo-incidentes', TipoIncidenteViewSet)
-router.register(r'asignacion-incidentes', AsignacionIncidenteViewSet)
+router.register('incidentes', IncidenteViewSet)
+router.register('tipo-incidentes', TipoIncidenteViewSet)
+router.register('asignacion-incidentes', AsignacionIncidenteViewSet)
 
 urlpatterns = [
 
-                  url(r'^api/', include(router.urls, namespace='api')),
-                  url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+                  path('api/', include(router.urls)),
+                  path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
-                  url(r'^$', RedirectView.as_view(url=reverse_lazy('logistica:incidente')), name='index'),
-                  url(r'^admin/', admin.site.urls),
-                  url(r'^servicios/', include('apps.servicios.urls', namespace="servicios")),
-                  url(r'^administracion/', include('apps.administracion.urls', namespace="administracion")),
-                  url(r'^logistica/', include('apps.logistica.urls', namespace="logistica")),
-                  url(r'^gps/', include('apps.gps.urls', namespace="gps")),
-                  url(r'^backups/', include('apps.backups.urls', namespace="backups")),
+                  path('', RedirectView.as_view(url=reverse_lazy('logistica:incidente')), name='index'),
+                  path('admin/', admin.site.urls),
+                  path('servicios/', include('apps.servicios.urls')),
+                  path('administracion/', include('apps.administracion.urls')),
+                  path('logistica/', include('apps.logistica.urls')),
+                  path('gps/', include('apps.gps.urls')),
+                  path('backups/', include('apps.backups.urls')),
 
-                  url(r'^accounts/login/$', login, {'template_name': 'base/login.html'}, name='login'),
-                  url(r'^logout/$', logout_then_login, name='logout'),
+                  path('accounts/login/', views.LoginView.as_view(template_name='base/login.html'), name='login'),
+                  path('logout', views.LogoutView.as_view(), name='logout'),
 
-                  url(r'^reset/password_reset/$', password_reset, {'template_name': 'registro/password_reset_form.html',
-                                                                   'email_template_name': 'registro/password_reset_email.html'},
-                      name='password_reset'),
-                  url(r'^reset/password_reset_done/$', password_reset_done,
-                      {'template_name': 'registro/password_reset_done.html'}, name='password_reset_done'),
-                  url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$', password_reset_confirm,
-                      {'template_name': 'registro/password_reset_confirm.html'}, name='password_reset_confirm'),
-                  url(r'^reset/done/$', password_reset_complete,
-                      {'template_name': 'registro/password_reset_complete.html'}, name='password_reset_complete'),
+                  path('password_reset/',
+                       views.PasswordResetView.as_view(template_name='registro/password_reset_form.html',
+                                                       email_template_name='registro/password_reset_email.html', ),
+                       name='password_reset'),
+                  path('password_reset/done/', views.PasswordResetDoneView.as_view(
+                      template_name='registro/password_reset_done.html', ), name='password_reset_done'),
+                  path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(
+                      template_name='registro/password_reset_confirm.html', ), name='password_reset_confirm'),
+                  path('reset/done/', views.PasswordResetCompleteView.as_view(
+                      template_name='registro/password_reset_complete.html', ), name='password_reset_complete'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

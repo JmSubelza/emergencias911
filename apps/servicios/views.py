@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from .forms import VehiculoForm, TipoVehiculoForm, CentroEmergenciaForm, TipoCentroEmergenciaForm
 from .models import Vehiculo, TipoVehiculo, CentroEmergencia, TipoCentroEmergencia
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView

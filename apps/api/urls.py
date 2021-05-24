@@ -1,9 +1,12 @@
-from django.conf.urls import url
+# from django.conf.urls import url
+from django.urls import path
 
 from apps.api.viewsets import UserViewSet
 
+app_name = 'api'
+
 urlpatterns = [
 
-    url(r'^usuario/$', UserViewSet(), name='api.usuario'),
+    path('usuario/', UserViewSet(), name='api.usuario'),
 
 ]

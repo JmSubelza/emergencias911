@@ -13,6 +13,7 @@ class DispositivoGpsForm(forms.ModelForm):
         model = Device
         fields = [
             'name',
+            'phone_number',
             'imei',
             'lat',
             'lng',
@@ -21,6 +22,7 @@ class DispositivoGpsForm(forms.ModelForm):
         ]
         labels = {
             'name': 'Descripción',
+            'phone_number': 'Numero de telefono',
             'imei': 'IMEI Dispositivo',
             'lat': 'Latitud',
             'lng': 'Longitud',

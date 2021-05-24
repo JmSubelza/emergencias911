@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class LogisticaConfig(AppConfig):
-    name = 'logistica'
+    name = 'apps.logistica'

@@ -1,15 +1,15 @@
 from django.conf.urls import url
+from django.urls import path
 from .views import \
     DispositivoGpsList, DispositivoGpsCreate, DispositivoGpsUpdate, DispositivoGpsDelete, DispositivoGpsDetail
 
+app_name = 'gps'
+
 urlpatterns = [
-    url(r'^dispositivogps/$', DispositivoGpsList.as_view(), name='dispositivo_gps'),
-    url(r'^dispositivogps/nuevo/$', DispositivoGpsCreate.as_view(), name='dispositivo_gps_crear'),
-    url(r'^dispositivogps/editar/(?P<pk>\d+)/$', DispositivoGpsUpdate.as_view(),
-        name='dispositivo_gps_editar'),
-    url(r'^dispositivogps/delete/(?P<pk>\d+)/$', DispositivoGpsDelete.as_view(),
-        name='dispositivo_gps_eliminar'),
-    url(r'^dispositivogps/view/(?P<pk>\d+)/$', DispositivoGpsDetail.as_view(),
-        name='dispositivo_gps_detalle'),
+    path('dispositivogps/', DispositivoGpsList.as_view(), name='dispositivo_gps'),
+    path('dispositivogps/nuevo/', DispositivoGpsCreate.as_view(), name='dispositivo_gps_crear'),
+    path('dispositivogps/editar/<int:pk>/', DispositivoGpsUpdate.as_view(), name='dispositivo_gps_editar'),
+    path('dispositivogps/delete/<int:pk>/', DispositivoGpsDelete.as_view(), name='dispositivo_gps_eliminar'),
+    path('dispositivogps/view/<int:pk>/', DispositivoGpsDetail.as_view(), name='dispositivo_gps_detalle'),
 
 ]
